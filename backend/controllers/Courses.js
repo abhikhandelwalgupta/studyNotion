@@ -1,5 +1,6 @@
 const course = require("../models/Courses");
 const Tag = require("../models/Tag");
+const category = require("../models/Category")
 require("dotenv").config();
 
 exports.createCourse = async (req, res) => {
@@ -11,6 +12,7 @@ exports.createCourse = async (req, res) => {
       whatYouWillLearn,
       price,
       tag,
+      Category
     } = req.body;
 
     const thumbnail = req.files.thumbnailImage;
@@ -21,7 +23,8 @@ exports.createCourse = async (req, res) => {
       !instructor ||
       !whatYouWillLearn ||
       !tag ||
-      !price
+      !price || 
+      !Category
     ) {
       return res.status(401).json({
         success: false,
@@ -41,6 +44,15 @@ exports.createCourse = async (req, res) => {
 
     const tagDetails = await Tag.findById(tag);
     if (!tagDetails) {
+      return res.status(404).json({
+        success: false,
+        message: "Tag Details not found",
+      });
+    }
+
+
+    const categoryDetails = await Category.findById(Category);
+    if(!categoryDetails) {
       return res.status(404).json({
         success: false,
         message: "Tag Details not found",

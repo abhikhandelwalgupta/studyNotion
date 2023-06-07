@@ -39,7 +39,7 @@ exports.createSubSection = async (req, res) => {
           subSection: subSectionDetails._id,
         },
       }
-    );
+    ).populate("subSection");
 
     res.status(200).json({
       success: true,
