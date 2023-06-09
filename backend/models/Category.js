@@ -8,6 +8,13 @@ const categorySchema = mongoose.Schema({
         require:true,
         trim : true
     },
+    description: { type: String },
+    courses: [
+		{
+			type: mongoose.Schema.Types.ObjectId,
+			ref: "Course",
+		},
+	],
     categoryStatus: {
         type : String,
         enum : ["Active" , "Inactive"],
