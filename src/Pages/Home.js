@@ -1,7 +1,7 @@
 import React from "react";
 import { BsArrowRightShort } from "react-icons/bs";
 import { Link } from "react-router-dom";
-import { HightlightText } from "../components/core/HightlightText";
+import { HightlightText } from "../components/core/HomePages/HightlightText";
 import { CTABUTTON } from "../components/core/HomePages/Button";
 import Banner from "../assets/Images/banner.mp4"
 
