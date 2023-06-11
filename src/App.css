@@ -7,3 +7,41 @@ html,body {
     overflow-x: hidden;
     box-sizing: border-box;
 }
+
+
+.box-shadow-3d{
+    box-shadow: 21px 21px 0px #fff,
+                0px 0px 10px rgb(10 90 114 / 0.5),
+                0px 0px 10px rgb(10 90 114 / 0.5),
+                0px 0px 10px rgb(10 90 114 / 0.5),
+                0px 0px 100px rgb(10 90 114 / 0.5),
+                0px 0px 0px rgb(10 90 114 / 0.5);
+}
+
+.gradient-text {
+    background: -webkit-linear-gradient(118.19deg, #1FA2FF -3.62%, #12D8FA 50.44%, #A6FFCB 104.51%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.background-gradient {
+  
+width: 372.95px;
+height: 257.05px;
+left: calc(50% - 372.95px/2 - 76.53px);
+top: calc(50% - 257.05px/2 - 47.47px);
+
+/* Gradient/05 */
+
+background: linear-gradient(118.19deg, #1FA2FF -3.62%, #12D8FA 50.44%, #A6FFCB 104.51%);
+
+filter: blur(34px);
+transform: matrix(1, 0, -0.03, 1, 0, 0);
+   
+}
+
+.codeBlock-border {
+    border: 1px solid;
+    z-index: 1;
+    border-image-source: linear-gradient(121.74deg, rgba(255, 255, 255, 0.22) -7.75%, rgba(255, 255, 255, 0) 37.38%);
+}
