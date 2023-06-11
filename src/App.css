@@ -6,6 +6,7 @@
 html,body {
     overflow-x: hidden;
     box-sizing: border-box;
+    scroll-behavior: smooth;
 }
 
 
@@ -45,3 +46,37 @@ transform: matrix(1, 0, -0.03, 1, 0, 0);
     z-index: 1;
     border-image-source: linear-gradient(121.74deg, rgba(255, 255, 255, 0.22) -7.75%, rgba(255, 255, 255, 0) 37.38%);
 }
+
+.homepage_bg {
+    background-image: url("../src/assets/Images/bghome.svg");
+}
+
+
+  .numberCircle {
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    background: rgba(177, 207, 219, 1);
+    color: white;
+    text-align: center;
+    line-height: 50px;
+    font-weight: 600;
+    font-size: 16px;
+    margin: 5px 0;
+    position: relative;
+  }
+  .numberCircle:after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    height: 50px;
+    width: 1px;
+    background: #AFB2BF;
+    transform: translate(-50%, 100%);
+    border-bottom: 1px double #444;
+
+
+   
+   
+  }
