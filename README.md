@@ -91,7 +91,7 @@ See `contributing.md` for ways to get started.
 Please adhere to this project's `code of conduct`.
 
 
-## ðŸš€ About Me
+##  About Me
 I am a full-stack developer with a passion for crafting robust and scalable web applications. With experience in both front-end and back-end development, I specialize in creating dynamic user interfaces, designing responsive layouts, and building secure and efficient server-side functionality. My skills in various programming languages, frameworks, and databases allow me to develop custom solutions tailored to meet the specific needs of each project. I am dedicated to continuous learning and staying up-to-date with the latest trends and technologies in the field.
 
 As a lifelong learner, I am committed to staying up-to-date with the latest industry trends and emerging technologies. I am always seeking new challenges and opportunities to expand my skillset and push myself to new heights.
