@@ -7,7 +7,7 @@ import Banner from "../assets/Images/banner.mp4";
 import { CodeBlocks } from "../components/core/HomePages/CodeBlocks";
 import { TimelineSection } from "../components/core/HomePages/TimelineSection";
 import { LearningLanguageSection } from "../components/core/HomePages/LearningLanguageSection"; 
-
+import { Instructor } from "../components/core/HomePages/Instructor";
 export const Home = () => {
   return (
     <div>
@@ -161,7 +161,12 @@ export const Home = () => {
         
       </div>
       {/* section 3 */}
-
+        <div className="bg-richblack-900 mx-auto max-w-maxContent w-11/12 flex flex-col first-letter  gap-28  justify-betweenitems-center text-white">
+          <Instructor/>
+          <div className="">
+            <h2 className="text-center font-semibold text-4xl">Reviews from other learners</h2>
+          </div>
+      </div>
       {/* footer */}
     </div>
   );

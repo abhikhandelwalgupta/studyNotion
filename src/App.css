@@ -75,8 +75,8 @@ transform: matrix(1, 0, -0.03, 1, 0, 0);
     background: #AFB2BF;
     transform: translate(-50%, 100%);
     border-bottom: 1px double #444;
+  }
 
-
-   
-   
+  .box-drop-shadow {
+    box-shadow: -20px -20px 0px 0px #FFFFFF ;
   }
