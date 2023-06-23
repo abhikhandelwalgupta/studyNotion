@@ -10,6 +10,9 @@ import { LearningLanguageSection } from "../components/core/HomePages/LearningLa
 import { Instructor } from "../components/core/HomePages/Instructor";
 import { Review } from "../components/core/HomePages/Review";
 import { ExploreMore } from "../components/core/HomePages/ExploreMore";
+import Footer from "../components/comman/Footer";
+const BottomFooter = ["Privacy Policy", "Cookie Policy", "Terms"];
+
 export const Home = () => {
   return (
     <div>
@@ -179,6 +182,34 @@ export const Home = () => {
           </div>
       </div>
       {/* footer */}
+      <div className="bg-richblack-600  text-richblack-400">
+          <Footer/>
+          <div className="flex flex-row items-center justify-between w-11/12 lg:-mt-8 max-w-maxContent text-richblack-400 mx-auto  pb-14 text-sm">
+        {/* Section 1 */}
+        <div className="flex justify-between lg:items-start items-center flex-col lg:flex-row gap-3 w-full">
+          <div className="flex flex-row">
+            {BottomFooter.map((ele, i) => {
+              return (
+                <div
+                  key={i}
+                  className={` ${
+                    BottomFooter.length - 1 === i
+                      ? ""
+                      : "border-r border-richblack-700 cursor-pointer hover:text-richblack-50 transition-all duration-200"
+                  } px-3 `}
+                >
+                  <Link to={ele.split(" ").join("-").toLocaleLowerCase()}>
+                    {ele}
+                  </Link>
+                </div>
+              );
+            })}
+          </div>
+
+          <div className="text-center">Made with ❤️ Abhishek © 2023 Studynotion</div>
+        </div>
+      </div>
+        </div>
     </div>
   );
 };
