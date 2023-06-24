@@ -56,6 +56,7 @@ export const Home = () => {
         <div>
           <CodeBlocks
             position={"lg:flex-row sm:flex-col"}
+            codeblockStyle = {"codeblock1"}
             heading={
               <div className="text-4xl font-semibold">
                 {" "}
@@ -92,6 +93,7 @@ export const Home = () => {
         <div>
           <CodeBlocks
             position={"lg:flex-row-reverse"}
+            codeblockStyle = {"codeblock2"}
             heading={
               <div className="text-4xl font-semibold">
                 {" "}

@@ -5,7 +5,7 @@ import PlanandCommunity from '../footerSection/PlanandCommunity'
 import Subjects from '../footerSection/Subjects'
 import Language from '../footerSection/Language'
 import CareerBuilding from '../footerSection/CareerBuilding'
-import { Link } from 'react-router-dom'
+// import { Link } from 'react-router-dom'
 
 const Footer = () => {
   return (

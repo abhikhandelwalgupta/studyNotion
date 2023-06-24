@@ -21,6 +21,7 @@ export const ExploreMore = () => {
         setCourse(result[0].courses);
         setCurrentCard(result[0].courses[0].heading)
     }
+    console.log(course+""+currentCard);
   return (
     <div className='flex flex-col items-center justify-center gap-6 font-inter'>
         <h2 className='text-4xl font-semibold'>Unlock the  <HightlightText text={"Power of Code"} /></h2>
