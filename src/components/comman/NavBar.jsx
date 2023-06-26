@@ -10,7 +10,7 @@ import apiconnector from '../services/apiconnector'
 import { categories } from '../services/apis'
 import { IoIosArrowDropdownCircle } from "react-icons/io"
 
-const subLinks = [
+const subLinks1 = [
   {
     title: "python",
     link: "/catalog/python"
@@ -27,21 +27,20 @@ const NavBar = () => {
   const { totalItem } = useSelector((state) => state.cart)
 
   const location = useLocation()
-  /* const [subLinks, setSubLinks] = useState([]);
+   const [subLinks, setSubLinks] = useState();
  
    const fetchSubLinks = async () => {
      try {
-       console.log(categories.CATEGORIES_API);
        const result = await apiconnector("GET", categories.CATEGORIES_API);
-       console.log("Printing sublink result" + result);
        setSubLinks(result.data.data);
+       console.log(`sublinke :- ${subLinks.length}`);
      } catch (error) {
        console.log("Could not fetch the category");
      }
    }
    useEffect(() => {
      fetchSubLinks()
-   }, [])*/
+   }, [])
   const matchRoute = (route) => {
     return matchPath({ path: route }, location.pathname)
   }
@@ -68,8 +67,9 @@ const NavBar = () => {
                                 translate-y-[-45%] h-6 w-6 rotate-45 rounded bg-richblack-5'>
                         </div>
                         {
-                          subLinks.length ? (
-                            subLinks.map((subLink, index) => (
+                          
+                          subLinks1.length  ? (
+                            subLinks1.map((subLink, index) => (
                               <Link to={`${subLink.link}`} key={index} className='hover:bg-richblack-50 rounded-lg pl-2 my-1'>
                                 <p className='py-2 font-inter'>{subLink.title}</p>
                               </Link>

@@ -36,7 +36,7 @@ exports.createCategory = async (req, res) => {
 
 exports.showCategory = async (req, res) => {
   try {
-    const categoryDetails = Category.find({ categoryStatus: "Active" });
+    const categoryDetails =await Category.find({ categoryStatus: "Active" });
     ``;
     return res.status(200).json({
       success: true,

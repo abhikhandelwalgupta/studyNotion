@@ -71,6 +71,7 @@ exports.signUp = async (req, res) => {
 
 /* User Login */
 exports.login = async (req, res) => {
+  console.log("Inside Login ");
   try {
     const { email, passowrd } = req.body;
     if (!email || !passowrd) {
