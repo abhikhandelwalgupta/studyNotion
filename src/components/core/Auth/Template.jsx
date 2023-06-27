@@ -21,7 +21,7 @@ const Template = ({ title, description1, description2, image, formType }) => {
                     <img src={frameImg} alt='fram' width={558}
                         height={504}
                         loading="lazy" />
-                    <img src={image} alt='' className='absolute bottom-4 right-4 z-10' width={558}
+                    <img src={image} alt='' className='absolute -top-4 right-4 z-10' width={558}
                         height={504}
                         loading="lazy" />
                 </div>
