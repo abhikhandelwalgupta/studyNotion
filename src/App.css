@@ -112,6 +112,16 @@ transform: matrix(1, 0, -0.03, 1, 0, 0);
   transform: matrix(1, 0, -0.03, 1, 0, 0);
 }
 
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
 
 .codeblock2 {
   position: absolute;

@@ -5,7 +5,7 @@ import { endpoints } from "../apis";
 import { setToken } from "../../../slices/authSlice";
 
 const {
-    LOGIN_API
+    LOGIN_API, SIGNUP_API,SENDOTP_API
 } = endpoints
 
 export const login = (email, password, navigate) => {
@@ -52,6 +52,65 @@ export const login = (email, password, navigate) => {
     }
 }
 
-export const signUp = ()=> {
-    
+export const signUp = (accountType, firstName, lastName, email, password, confirmPassword, otp, navigate) => {
+    return async (dispatch) => {
+        const toastId = toast.loading("Loading")
+        dispatch(setLoading(true))
+        console.log(`This is inside fronted signUp :- ${accountType} , ${firstName} , ${lastName} , ${email} , ${password} ,${otp}`);
+        try {
+            const response = await apiconnector("POST", SIGNUP_API, {
+                accountType,
+                firstName,
+                lastName,
+                email,
+                password,
+                confirmPassword,
+                otp,
+            });
+
+            console.log("SIGNUP API RESPONSE............", response)
+
+            if (!response.data.success) {
+                throw new Error(response.data.message)
+            }
+            toast.success("Signup Successful")
+            navigate("/login")
+
+        } catch (error) {
+            console.log("SIGNUP API ERROR............", error)
+            toast.error("Signup Failed")
+            navigate("/signup")
+        }
+        dispatch(setLoading(false))
+        toast.dismiss(toastId)
+    }
+}
+
+export const sendOtp = (email,navigate)=> {
+    return async(dispatch) => {
+        const toastId = toast.loading("Loading...")
+    dispatch(setLoading(true))
+    try {
+        const response = await apiconnector("POST", SENDOTP_API, {
+            email,
+            checkUserPresent: true,
+          })
+        
+          console.log("SENDOTP API RESPONSE............", response)
+
+      console.log(response.data.success)
+
+      if (!response.data.success) {
+        throw new Error(response.data.message)
+      }
+
+      toast.success("OTP Sent Successfully")
+      navigate("/verify-email")
+    }catch(error) {
+        console.log("Send OTP error");
+        toast.error("Could Not Send Otp ")
+    }
+    dispatch(setLoading(false))
+    toast.dismiss(toastId)
+    }
 }

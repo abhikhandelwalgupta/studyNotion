@@ -1,9 +1,14 @@
 const User = require("../models/User");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
+// const otpGenerator = require("otp-generator");
+const mailSender  = require("./../util/mailSender");
+const otpTemplate = require("../mail/templates/emailVerificationTemplate");
+
 
 /* User SignUp */
 exports.signUp = async (req, res) => {
+  console.log("Inside signUp :- "+req.body.email );
   try {
     const {
       email,
@@ -15,7 +20,8 @@ exports.signUp = async (req, res) => {
       phoneNO,
     } = req.body;
 
-    if (!email || !passowrd || !firstName || !lastName || !phoneNO) {
+    
+    if (!email || !passowrd || !firstName || !lastName) {
       return res.status(403).json({
         success: false,
         message: "All fields are required",
@@ -131,6 +137,8 @@ exports.sendotp = async (req, res) => {
 	try {
 		const { email } = req.body;
 
+    console.log(req.body);
+
 		// Check if user is already present
 		// Find user with provided email
 		const checkUserPresent = await User.findOne({ email });
@@ -145,23 +153,22 @@ exports.sendotp = async (req, res) => {
 			});
 		}
 
-		var otp = otpGenerator.generate(6, {
-			upperCaseAlphabets: false,
-			lowerCaseAlphabets: false,
-			specialChars: false,
-		});
-		const result = await OTP.findOne({ otp: otp });
-		console.log("Result is Generate OTP Func");
-		console.log("OTP", otp);
-		console.log("Result", result);
-		while (result) {
-			otp = otpGenerator.generate(6, {
-				upperCaseAlphabets: false,
-			});
-		}
+    var otp = Math.floor(100000 + Math.random() * 900000)
+    console.log(`OTP is :- ${otp}`);
+     const emailVerification  = otpTemplate(otp);
+     // console.log(emailVerification);
+	
+    try {
+     
+      const otpSend =  await mailSender(email, 'Email Verification from study Notion' , emailVerification)
+    }catch(error) {
+      console.log("Error while otp send by mail "+ error.message);
+      return res.status(500).send('Error sending OTP');
+    }
+    
 		const otpPayload = { email, otp };
-		const otpBody = await OTP.create(otpPayload);
-		console.log("OTP Body", otpBody);
+		//const otpBody = await otp.create(otpPayload);
+		//console.log("OTP Body", otpBody);
 		res.status(200).json({
 			success: true,
 			message: `OTP Sent Successfully`,

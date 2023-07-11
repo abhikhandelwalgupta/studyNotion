@@ -46,8 +46,8 @@ const NavBar = () => {
   }
   return (
 
-    <div className='flex h-14 items-center justify-center border-b-[1px] border-b-richblack-700'>
-      <div className='flex w-11/12 max-w-maxContent my-auto mx-auto items-center justify-around'>
+    <div className='flex h-14 items-center justify-center border-b-[1px] bg-richblack-800 border-b-richblack-700'>
+      <div className='flex w-11/12 max-w-maxContent my-auto mx-auto items-center  justify-between'>
         <Link to="/">
           <img src={logo} alt='logo' loading='lazy' width={160} height={42} />
         </Link>
