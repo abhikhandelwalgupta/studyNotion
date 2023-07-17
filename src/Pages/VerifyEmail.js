@@ -13,28 +13,28 @@ const VerifyEmail = () => {
   const dispatch = useDispatch()
   const navigate = useNavigate()
 
-  // useEffect(() => {
-  //   // Only allow access of this route when user has filled the signup form
-  //   if (!signupData) {
-  //     navigate("/signup");
-  //   }
-  //   // eslint-disable-next-line react-hooks/exhaustive-deps
-  // }, []);
+  useEffect(() => {
+    // Only allow access of this route when user has filled the signup form
+    if (!signupData) {
+      navigate("/signup");
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   const handleOnSubmit = (e) => {
-    console.log(signupData);
+    console.log("This is from data in email page :- "+JSON.stringify(signupData));
     e.preventDefault();
 
+
     const {
-      accountType,
-      firstName,
-      lastName,
       email,
       password,
+      firstName,
+      lastName,  
       confirmPassword,
-    }= signupData;
+      accountType
+    } = signupData;
 
-    console.log(`This is verify email :-  ${accountType} , ${firstName} , ${lastName} , ${email} , ${password} , ${confirmPassword}`);
     dispatch(signUp(accountType, firstName, lastName,email,password,confirmPassword,otp,navigate));
   }
   return (

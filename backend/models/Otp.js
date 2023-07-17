@@ -8,7 +8,7 @@ const OTPschema = new mongoose.Schema({
     require: true,
   },
   otp: {
-    type: Number,
+    type: String,
     require: true,
   },
   createdAt: {
@@ -19,6 +19,7 @@ const OTPschema = new mongoose.Schema({
 });
 
 async function sendVerificationEmail (email , otp) {
+  console.log("Inside send verification email ");
     try {
         const mailResponse = await mailSender(email , "Verification Email from StudyNotion", emailTemplate(otp));
         console.log("Email sent Successfully: ", mailResponse);
@@ -30,7 +31,7 @@ async function sendVerificationEmail (email , otp) {
 
 
 OTPschema.pre("save" , async function(next){
-
+console.log("OTP Schema prev ");
   if (this.isNew) {
 		await sendVerificationEmail(this.email, this.otp);
 	}
@@ -38,7 +39,7 @@ OTPschema.pre("save" , async function(next){
 });
 
 
-module.exports = mongoose.Schema("OTP" , OTPschema);
+module.exports = mongoose.model ("OTP" , OTPschema);
 
 
 

@@ -56,7 +56,7 @@ export const signUp = (accountType, firstName, lastName, email, password, confir
     return async (dispatch) => {
         const toastId = toast.loading("Loading")
         dispatch(setLoading(true))
-        console.log(`This is inside fronted signUp :- ${accountType} , ${firstName} , ${lastName} , ${email} , ${password} ,${otp}`);
+        console.log(`This is inside fronted signUp :- ${accountType} , ${firstName} , ${lastName} , ${email} , ${password} , ${confirmPassword} ,${otp}`);
         try {
             const response = await apiconnector("POST", SIGNUP_API, {
                 accountType,
@@ -68,7 +68,7 @@ export const signUp = (accountType, firstName, lastName, email, password, confir
                 otp,
             });
 
-            console.log("SIGNUP API RESPONSE............", response)
+            console.log("SIGNUP API RESPONSE............", response.data)
 
             if (!response.data.success) {
                 throw new Error(response.data.message)

@@ -1,4 +1,3 @@
-const { models } = require("mongoose");
 const mongoose = require("mongoose");
 
 
@@ -20,4 +19,4 @@ const profileSchema = new mongoose.Schema({
 });
 
 
-exports.models = mongoose.model("Profile" , profileSchema);
+module.exports = mongoose.model("Profile" , profileSchema);
