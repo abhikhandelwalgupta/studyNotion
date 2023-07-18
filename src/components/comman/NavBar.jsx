@@ -32,7 +32,8 @@ const NavBar = () => {
    const fetchSubLinks = async () => {
      try {
        const result = await apiconnector("GET", categories.CATEGORIES_API);
-       setSubLinks(result.data.data);
+       setSubLinks(result.data.categoryDetails);
+       console.log(result);
        console.log(`sublinke :- ${subLinks.length}`);
      } catch (error) {
        console.log("Could not fetch the category");

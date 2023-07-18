@@ -17,7 +17,7 @@ const mailSender = async (email, title, body) => {
                 subject: `${title}`,
                 html: `${body}`,
             })
-            console.log(info);
+            console.log(`inside mail sender  ${info}`);
             return info;
     }
     catch(error) {

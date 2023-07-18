@@ -5,7 +5,7 @@ import { endpoints } from "../apis";
 import { setToken } from "../../../slices/authSlice";
 
 const {
-    LOGIN_API, SIGNUP_API,SENDOTP_API
+    LOGIN_API, SIGNUP_API,SENDOTP_API,RESETPASSTOKEN_API,RESETPASSWORD_API
 } = endpoints
 
 export const login = (email, password, navigate) => {
@@ -112,5 +112,50 @@ export const sendOtp = (email,navigate)=> {
     }
     dispatch(setLoading(false))
     toast.dismiss(toastId)
+    }
+}
+
+export const getPasswordResetToken =  (email, setEmailSend)=> {
+    return  async(dispatch)=> {
+        const toastId = toast.loading("Loading")
+        dispatch(setLoading(true));
+
+        try {
+            const response = await apiconnector("POST", RESETPASSTOKEN_API , {
+                email
+            });
+            if (!response) {
+                throw new Error(response.data.message)
+            }
+            toast.success("Reset Email send")
+            setEmailSend(true)
+        } catch (error) {
+            console.log(error);
+            toast.error(error.message)
+        }
+        dispatch(setLoading(false))
+        toast.dismiss(toastId)
+    }
+}
+
+export const updatePassword = (oldPassword,newPassword , confirmNewPassword , token)=> {
+    console.log("Inside Update Password");
+    return async(dispatch)=> {
+        dispatch(setLoading(true))
+        const toastId = toast.loading(true)
+        try {
+            const response = await apiconnector("POST" , RESETPASSWORD_API, {
+                oldPassword,
+                newPassword , 
+                confirmNewPassword ,
+                token
+            })
+            console.log(response);
+        } catch (error) {
+            console.log(error);
+            toast.error(error.message)
+        }
+        dispatch(setLoading(false))
+        toast.dismiss(toastId)
     }
 }

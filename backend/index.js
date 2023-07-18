@@ -19,7 +19,7 @@ const profileRoutes = require("./routes/Profile");
 
 app.use(
 	cors({
-		origin:"http://localhost:3000",
+		origin:["http://localhost:3000" , "http://192.168.29.118:3000"],
 		credentials:true,
 	})
 )

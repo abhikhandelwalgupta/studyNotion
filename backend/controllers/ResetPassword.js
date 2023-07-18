@@ -9,12 +9,11 @@ exports.resetPasswordToken = async (req, res) => {
     const user = await User.findOne({ email: email });
 
     if (!user) {
-      return res.json({
+      return res.status(401).json({
         succuss: false,
         message: `This Email: ${email} is not Registered With Us Enter a Valid Email `,
       });
     }
-
     const token = crypto.randomBytes(20).toString("hex");
 
     const updatedDetails = await User.findOneAndUpdate(
@@ -26,15 +25,15 @@ exports.resetPasswordToken = async (req, res) => {
       { new: true }
     );
 
-    console.log("DETAILS", updatedDetails);
-    const url = `http://localhost:3000/update-password/${token}`;
+    console.log("Inside forget password DETAILS", updatedDetails);
+    const url = `http://${process.env.DOMAIN_NAME }/update-password/${token}`;
     await mailSender(
       email,
       "Password Reset",
       `Your Link for email verification is ${url}. Please click this url to reset your password.`
     );
 
-    res.json({
+   return res.status(200).json({
       success: true,
       message:
         "Email Sent Successfully, Please Check Your Email to Continue Further",
@@ -50,22 +49,41 @@ exports.resetPasswordToken = async (req, res) => {
 
 exports.resetPassword = async (req, res) => {
   try {
-    const { password, confirmPassword, token } = req.body;
+    const { oldPassword, password, confirmPassword, token } = req.body;
+    if(oldPassword === password) {
+      return res.status(401).json({
+        success: false,
+        message: "Old Password and New Password Should be different ",
+      });
+    }
+    const userDetails = await User.findOne({token : token});
+    if (!userDetails || userDetails===0) {
+      return res.status(401).json({
+        success: false,
+        message: "Token is Invalid",
+      });
+    }
+    console.log(`User is ${userDetails}`);
+    const isPasswordMatch = await bcrypt.compare(
+      oldPassword,
+      userDetails.password
+    );
 
+    if(!isPasswordMatch) {
+      return res.status(401).json({
+        success:false,
+        message : "Please Enter Valid old Password!!  "
+      })
+    }
     if (confirmPassword !== password) {
-      return res.json({
+      return res.status(401).json({
         success: false,
         message: "Password and Confirm Password Does not Match",
       });
     }
 
-    const userDetails = await User.findOne({ token: token });
-    if (!userDetails) {
-      return res.json({
-        success: false,
-        message: "Token is Invalid",
-      });
-    }
+    //const userDetails = await User.findOne({ token: token });
+    
 
     if (!(userDetails.resetPasswordExpires > Date.now())) {
       return res.status(403).json({
@@ -79,12 +97,12 @@ exports.resetPassword = async (req, res) => {
       { password: encryptedPassword },
       { new: true }
     );
-    res.json({
+    res.status(200).json({
       success: true,
       message: `Password Reset Successful`,
     });
-  } catch (e) {
-    return res.json({
+  } catch (error) {
+    return res.status(500).json({
       error: error.message,
       success: false,
       message: `Some Error in Updating the Password`,
