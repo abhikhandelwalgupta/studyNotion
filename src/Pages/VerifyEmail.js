@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
 import {BiArrowBack} from "react-icons/bi"
 import {RxCountdownTimer} from "react-icons/rx"
-import {sendOtp, signUp} from "../components/services/operations/authAPI"
+import {sendOtp, signUp} from "../services/operations/authAPI"
 
 const VerifyEmail = () => {
 

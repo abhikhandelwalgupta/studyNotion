@@ -1,8 +1,8 @@
 import { toast } from "react-hot-toast"
-import { setLoading, setUser } from "../../../slices/profileSlice";
+import { setLoading, setUser } from "../../slices/profileSlice";
 import apiconnector from "../apiconnector";
 import { endpoints } from "../apis";
-import { setToken } from "../../../slices/authSlice";
+import { setToken } from "../../slices/authSlice";
 
 const {
     LOGIN_API, SIGNUP_API,SENDOTP_API,RESETPASSTOKEN_API,RESETPASSWORD_API

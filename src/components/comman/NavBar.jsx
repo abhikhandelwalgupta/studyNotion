@@ -6,8 +6,8 @@ import { useLocation } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 import { AiOutlineShoppingCart } from "react-icons/ai"
 import ProfileDropDown from '../core/Auth/ProfileDropDown'
-import apiconnector from '../services/apiconnector'
-import { categories } from '../services/apis'
+import apiconnector from '../../services/apiconnector'
+import { categories } from '../../services/apis'
 import { IoIosArrowDropdownCircle } from "react-icons/io"
 
 const subLinks1 = [
@@ -25,7 +25,7 @@ const NavBar = () => {
   const { token } = useSelector((state) => state.auth);
   const { user } = useSelector((state) => state.profile)
   const { totalItem } = useSelector((state) => state.cart)
-
+  console.log(user);
   const location = useLocation()
    const [subLinks, setSubLinks] = useState();
  

@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { BiArrowBack } from "react-icons/bi";
 import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
-import { getPasswordResetToken } from "../components/services/operations/authAPI";
+import { getPasswordResetToken } from "../services/operations/authAPI";
 
 export const ForgotPassword = () => {
   const [formData, setformData] = useState({

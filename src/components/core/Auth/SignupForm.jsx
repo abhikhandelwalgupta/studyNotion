@@ -5,7 +5,7 @@ import { ACCOUNT_TYPE } from "../../../utils/constants";
 import { useDispatch } from "react-redux";
 import { setSignupData } from "../../../slices/authSlice";
 import { toast } from "react-hot-toast";
-import { sendOtp } from "../../services/operations/authAPI";
+import { sendOtp } from "../../../services/operations/authAPI";
 import { useNavigate } from "react-router-dom";
 
 const SignupForm = () => {

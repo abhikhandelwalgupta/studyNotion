@@ -1,782 +1,782 @@
 [
     {
-        "country": "Afghanistan",
+        "label": "Afghanistan",
         "code": "+93"
     },
     {
-        "country": "Albania",
+        "label": "Albania",
         "code": "+355"
     },
     {
-        "country": "Algeria",
+        "label": "Algeria",
         "code": "+213"
     },
     {
-        "country": "Andorra",
+        "label": "Andorra",
         "code": "+376"
     },
     {
-        "country": "Angola",
+        "label": "Angola",
         "code": "+244"
     },
     {
-        "country": "Antigua and Barbuda",
+        "label": "Antigua and Barbuda",
         "code": "+1-268"
     },
     {
-        "country": "Argentina",
+        "label": "Argentina",
         "code": "+54"
     },
     {
-        "country": "Armenia",
+        "label": "Armenia",
         "code": "+374"
     },
     {
-        "country": "Australia",
+        "label": "Australia",
         "code": "+61"
     },
     {
-        "country": "Austria",
+        "label": "Austria",
         "code": "+43"
     },
     {
-        "country": "Azerbaijan",
+        "label": "Azerbaijan",
         "code": "+994"
     },
     {
-        "country": "Bahamas",
+        "label": "Bahamas",
         "code": "+1-242"
     },
     {
-        "country": "Bahrain",
+        "label": "Bahrain",
         "code": "+973"
     },
     {
-        "country": "Bangladesh",
+        "label": "Bangladesh",
         "code": "+880"
     },
     {
-        "country": "Barbados",
+        "label": "Barbados",
         "code": "+1-246"
     },
     {
-        "country": "Belarus",
+        "label": "Belarus",
         "code": "+375"
     },
     {
-        "country": "Belgium",
+        "label": "Belgium",
         "code": "+32"
     },
     {
-        "country": "Belize",
+        "label": "Belize",
         "code": "+501"
     },
     {
-        "country": "Benin",
+        "label": "Benin",
         "code": "+229"
     },
     {
-        "country": "Bhutan",
+        "label": "Bhutan",
         "code": "+975"
     },
     {
-        "country": "Bolivia",
+        "label": "Bolivia",
         "code": "+591"
     },
     {
-        "country": "Bosnia and Herzegovina",
+        "label": "Bosnia and Herzegovina",
         "code": "+387"
     },
     {
-        "country": "Botswana",
+        "label": "Botswana",
         "code": "+267"
     },
     {
-        "country": "Brazil",
+        "label": "Brazil",
         "code": "+55"
     },
     {
-        "country": "Brunei",
+        "label": "Brunei",
         "code": "+673"
     },
     {
-        "country": "Bulgaria",
+        "label": "Bulgaria",
         "code": "+359"
     },
     {
-        "country": "Burkina Faso",
+        "label": "Burkina Faso",
         "code": "+226"
     },
     {
-        "country": "Burundi",
+        "label": "Burundi",
         "code": "+257"
     },
     {
-        "country": "Cambodia",
+        "label": "Cambodia",
         "code": "+855"
     },
     {
-        "country": "Cameroon",
+        "label": "Cameroon",
         "code": "+237"
     },
     {
-        "country": "Canada",
+        "label": "Canada",
         "code": "+1"
     },
     {
-        "country": "Cape Verde",
+        "label": "Cape Verde",
         "code": "+238"
     },
     {
-        "country": "Central African Republic",
+        "label": "Central African Republic",
         "code": "+236"
     },
     {
-        "country": "Chad",
+        "label": "Chad",
         "code": "+235"
     },
     {
-        "country": "Chile",
+        "label": "Chile",
         "code": "+56"
     },
     {
-        "country": "China",
+        "label": "China",
         "code": "+86"
     },
     {
-        "country": "Colombia",
+        "label": "Colombia",
         "code": "+57"
     },
     {
-        "country": "Comoros",
+        "label": "Comoros",
         "code": "+269"
     },
     {
-        "country": "Congo",
+        "label": "Congo",
         "code": "+242"
     },
     {
-        "country": "Costa Rica",
+        "label": "Costa Rica",
         "code": "+506"
     },
     {
-        "country": "Croatia",
+        "label": "Croatia",
         "code": "+385"
     },
     {
-        "country": "Cuba",
+        "label": "Cuba",
         "code": "+53"
     },
     {
-        "country": "Cyprus",
+        "label": "Cyprus",
         "code": "+357"
     },
     {
-        "country": "Czech Republic",
+        "label": "Czech Republic",
         "code": "+420"
     },
     {
-        "country": "Denmark",
+        "label": "Denmark",
         "code": "+45"
     },
     {
-        "country": "Djibouti",
+        "label": "Djibouti",
         "code": "+253"
     },
     {
-        "country": "Dominica",
+        "label": "Dominica",
         "code": "+1-767"
     },
     {
-        "country": "Dominican Republic",
+        "label": "Dominican Republic",
         "code": "+1-809, +1-829, +1-849"
     },
     {
-        "country": "East Timor",
+        "label": "East Timor",
         "code": "+670"
     },
     {
-        "country": "Ecuador",
+        "label": "Ecuador",
         "code": "+593"
     },
     {
-        "country": "Egypt",
+        "label": "Egypt",
         "code": "+20"
     },
     {
-        "country": "El Salvador",
+        "label": "El Salvador",
         "code": "+503"
     },
     {
-        "country": "Equatorial Guinea",
+        "label": "Equatorial Guinea",
         "code": "+240"
     },
     {
-        "country": "Eritrea",
+        "label": "Eritrea",
         "code": "+291"
     },
     {
-        "country": "Estonia",
+        "label": "Estonia",
         "code": "+372"
     },
     {
-        "country": "Ethiopia",
+        "label": "Ethiopia",
         "code": "+251"
     },
     {
-        "country": "Fiji",
+        "label": "Fiji",
         "code": "+679"
     },
     {
-        "country": "Finland",
+        "label": "Finland",
         "code": "+358"
     },
     {
-        "country": "France",
+        "label": "France",
         "code": "+33"
     },
     {
-        "country": "Gabon",
+        "label": "Gabon",
         "code": "+241"
     },
     {
-        "country": "Gambia",
+        "label": "Gambia",
         "code": "+220"
     },
     {
-        "country": "Georgia",
+        "label": "Georgia",
         "code": "+995"
     },
     {
-        "country": "Germany",
+        "label": "Germany",
         "code": "+49"
     },
     {
-        "country": "Ghana",
+        "label": "Ghana",
         "code": "+233"
     },
     {
-        "country": "Greece",
+        "label": "Greece",
         "code": "+30"
     },
     {
-        "country": "Grenada",
+        "label": "Grenada",
         "code": "+1-473"
     },
     {
-        "country": "Guatemala",
+        "label": "Guatemala",
         "code": "+502"
     },
     {
-        "country": "Guinea",
+        "label": "Guinea",
         "code": "+224"
     },
     {
-        "country": "Guinea-Bissau",
+        "label": "Guinea-Bissau",
         "code": "+245"
     },
     {
-        "country": "Guyana",
+        "label": "Guyana",
         "code": "+592"
     },
     {
-        "country": "Haiti",
+        "label": "Haiti",
         "code": "+509"
     },
     {
-        "country": "Honduras",
+        "label": "Honduras",
         "code": "+504"
     },
     {
-        "country": "Hungary",
+        "label": "Hungary",
         "code": "+36"
     },
     {
-        "country": "Iceland",
+        "label": "Iceland",
         "code": "+354"
     },
     {
-        "country": "India",
+        "label": "India",
         "code": "+91"
     },
     {
-        "country": "Indonesia",
+        "label": "Indonesia",
         "code": "+62"
     },
     {
-        "country": "Iran",
+        "label": "Iran",
         "code": "+98"
     },
     {
-        "country": "Iraq",
+        "label": "Iraq",
         "code": "+964"
     },
     {
-        "country": "Ireland",
+        "label": "Ireland",
         "code": "+353"
     },
     {
-        "country": "Israel",
+        "label": "Israel",
         "code": "+972"
     },
     {
-        "country": "Italy",
+        "label": "Italy",
         "code": "+39"
     },
     {
-        "country": "Jamaica",
+        "label": "Jamaica",
         "code": "+1-876"
     },
     {
-        "country": "Japan",
+        "label": "Japan",
         "code": "+81"
     },
     {
-        "country": "Jordan",
+        "label": "Jordan",
         "code": "+962"
     },
     {
-        "country": "Kazakhstan",
+        "label": "Kazakhstan",
         "code": "+7"
     },
     {
-        "country": "Kenya",
+        "label": "Kenya",
         "code": "+254"
     },
     {
-        "country": "Kiribati",
+        "label": "Kiribati",
         "code": "+686"
     },
     {
-        "country": "Kosovo",
+        "label": "Kosovo",
         "code": "+383"
     },
     {
-        "country": "Kuwait",
+        "label": "Kuwait",
         "code": "+965"
     },
     {
-        "country": "Kyrgyzstan",
+        "label": "Kyrgyzstan",
         "code": "+996"
     },
     {
-        "country": "Laos",
+        "label": "Laos",
         "code": "+856"
     },
     {
-        "country": "Latvia",
+        "label": "Latvia",
         "code": "+371"
     },
     {
-        "country": "Lebanon",
+        "label": "Lebanon",
         "code": "+961"
     },
     {
-        "country": "Lesotho",
+        "label": "Lesotho",
         "code": "+266"
     },
     {
-        "country": "Liberia",
+        "label": "Liberia",
         "code": "+231"
     },
     {
-        "country": "Libya",
+        "label": "Libya",
         "code": "+218"
     },
     {
-        "country": "Liechtenstein",
+        "label": "Liechtenstein",
         "code": "+423"
     },
     {
-        "country": "Lithuania",
+        "label": "Lithuania",
         "code": "+370"
     },
     {
-        "country": "Luxembourg",
+        "label": "Luxembourg",
         "code": "+352"
     },
     {
-        "country": "Macedonia",
+        "label": "Macedonia",
         "code": "+389"
     },
     {
-        "country": "Madagascar",
+        "label": "Madagascar",
         "code": "+261"
     },
     {
-        "country": "Malawi",
+        "label": "Malawi",
         "code": "+265"
     },
     {
-        "country": "Malaysia",
+        "label": "Malaysia",
         "code": "+60"
     },
     {
-        "country": "Maldives",
+        "label": "Maldives",
         "code": "+960"
     },
     {
-        "country": "Mali",
+        "label": "Mali",
         "code": "+223"
     },
     {
-        "country": "Malta",
+        "label": "Malta",
         "code": "+356"
     },
     {
-        "country": "Marshall Islands",
+        "label": "Marshall Islands",
         "code": "+692"
     },
     {
-        "country": "Mauritania",
+        "label": "Mauritania",
         "code": "+222"
     },
     {
-        "country": "Mauritius",
+        "label": "Mauritius",
         "code": "+230"
     },
     {
-        "country": "Mexico",
+        "label": "Mexico",
         "code": "+52"
     },
     {
-        "country": "Micronesia",
+        "label": "Micronesia",
         "code": "+691"
     },
     {
-        "country": "Moldova",
+        "label": "Moldova",
         "code": "+373"
     },
     {
-        "country": "Monaco",
+        "label": "Monaco",
         "code": "+377"
     },
     {
-        "country": "Mongolia",
+        "label": "Mongolia",
         "code": "+976"
     },
     {
-        "country": "Montenegro",
+        "label": "Montenegro",
         "code": "+382"
     },
     {
-        "country": "Morocco",
+        "label": "Morocco",
         "code": "+212"
     },
     {
-        "country": "Mozambique",
+        "label": "Mozambique",
         "code": "+258"
     },
     {
-        "country": "Myanmar",
+        "label": "Myanmar",
         "code": "+95"
     },
     {
-        "country": "Namibia",
+        "label": "Namibia",
         "code": "+264"
     },
     {
-        "country": "Nauru",
+        "label": "Nauru",
         "code": "+674"
     },
     {
-        "country": "Nepal",
+        "label": "Nepal",
         "code": "+977"
     },
     {
-        "country": "Netherlands",
+        "label": "Netherlands",
         "code": "+31"
     },
     {
-        "country": "New Zealand",
+        "label": "New Zealand",
         "code": "+64"
     },
     {
-        "country": "Nicaragua",
+        "label": "Nicaragua",
         "code": "+505"
     },
     {
-        "country": "Niger",
+        "label": "Niger",
         "code": "+227"
     },
     {
-        "country": "Nigeria",
+        "label": "Nigeria",
         "code": "+234"
     },
     {
-        "country": "North Korea",
+        "label": "North Korea",
         "code": "+850"
     },
     {
-        "country": "Norway",
+        "label": "Norway",
         "code": "+47"
     },
     {
-        "country": "Oman",
+        "label": "Oman",
         "code": "+968"
     },
     {
-        "country": "Pakistan",
+        "label": "Pakistan",
         "code": "+92"
     },
     {
-        "country": "Palau",
+        "label": "Palau",
         "code": "+680"
     },
     {
-        "country": "Palestine",
+        "label": "Palestine",
         "code": "+970"
     },
     {
-        "country": "Panama",
+        "label": "Panama",
         "code": "+507"
     },
     {
-        "country": "Papua New Guinea",
+        "label": "Papua New Guinea",
         "code": "+675"
     },
     {
-        "country": "Paraguay",
+        "label": "Paraguay",
         "code": "+595"
     },
     {
-        "country": "Peru",
+        "label": "Peru",
         "code": "+51"
     },
     {
-        "country": "Philippines",
+        "label": "Philippines",
         "code": "+63"
     },
     {
-        "country": "Poland",
+        "label": "Poland",
         "code": "+48"
     },
     {
-        "country": "Portugal",
+        "label": "Portugal",
         "code": "+351"
     },
     {
-        "country": "Qatar",
+        "label": "Qatar",
         "code": "+974"
     },
     {
-        "country": "Romania",
+        "label": "Romania",
         "code": "+40"
     },
     {
-        "country": "Russia",
+        "label": "Russia",
         "code": "+7"
     },
     {
-        "country": "Rwanda",
+        "label": "Rwanda",
         "code": "+250"
     },
     {
-        "country": "Saint Kitts and Nevis",
+        "label": "Saint Kitts and Nevis",
         "code": "+1-869"
     },
     {
-        "country": "Saint Lucia",
+        "label": "Saint Lucia",
         "code": "+1-758"
     },
     {
-        "country": "Saint Vincent and the Grenadines",
+        "label": "Saint Vincent and the Grenadines",
         "code": "+1-784"
     },
     {
-        "country": "Samoa",
+        "label": "Samoa",
         "code": "+685"
     },
     {
-        "country": "San Marino",
+        "label": "San Marino",
         "code": "+378"
     },
     {
-        "country": "Sao Tome and Principe",
+        "label": "Sao Tome and Principe",
         "code": "+239"
     },
     {
-        "country": "Saudi Arabia",
+        "label": "Saudi Arabia",
         "code": "+966"
     },
     {
-        "country": "Senegal",
+        "label": "Senegal",
         "code": "+221"
     },
     {
-        "country": "Serbia",
+        "label": "Serbia",
         "code": "+381"
     },
     {
-        "country": "Seychelles",
+        "label": "Seychelles",
         "code": "+248"
     },
     {
-        "country": "Sierra Leone",
+        "label": "Sierra Leone",
         "code": "+232"
     },
     {
-        "country": "Singapore",
+        "label": "Singapore",
         "code": "+65"
     },
     {
-        "country": "Slovakia",
+        "label": "Slovakia",
         "code": "+421"
     },
     {
-        "country": "Slovenia",
+        "label": "Slovenia",
         "code": "+386"
     },
     {
-        "country": "Solomon Islands",
+        "label": "Solomon Islands",
         "code": "+677"
     },
     {
-        "country": "Somalia",
+        "label": "Somalia",
         "code": "+252"
     },
     {
-        "country": "South Africa",
+        "label": "South Africa",
         "code": "+27"
     },
     {
-        "country": "South Korea",
+        "label": "South Korea",
         "code": "+82"
     },
     {
-        "country": "South Sudan",
+        "label": "South Sudan",
         "code": "+211"
     },
     {
-        "country": "Spain",
+        "label": "Spain",
         "code": "+34"
     },
     {
-        "country": "Sri Lanka",
+        "label": "Sri Lanka",
         "code": "+94"
     },
     {
-        "country": "Sudan",
+        "label": "Sudan",
         "code": "+249"
     },
     {
-        "country": "Suriname",
+        "label": "Suriname",
         "code": "+597"
     },
     {
-        "country": "Swaziland",
+        "label": "Swaziland",
         "code": "+268"
     },
     {
-        "country": "Sweden",
+        "label": "Sweden",
         "code": "+46"
     },
     {
-        "country": "Switzerland",
+        "label": "Switzerland",
         "code": "+41"
     },
     {
-        "country": "Syria",
+        "label": "Syria",
         "code": "+963"
     },
     {
-        "country": "Taiwan",
+        "label": "Taiwan",
         "code": "+886"
     },
     {
-        "country": "Tajikistan",
+        "label": "Tajikistan",
         "code": "+992"
     },
     {
-        "country": "Tanzania",
+        "label": "Tanzania",
         "code": "+255"
     },
     {
-        "country": "Thailand",
+        "label": "Thailand",
         "code": "+66"
     },
     {
-        "country": "Togo",
+        "label": "Togo",
         "code": "+228"
     },
     {
-        "country": "Tonga",
+        "label": "Tonga",
         "code": "+676"
     },
     {
-        "country": "Trinidad and Tobago",
+        "label": "Trinidad and Tobago",
         "code": "+1-868"
     },
     {
-        "country": "Tunisia",
+        "label": "Tunisia",
         "code": "+216"
     },
     {
-        "country": "Turkey",
+        "label": "Turkey",
         "code": "+90"
     },
     {
-        "country": "Turkmenistan",
+        "label": "Turkmenistan",
         "code": "+993"
     },
     {
-        "country": "Tuvalu",
+        "label": "Tuvalu",
         "code": "+688"
     },
     {
-        "country": "Uganda",
+        "label": "Uganda",
         "code": "+256"
     },
     {
-        "country": "Ukraine",
+        "label": "Ukraine",
         "code": "+380"
     },
     {
-        "country": "United Arab Emirates",
+        "label": "United Arab Emirates",
         "code": "+971"
     },
     {
-        "country": "United Kingdom",
+        "label": "United Kingdom",
         "code": "+44"
     },
     {
-        "country": "United States",
+        "label": "United States",
         "code": "+1"
     },
     {
-        "country": "Uruguay",
+        "label": "Uruguay",
         "code": "+598"
     },
     {
-        "country": "Uzbekistan",
+        "label": "Uzbekistan",
         "code": "+998"
     },
     {
-        "country": "Vanuatu",
+        "label": "Vanuatu",
         "code": "+678"
     },
     {
-        "country": "Vatican City",
+        "label": "Vatican City",
         "code": "+39-06, +379"
     },
     {
-        "country": "Venezuela",
+        "label": "Venezuela",
         "code": "+58"
     },
     {
-        "country": "Vietnam",
+        "label": "Vietnam",
         "code": "+84"
     },
     {
-        "country": "Yemen",
+        "label": "Yemen",
         "code": "+967"
     },
     {
-        "country": "Zambia",
+        "label": "Zambia",
         "code": "+260"
     },
     {
-        "country": "Zimbabwe",
+        "label": "Zimbabwe",
         "code": "+263"
     }
 ]

@@ -3,7 +3,7 @@ import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
 import { BiArrowBack } from "react-icons/bi";
 import { useDispatch } from "react-redux";
 import { Link, useParams } from "react-router-dom";
-import { updatePassword } from "../components/services/operations/authAPI";
+import { updatePassword } from "../services/operations/authAPI";
 
 const UpdatePassword = () => {
   const [showPassword, setShowPassword] = useState(false);
