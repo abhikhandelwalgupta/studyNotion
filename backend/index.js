@@ -8,6 +8,7 @@ const cors = require("cors");
 const fileUpload = require("express-fileupload");
 const {cloudinaryConnect } = require("./config/cloudinaryConnect");
 
+
 const portNo = process.env.PORT || 5000;
 
 const userRouter = require("./routes/User");
@@ -15,8 +16,13 @@ const paymentRoutes = require("./routes/Payments");
 const courseRoutes = require("./routes/Course");
 const profileRoutes = require("./routes/Profile");
 
+const logger = (req, res, next) => {
+  console.log(`${req.method}  ${req.url}`);
+  next();
+};
 
 
+app.use(logger)
 app.use(
 	cors({
 		origin:["http://localhost:3000" , "http://192.168.29.118:3000"],

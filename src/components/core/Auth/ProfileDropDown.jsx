@@ -1,17 +1,26 @@
-import React from 'react'
-import { useSelector } from 'react-redux'
+import React, { useState } from "react";
+import { useSelector } from "react-redux";
+import { AiOutlineCaretDown } from "react-icons/ai";
 
 const ProfileDropDown = () => {
-    const  {user} = useSelector((state) => state.profile)
-    console.log(`user : ${JSON.stringify(user)}`); 
-    //aspect-square w-[30px]
-    return (
-    <div className='flex flex-row'> 
-        
-        <img src={user?.image} alt='' className='bg-richblack-25 w-[30px] rounded-full object-cover aspect-square' />
-        
-    </div>
-  )
-}
+  const { user } = useSelector((state) => state.profile);
+  
+  const [open , setOpen ] = useState(false)
+  //aspect-square w-[30px]
+  return (
+    <>
+    <button className="cursor-pointer">
+      <div className="flex flex-row">
+        <img
+          src={user?.image}
+          alt=""
+          className="bg-richblack-25 w-[30px] rounded-full object-cover aspect-square"
+        />
+        <AiOutlineCaretDown className="text-sm text-richblack-100" />
+      </div>
+      </button>
+    </>
+  );
+};
 
-export default ProfileDropDown
+export default ProfileDropDown;
