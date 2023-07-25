@@ -3,6 +3,7 @@ import { setLoading, setUser } from "../../slices/profileSlice";
 import apiconnector from "../apiconnector";
 import { endpoints } from "../apis";
 import { setToken } from "../../slices/authSlice";
+import { resetCart } from "../../slices/cartSlice";
 
 const {
     LOGIN_API, SIGNUP_API,SENDOTP_API,RESETPASSTOKEN_API,RESETPASSWORD_API
@@ -49,6 +50,16 @@ export const login = (email, password, navigate) => {
         toast.dismiss(toastId)
 
 
+    }
+}
+
+export const  logout = (navigate)=> {
+    return (dispatch) => {
+        dispatch(setUser(null))
+        dispatch(resetCart())
+        dispatch(setToken(null))
+        localStorage.clear();
+        navigate("/login")
     }
 }
 
