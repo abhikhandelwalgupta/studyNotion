@@ -13,7 +13,7 @@ const ProfileDropDown = () => {
   const navigate = useNavigate();
   const [open , setOpen ] = useState(false)
   const ref = useRef(null);
-console.log("Inside profile drop down");
+
   useOnClickOutside(ref, ()=> setOpen(false) )
   
  if(!user) return null
