@@ -24,22 +24,24 @@ const NavBar = () => {
   const { token } = useSelector((state) => state.auth)
   const { user } = useSelector((state) => state.profile);
   const { totalItem } = useSelector((state) => state.cart);
-  // console.log(user);
   const location = useLocation();
   const [subLinks, setSubLinks] = useState();
 
   const fetchSubLinks = async () => {
     try {
       const result = await apiconnector("GET", categories.CATEGORIES_API);
+      console.log(subLinks);
       setSubLinks(result.data.categoryDetails);
     } catch (error) {
       console.log("Could not fetch the category");
     }
   };
-  console.log(token);
+  
   useEffect(() => {
     fetchSubLinks();
   }, []);
+
+ 
   const matchRoute = (route) => {
     return matchPath({ path: route }, location.pathname);
   };

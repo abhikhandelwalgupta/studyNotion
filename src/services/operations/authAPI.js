@@ -53,15 +53,21 @@ export const login = (email, password, navigate) => {
     }
 }
 
-export const  logout = (navigate)=> {
+
+
+export function logout(navigate) {
     return (dispatch) => {
-        dispatch(setUser(null))
-        dispatch(resetCart())
-        dispatch(setToken(null))
-        localStorage.clear();
-        navigate("/login")
+      dispatch(setToken(null))
+      dispatch(setUser(null))
+      dispatch(resetCart())
+      localStorage.removeItem("token")
+      localStorage.removeItem("user")
+      toast.success("Logged Out")
+      navigate("/")
     }
-}
+  }
+  
+  
 
 export const signUp = (accountType, firstName, lastName, email, password, confirmPassword, otp, navigate) => {
     return async (dispatch) => {

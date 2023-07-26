@@ -9,6 +9,7 @@ import { ForgotPassword } from "./Pages/ForgotPassword";
 import UpdatePassword from "./Pages/UpdatePassword";
 import About from "./Pages/About";
 import MyProfile from "./components/core/Dashboard/MyProfile";
+import OpenRoute from "./components/core/Auth/OpenRoute"
 
 function App() {
   return (
@@ -16,13 +17,20 @@ function App() {
       <NavBar />
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/login" element={<Login />} />
+        <Route
+          path="/login"
+          element={
+            <OpenRoute>
+              <Login />{" "}
+            </OpenRoute>
+          }
+        />
         <Route path="/signup" element={<SignUp />} />
-        <Route path="/verify-email" element={<VerifyEmail/>} />
-        <Route path="forgot-password" element={<ForgotPassword/>} />
-        <Route path={`/update-password/:id`} element={<UpdatePassword/>} />
-        <Route path={"/about"} element={<About/>} />
-        <Route path={"dashboard/my-profile"} element={<MyProfile/>}  />
+        <Route path="/verify-email" element={<VerifyEmail />} />
+        <Route path="forgot-password" element={<ForgotPassword />} />
+        <Route path={`/update-password/:id`} element={<UpdatePassword />} />
+        <Route path={"/about"} element={<About />} />
+        <Route path={"dashboard/my-profile"} element={ <OpenRoute><MyProfile /> </OpenRoute>} />
       </Routes>
     </div>
   );
