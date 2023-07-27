@@ -37,7 +37,7 @@ const userSchema = new mongoose.Schema({
     type: String,
     require: true,
   },
-  additionalDetails: {
+  Profile: {
     type:mongoose.Schema.Types.ObjectId,
     required:true,
     ref:"Profile",
@@ -60,10 +60,6 @@ const userSchema = new mongoose.Schema({
   },
   token: {
     type: String,
-  },
-  profile: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: "Profile",
   },
   resetPasswordExpires: {
     type: Date,

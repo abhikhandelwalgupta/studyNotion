@@ -73,7 +73,7 @@ exports.signUp = async (req, res) => {
       password: hashedPassword,
       accountType,
       phoneNO,
-      additionalDetails: profileDetails._id,
+      Profile: profileDetails._id,
       image: `https://api.dicebear.com/5.x/initials/svg?seed=${firstName} ${lastName}`,
     });
 
@@ -106,10 +106,10 @@ exports.login = async (req, res) => {
       });
     }
 
-    const user = await User.findOne({ email });
+    const user = await User.findOne({ email }).populate("Profile").exec()
     if (!user) {
       return res.status(401).json({
-        success: false,
+        success: false, 
         message: "User doen't exist ",
       });
     }

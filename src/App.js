@@ -11,6 +11,7 @@ import About from "./Pages/About";
 import MyProfile from "./components/core/Dashboard/MyProfile";
 import OpenRoute from "./components/core/Auth/OpenRoute"
 import Dashboard from "./Pages/Dashboard";
+import MyCourse from "./components/core/Dashboard/MyCourse";
 
 function App() {
   return (
@@ -26,7 +27,11 @@ function App() {
             </OpenRoute>
           }
         />
-        <Route  element={<Dashboard/>}><Route path="dashboard/my-profile" element={<MyProfile />} /> </Route> 
+        <Route  element={<Dashboard/>}>
+          <Route path="dashboard/my-profile" element={<MyProfile />} />
+          <Route path="dashboard/my-courses" element={<MyCourse/>} />
+        </Route> 
+          
         <Route path="/signup" element={<SignUp />} />
         <Route path="/verify-email" element={<VerifyEmail />} />
         <Route path="forgot-password" element={<ForgotPassword />} />

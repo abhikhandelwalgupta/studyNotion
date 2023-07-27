@@ -4,6 +4,7 @@ export const sidebarLinks = [
     id: 1,
     name: "My Profile",
     path: "/dashboard/my-profile",
+    iconType : "vsc",
     icon: "VscAccount",
   },
   {
@@ -11,6 +12,7 @@ export const sidebarLinks = [
     name: "Dashboard",
     path: "/dashboard/instructor",
     type: ACCOUNT_TYPE.INSTRUCTOR,
+    iconType : "vsc",
     icon: "VscDashboard",
   },
   {
@@ -18,6 +20,7 @@ export const sidebarLinks = [
     name: "My Courses",
     path: "/dashboard/my-courses",
     type: ACCOUNT_TYPE.INSTRUCTOR,
+    iconType : "vsc",
     icon: "VscVm",
   },
   {
@@ -25,6 +28,7 @@ export const sidebarLinks = [
     name: "Add Course",
     path: "/dashboard/add-course",
     type: ACCOUNT_TYPE.INSTRUCTOR,
+    iconType : "vsc",
     icon: "VscAdd",
   },
   {
@@ -32,6 +36,7 @@ export const sidebarLinks = [
     name: "Enrolled Courses",
     path: "/dashboard/enrolled-courses",
     type: ACCOUNT_TYPE.STUDENT,
+    iconType : "vsc",
     icon: "VscMortarBoard",
   },
   {
@@ -39,6 +44,15 @@ export const sidebarLinks = [
     name: "Purchase History",
     path: "/dashboard/purchase-history",
     type: ACCOUNT_TYPE.STUDENT,
+    iconType : "vsc",
     icon: "VscHistory",
+  },
+  {
+    id: 7,
+    name: "Your Cart",
+    path: "/dashboard/cart",
+    type: ACCOUNT_TYPE.STUDENT,
+    iconType : "ai",
+    icon: "AiOutlineShoppingCart",
   },
 ];
