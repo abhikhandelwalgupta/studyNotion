@@ -14,19 +14,19 @@ export const login = (email, password, navigate) => {
     return async (dispatch) => {
         const toastId = toast.loading(true)
         dispatch(setLoading(true))
-
+        console.log(`login service called-1.. `);
         if ((email === undefined && email === null) || (password === undefined && password === null)) {
             toast.error("Please enter email & password ")
             toast.dismiss(toastId)
             return;
         }
-
+        console.log(`Login service test  ${email}, ${password}, ${navigate}}`);
         try {
             const response = await apiconnector("POST", LOGIN_API, {
                 email,
                 password
             });
-
+            console.log(`Response : ${response}`);
             if (!response.data.success) {
                 throw new Error(response.data.message)
             }

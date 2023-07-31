@@ -12,6 +12,10 @@ import MyProfile from "./components/core/Dashboard/MyProfile";
 import OpenRoute from "./components/core/Auth/OpenRoute"
 import Dashboard from "./Pages/Dashboard";
 import MyCourse from "./components/core/Dashboard/MyCourse";
+import Cart from "./components/core/Dashboard/Student/Cart";
+import PurchaseHistory from "./components/core/Dashboard/Student/PurchaseHistory";
+import WishList from "./components/core/Dashboard/Student/WishList";
+import EnrolledCourses from "./components/core/Dashboard/Student/EnrolledCourses";
 
 function App() {
   return (
@@ -30,6 +34,10 @@ function App() {
         <Route  element={<Dashboard/>}>
           <Route path="dashboard/my-profile" element={<MyProfile />} />
           <Route path="dashboard/my-courses" element={<MyCourse/>} />
+          <Route path="dashboard/cart" element={<Cart/>} />
+          <Route path="dashboard/purchase-history" element={<PurchaseHistory/>} />
+          <Route path="dashboard/wishlist" element={<WishList/>} />
+          <Route path="dashboard/enrolled-courses" element={<EnrolledCourses/>} />
         </Route> 
           
         <Route path="/signup" element={<SignUp />} />

@@ -3,7 +3,7 @@ import * as Icons from "react-icons/vsc";
 import { useDispatch } from "react-redux";
 import * as AiIcon from "react-icons/ai"
 import { NavLink, matchPath, useLocation } from "react-router-dom";
-import { resetCourseState } from "../../../slices/courseSlice"
+import { resetCourseState } from "../../slices/courseSlice"
 
 const SideBarLinks = ({ link }) => {
   

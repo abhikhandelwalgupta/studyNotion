@@ -2,18 +2,24 @@ import React from "react";
 import { useSelector } from "react-redux";
 import IconBtn from "../../comman/IconBtn";
 import { RiEditBoxLine } from "react-icons/ri";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
+import NavLocation from "./NavLocation";
 
 const MyProfile = () => {
   const { user } = useSelector((state) => state.profile);
   const navigate = useNavigate();
+  
   console.log(`user.Profile ${ user && JSON.stringify(user.Profile)}`);
   return (
     <>
       <div className="flex gap-4 gap-y-8 flex-col ">
-        <h1 className="text-richblack-5 mb-18 text-3xl font-medium ">
+      <div className="flex flex-col gap-4">
+       <NavLocation  />
+       <h1 className="text-richblack-5 mb-18 text-3xl font-medium ">
           My Profile
         </h1>
+      </div>
+        
         {/* Heading */}
         <div className="bg-richblack-800 py-8 mt-8 shadow-lg rounded-xl border-[1px]  border-richblack-700  px-6">
           <div className="flex items-start md:flex-row flex-col md:gap-0 gap-y-4   justify-between px-8">
