@@ -2,7 +2,7 @@ import React from "react";
 import { useSelector } from "react-redux";
 import IconBtn from "../../comman/IconBtn";
 import { RiEditBoxLine } from "react-icons/ri";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import NavLocation from "./NavLocation";
 
 const MyProfile = () => {

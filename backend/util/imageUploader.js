@@ -1,4 +1,3 @@
-const User = require("../models/User");
 const cloudinary = require("cloudinary").v2;
 
 exports.uploadImageToCloudinay = async (file, folder, height, quality) => {

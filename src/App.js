@@ -16,6 +16,8 @@ import Cart from "./components/core/Dashboard/Student/Cart";
 import PurchaseHistory from "./components/core/Dashboard/Student/PurchaseHistory";
 import WishList from "./components/core/Dashboard/Student/WishList";
 import EnrolledCourses from "./components/core/Dashboard/Student/EnrolledCourses";
+import Index from "./components/core/Dashboard/Setting/index";
+
 
 function App() {
   return (
@@ -38,6 +40,7 @@ function App() {
           <Route path="dashboard/purchase-history" element={<PurchaseHistory/>} />
           <Route path="dashboard/wishlist" element={<WishList/>} />
           <Route path="dashboard/enrolled-courses" element={<EnrolledCourses/>} />
+          <Route path="dashboard/settings" element={<Index/>} />
         </Route> 
           
         <Route path="/signup" element={<SignUp />} />

@@ -1,6 +1,6 @@
-const { findById } = require("../models/Courses");
 const Profile = require("../models/Profile");
 const User = require("../models/User");
+const { uploadImageToCloudinay } = require("../util/imageUploader");
 
 exports.updateProfile = async (req, res) => {
   try {
@@ -84,6 +84,7 @@ exports.getAllUserDetails = async (req, res) => {
         return res.status(200).json({
             success:true,
             message:'User Data Fetched Successfully',
+            userDetails
         });
        
     }
@@ -101,7 +102,7 @@ exports.getEntrolledCourse = async (req,res)=> {
          const user_id = req.user.id;
 
 
-         const user_details = await User.findOne({_id:user_id}).populate("courses").exec();
+         const userDetails = await User.findOne({_id:user_id}).populate("courses").exec();
          if (!userDetails) {
             return res.status(400).json({
               success: false,
@@ -123,10 +124,11 @@ exports.getEntrolledCourse = async (req,res)=> {
 
 
 exports.updateDisplayPicture = async (req, res) => {
+  console.log("In side "+JSON.stringify(req.files.image));
   try {
-    const displayPicture = req.files.displayPicture
+    const displayPicture = req.files.image
     const userId = req.user.id
-    const image = await uploadImageToCloudinary(
+    const image = await uploadImageToCloudinay(
       displayPicture,
       process.env.FOLDER_NAME,
       1000,
