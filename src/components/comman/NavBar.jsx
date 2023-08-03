@@ -10,48 +10,50 @@ import apiconnector from "../../services/apiconnector";
 import { categories } from "../../services/apis";
 import { IoIosArrowDropdownCircle } from "react-icons/io";
 
-const subLinks1 = [
-  {
-    title: "python",
-    link: "/catalog/python",
-  },
-  {
-    title: "web dev",
-    link: "/catalog/web-development",
-  },
-];
+// const subLinks1 = [
+//   {
+//     title: "python",
+//     link: "/catalog/python",
+//   },
+//   {
+//     title: "web dev",
+//     link: "/catalog/web-development",
+//   },
+// ];
 const NavBar = () => {
   const { token } = useSelector((state) => state.auth)
   const { user } = useSelector((state) => state.profile);
   const { totalItem } = useSelector((state) => state.cart);
   const location = useLocation();
-  const [subLinks, setSubLinks] = useState();
+  const [subLinks, setSubLinks] = useState([]);
 
-  const fetchSubLinks = async () => {
-    try {
-      const result = await apiconnector("GET", categories.CATEGORIES_API);
-      console.log(subLinks);
-      setSubLinks(result.data.categoryDetails);
-    } catch (error) {
-      console.log("Could not fetch the category");
-    }
-  };
-  
+
+
   useEffect(() => {
+    const fetchSubLinks = async () => {
+      try {
+        const result = await apiconnector("GET", categories.CATEGORIES_API);
+        //setSubLinks(result.data?.categoryDetails);
+        setSubLinks(result?.data?.categoryDetails);
+
+
+      } catch (error) {
+        console.log("Could not fetch the category");
+      }
+    };
     fetchSubLinks();
   }, []);
 
- 
+
   const matchRoute = (route) => {
     return matchPath({ path: route }, location.pathname);
   };
   return (
-    <div className={`flex h-14 items-center justify-center border-b-[1px] bg-richblack-800 border-b-richblack-700 ${
-        location.pathname !== "/" ? "bg-richblack-800" : ""
+    <div className={`flex h-14 items-center justify-center border-b-[1px] bg-richblack-800 border-b-richblack-700 ${location.pathname !== "/" ? "bg-richblack-800" : ""
       } transition-all duration-200`}>
       <div className="flex w-11/12 max-w-maxContent my-auto mx-auto items-center  justify-between">
         <Link to="/">
-          <img src={logo} alt="logo" loading="lazy" width={160} height={42} />
+          <img src={logo} alt="logo" loading="lazy" width={"160"} height={"42"} />
         </Link>
         {/* Nav link */}
         <nav className="text-richblack-100">
@@ -70,14 +72,19 @@ const NavBar = () => {
                                 translate-x-[0%]
                                 translate-y-[-45%] h-6 w-6 rotate-45 rounded bg-richblack-5"
                     ></div>
-                    {subLinks1.length ? (
-                      subLinks1.map((subLink, index) => (
+                    {subLinks?.length ? (
+
+                      subLinks.map((subLink, index) => (
+
                         <Link
-                          to={`${subLink.link}`}
+                        to={`/catalog/${subLink.Name
+                          .split(" ")
+                          .join("-")
+                          .toLowerCase()}`}
                           key={index}
                           className="hover:bg-richblack-50 rounded-lg pl-2 my-1"
                         >
-                          <p className="py-2 font-inter">{subLink.title}</p>
+                          <p className="py-2 font-inter">{subLink.Name}</p>
                         </Link>
                       ))
                     ) : (
@@ -108,8 +115,8 @@ const NavBar = () => {
             <Link to="/dashboard/cart" className="relative">
               <AiOutlineShoppingCart />
               {totalItem > 0 && <span className="absolute -bottom-2 -right-2 grid h-5 w-5 place-items-center overflow-hidden rounded-full bg-richblack-600 text-center text-xs font-bold text-yellow-100">
-                  {totalItem}
-                </span>}
+                {totalItem}
+              </span>}
             </Link>
           )}
           {token === null && (

@@ -1,5 +1,7 @@
+const { default: mongoose } = require("mongoose");
 const Category = require("../models/Category");
 const Course = require("../models/Courses");
+
 
 exports.createCategory = async (req, res) => {
   try {
@@ -11,8 +13,8 @@ exports.createCategory = async (req, res) => {
       });
     }
 
-    const categoryDetails = await Tag.create({
-      name: name,
+    const categoryDetails = await Category.create({
+      Name: name,
     });
 
     if (categoryDetails) {
@@ -36,8 +38,8 @@ exports.createCategory = async (req, res) => {
 
 exports.showCategory = async (req, res) => {
   try {
-    const categoryDetails =await Category.find({ categoryStatus: "Active" });
-    ``;
+    const categoryDetails = await Category.find({ categoryStatus: "Active" });
+   
     return res.status(200).json({
       success: true,
       message: "",

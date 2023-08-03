@@ -1,6 +1,4 @@
 const mongoose = require("mongoose");
-const { models } = require("./Profile");
-
 
 const categorySchema = mongoose.Schema({
     Name : {

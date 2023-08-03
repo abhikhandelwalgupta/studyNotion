@@ -11,7 +11,7 @@ const {createSection, updateSection ,deleteSection} = require("../controllers/Se
 const {createRating,getAverageRating,getAllRating,} = require("../controllers/RatingAndReview")
 
 const { auth ,isStudent , isInstructor ,isAdmin } = require("../middleware/auth");
-const { route } = require("./routes");
+// const { route } = require("./routes");
 const {createSubSection,updateSubSection, deleteSubSection } = require("../controllers/subSection");
 
 
@@ -26,7 +26,8 @@ router.post("/addSubSection", auth, isInstructor, createSubSection);
 router.post("/getCourseDetails", getCourseDetails);
 
 
-router.post("/createCategory" , auth, isAdmin , createCategory);
+// router.post("/createCategory" , auth, isAdmin , createCategory);
+router.post("/createCategory"  , createCategory);
 router.get("/showAllCategories" , showCategory);
 router.post("/getCategoryPageDetails", categoryPageDetails)
 
