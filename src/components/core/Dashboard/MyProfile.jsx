@@ -9,7 +9,7 @@ const MyProfile = () => {
   const { user } = useSelector((state) => state.profile);
   const navigate = useNavigate();
   
-  console.log(`user.Profile ${ user && JSON.stringify(user.Profile)}`);
+ 
   return (
     <>
       <div className="flex gap-4 gap-y-8 flex-col ">

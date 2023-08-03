@@ -10,7 +10,6 @@ const {
 } = endpoints
 
 export const login = (email, password, navigate) => {
-    console.log(`login service called.. `);
     return async (dispatch) => {
         const toastId = toast.loading(true)
         dispatch(setLoading(true))
@@ -26,7 +25,7 @@ export const login = (email, password, navigate) => {
                 email,
                 password
             });
-            console.log(`Response : ${response}`);
+
             if (!response.data.success) {
                 throw new Error(response.data.message)
             }
@@ -165,8 +164,10 @@ export const updatePassword = (oldPassword,newPassword , confirmNewPassword , to
                 oldPassword,
                 newPassword , 
                 confirmNewPassword ,
-                token
-            })
+            } ,{
+                "Content-Type": "multipart/form-data",
+                Authorization: `Bearer ${token}`,
+              })
             console.log(response);
         } catch (error) {
             console.log(error);

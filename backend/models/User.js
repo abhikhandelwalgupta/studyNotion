@@ -37,10 +37,10 @@ const userSchema = new mongoose.Schema({
     type: String,
     require: true,
   },
-  Profile: {
+  profile: {
     type:mongoose.Schema.Types.ObjectId,
     required:true,
-    ref:"Profile",
+    ref:"Profiles",
 },
   accountType: {
     type: String,

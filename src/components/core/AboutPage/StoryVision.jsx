@@ -38,7 +38,7 @@ export const StoryVision = () => {
         </div>
         <img
           src={FoundingStory}
-          className="rounded-md  shadow-md leading-6"
+          className="rounded-md  shadow-md leading-6" alt=''
         />
       </div>
       <div className="w-[100%] flex text-richblack-300 text-base leading-6 text-justify gap-8 justify-between items-start mt-20 lg:flex-row flex-col px-6 ">

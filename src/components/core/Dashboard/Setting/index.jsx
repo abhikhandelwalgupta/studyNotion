@@ -16,14 +16,12 @@ const Index = () => {
           Edit Profile
         </h1>
       </div>
-      <div className="flex gap-4 flex-col text-richblack-5">
-        <div>
+      <div className="flex gap-6 flex-col text-richblack-5">
           <ProfileImage userDetails={user} />
-        </div>
-        <div>
+        <div className="mt-4">
           <ProfileInformation userDetails={user} />
         </div>
-        <div>
+        <div className="mt-4">
           <Password />
         </div>
       </div>

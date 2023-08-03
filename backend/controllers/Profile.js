@@ -1,19 +1,20 @@
-const Profile = require("../models/Profile");
+const Profiles = require("../models/Profile");
 const User = require("../models/User");
 const { uploadImageToCloudinay } = require("../util/imageUploader");
 
 exports.updateProfile = async (req, res) => {
+  console.log(`inSide update profile ${JSON.stringify(req.body)}`);
   try {
-    const { bio, dob, profession, gender } = req.body;
+    const { about, dateOfBirth, mobileNumber, gender } = req.body;
 
-    if (!bio || !dob || !profession || !gender) {
+    if (!about || !dateOfBirth || !mobileNumber || !gender) {
       return res.status(401).json({
         success: false,
         message: "All Felid requried ",
       });
     }
 
-    const user_id = req.body.user_id;
+    const user_id = req.user.id;
     const userDetils = await User.findById(user_id);
     if(!userDetils) {
         return res.status(401).json({
@@ -22,21 +23,29 @@ exports.updateProfile = async (req, res) => {
           });
     }
     const profileId = userDetils.profile;
-    const profileDetails = await Profile.findById(profileId);
+    const profileDetails = await Profiles.findById(profileId);
 
     userDetils.gender = gender;
+    userDetils.phoneNO = mobileNumber
     await userDetils.save();
-    profileDetails.bio = bio;
-    profileDetails.dob = dob;
-    profileDetails.profession = profession;
+    profileDetails.about = about;
+    profileDetails.dob = dateOfBirth;
     await profileDetails.save();
 
     return res.status(200).json({
       success: true,
       message: "Profile Updated Successfully",
       profileDetails,
+      userDetils
     });
-  } catch (error) {}
+  } catch (error) {
+    console.log(`Inside update profile error ${error}`);
+    return res.status(500).json({
+      success: false,
+      message: error.message,
+    })
+  
+  }
 };
 
 exports.deleteAccount = async (req, res) => {
@@ -52,7 +61,7 @@ exports.deleteAccount = async (req, res) => {
             });
         } 
         //delete profile
-        await Profile.findByIdAndDelete({_id:userDetails.additionalDetails});
+        await Profiles.findByIdAndDelete({_id:userDetails.additionalDetails});
         //TOOD: HW unenroll user form all enrolled courses
         //delete user
         await User.findByIdAndDelete({_id:id});
@@ -134,7 +143,7 @@ exports.updateDisplayPicture = async (req, res) => {
       1000,
       1000
     )
-    console.log(image)
+    
     const updatedProfile = await User.findByIdAndUpdate(
       { _id: userId },
       { image: image.secure_url },

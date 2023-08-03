@@ -7,7 +7,7 @@ import { uploadImage } from "../../../../services/operations/settingAPI";
 const ProfileImage = ({ userDetails }) => {
 
   
-  console.log(userDetails.image);
+ 
   const {token } = useSelector((state)=> state.auth)
   
   const [prevImage, setPrevImage] = useState(null);
@@ -48,11 +48,11 @@ const ProfileImage = ({ userDetails }) => {
     }
   }, [imageFile]);
   return (
-    <div className="w-full bg-richblack-800 border border-richblack-700 rounded-md shadow-md">
-      <div className="flex py-4 px-6 gap-8">
+    <div className="w-full bg-richblack-800 border  border-richblack-700 rounded-md shadow-md">
+      <div className="flex p-8 gap-8">
         <img
           alt=""
-          src={prevImage || userDetails.image}
+          src={prevImage || userDetails?.image}
           width={"100px"}
           height={"50"}
           className="rounded-full h-[100px] object-cover cursor-pointer"

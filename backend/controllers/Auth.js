@@ -3,9 +3,10 @@ const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 // const otpGenerator = require("otp-generator");
 const mailSender = require("./../util/mailSender");
-const otpTemplate = require("../mail/templates/emailVerificationTemplate");
+// const otpTemplate = require("../mail/templates/emailVerificationTemplate");
 const Profile = require("../models/Profile")
-const Otp = require("../models/Otp")
+const Otp = require("../models/Otp");
+const passwordUpdated = require("../mail/templates/passwordUpdate");
 /* User SignUp */
 exports.signUp = async (req, res) => {
   console.log("Inside signUp :- " + JSON.stringify(req.body));
@@ -47,22 +48,20 @@ exports.signUp = async (req, res) => {
     const otpCheck = await Otp.find({ email }).sort({ createdAt: -1 }).limit(1);
 
     if (otpCheck.length === 0) {
-      console.log(`Inside in `);
       return res.status(400).json({
         success: false,
         message: "The OTP is not valid",
       });
     } else if (otp !== otpCheck[0].otp) {
-      console.log(`${otp} :: ${otpCheck[0].otp} :---:  ${typeof(otp)===typeof(otpCheck[0].otp)} :: ${typeof(otp)} :: ${typeof(otpCheck[0].otp)}`);
       return res.status(400).json({
         success: false,
         message: "The OTP is not valid",
       });
     }
     const profileDetails = await Profile.create({
-      dateOfBirth: null,
-      bio: null,
-      profession: null
+      dateOfBirth: "",
+      bio: "",
+      profession: ""
     });
     const hashedPassword = await bcrypt.hash(password, 10);
 
@@ -106,7 +105,7 @@ exports.login = async (req, res) => {
       });
     }
 
-    const user = await User.findOne({ email }).populate("Profile").exec()
+    const user = await User.findOne({ email }).populate("profile").exec()
     if (!user) {
       return res.status(401).json({
         success: false, 

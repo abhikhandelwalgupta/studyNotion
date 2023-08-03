@@ -7,9 +7,9 @@ const Dashboard = () => {
   const { token } = useSelector((state) => state.auth);
   const navigate = useNavigate();
 
-  // useEffect(() => {
-  //   if (!token) return navigate("/login", { replace: true });
-  // }, []);
+  useEffect(() => {
+    if (!token) return navigate("/login", { replace: true });
+  }, []);
   return (
     <div className="relative flex min-h-[calc(100vh-3.5rem)]">
       <SideBar />
