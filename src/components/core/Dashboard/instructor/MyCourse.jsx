@@ -1,18 +1,20 @@
 import React from "react";
-import IconBtn from "../../comman/IconBtn";
+import IconBtn from "../../../comman/IconBtn";
 import { GrFormAdd } from "react-icons/gr"
 import { Table, Tbody, Td, Th, Thead, Tr } from "react-super-responsive-table";
 import "react-super-responsive-table/dist/SuperResponsiveTableStyle.css"
+import { useNavigate } from "react-router-dom";
 
 
 const MyCourse = () => {
+ const navigate =  useNavigate();
   return (
     <div className="flex w-full gap-4 gap-y-8 flex-col ">
       <div className="flex w-full justify-between">
         <h1 className="text-richblack-5 mb-18 text-3xl font-medium ">
           My Course
         </h1>
-        <IconBtn name={"Add Course"}><GrFormAdd /></IconBtn>
+        <IconBtn onclick={()=> navigate("/dashboard/add-course")}  name={"Add Course"}><GrFormAdd /></IconBtn>
       </div>
       <div className="w-full mt-8">
         <Table className="rounded-xl w-full border border-richblack-800 ">

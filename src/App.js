@@ -11,12 +11,13 @@ import About from "./Pages/About";
 import MyProfile from "./components/core/Dashboard/MyProfile";
 import OpenRoute from "./components/core/Auth/OpenRoute"
 import Dashboard from "./Pages/Dashboard";
-import MyCourse from "./components/core/Dashboard/MyCourse";
+import MyCourse from "./components/core/Dashboard/instructor/MyCourse";
 import Cart from "./components/core/Dashboard/Student/Cart";
 import PurchaseHistory from "./components/core/Dashboard/Student/PurchaseHistory";
 import WishList from "./components/core/Dashboard/Student/WishList";
 import EnrolledCourses from "./components/core/Dashboard/Student/EnrolledCourses";
 import Index from "./components/core/Dashboard/Setting/index";
+import AddCourse from "./components/core/Dashboard/instructor/AddCourse/AddCourse";
 
 
 function App() {
@@ -41,6 +42,7 @@ function App() {
           <Route path="dashboard/wishlist" element={<WishList/>} />
           <Route path="dashboard/enrolled-courses" element={<EnrolledCourses/>} />
           <Route path="dashboard/settings" element={<Index/>} />
+          <Route path="dashboard/add-Course" element={<AddCourse/>} />
         </Route> 
           
         <Route path="/signup" element={<SignUp />} />

@@ -1,9 +1,9 @@
-import React, { useState } from "react";
+import React from "react";
 import CountryCode from "../../data/countrycode.json";
-import Select from "react-select";
+// import Select from "react-select";
 
 const Contact = () => {
-  const [selectedOption, setSelectedOption] = useState(null);
+  // const [selectedOption, setSelectedOption] = useState(null);
   const handleOnSubmit = (e) => {
     e.preventDefault();
   };
