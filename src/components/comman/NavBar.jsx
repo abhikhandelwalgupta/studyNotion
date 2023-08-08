@@ -42,6 +42,7 @@ const NavBar = () => {
       }
     };
     fetchSubLinks();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
 
@@ -77,10 +78,10 @@ const NavBar = () => {
                       subLinks.map((subLink, index) => (
 
                         <Link
-                        to={`/catalog/${subLink.Name
-                          .split(" ")
-                          .join("-")
-                          .toLowerCase()}`}
+                          to={`/catalog/${subLink.Name
+                            .split(" ")
+                            .join("-")
+                            .toLowerCase()}`}
                           key={index}
                           className="hover:bg-richblack-50 rounded-lg pl-2 my-1"
                         >
