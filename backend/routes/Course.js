@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
 
-const { createCourse, getAllCourses, showCourse, getCourseDetails} = require("../controllers/Courses")
+const { createCourse, getAllCourses, showCourse, getCourseDetails, editCourse} = require("../controllers/Courses")
 
 const {createCategory,showCategory,categoryPageDetails}= require("../controllers/Category")
 
@@ -16,6 +16,7 @@ const {createSubSection,updateSubSection, deleteSubSection } = require("../contr
 
 
 router.post("/createCourse" , auth , isInstructor, createCourse);
+router.post("/editCourse" , auth , isInstructor , editCourse)
 router.get("/getAllCourses" , auth , getAllCourses);
 router.post("/addSection" , auth, isInstructor, createSection);
 router.post("/updateSection" , auth , isInstructor ,updateSection );

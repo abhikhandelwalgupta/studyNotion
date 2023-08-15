@@ -131,7 +131,7 @@ exports.getAllCourses = async (req, res) => {
       data: allCourses,
     });
   } catch (error) {
-    console.log(error);
+    console.log(`Error : ${error}`);
     return res.status(404).json({
       success: false,
       message: `Can't Fetch Course Data`,
@@ -199,3 +199,27 @@ exports.getCourseDetails = async (req, res) => {
     });
   }
 };
+
+
+exports.editCourse = async (req,res)=> {
+  try {
+    console.log(rq.body);
+
+    const {courseId} = req.body
+
+    const fetchCourseDetails = course.findById({courseId})
+
+    console.log(`fetch Course Details :- ${fetchCourseDetails}` );
+
+    return res.status(200).json({
+      success :true,
+      message : "Testing"
+    })
+
+  }catch(error) {
+    return res.status(401).json({
+      success :false ,
+       message :"Error in updating"
+    })
+  }
+}

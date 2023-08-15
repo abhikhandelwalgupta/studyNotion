@@ -23,3 +23,10 @@ export const settingsEndpoints = {
   UPDATEDISPLAYPICTURE_API: BASE_URL + "profile/updateDisplayPicture",
   UPDATEPROFILE_API: BASE_URL + "profile/updateProfile",
 };
+
+
+//Course EndPoint 
+export const courseEndpoints ={
+  EDIT_COURSE_API : BASE_URL + "Course/editCourse",
+  CREATE_COURSE_API : BASE_URL + "Course/createCourse"
+ }

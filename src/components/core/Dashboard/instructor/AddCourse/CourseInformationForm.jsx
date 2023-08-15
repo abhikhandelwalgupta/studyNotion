@@ -1,12 +1,15 @@
 import React, { useEffect, useState } from 'react'
 import { useForm } from "react-hook-form"
-import { useSelector } from 'react-redux';
-import { fetchCourseCategories } from '../../../../../services/operations/courseDetailsAPI';
+import { useDispatch, useSelector } from 'react-redux';
+import { addCourseDetails, editCourseDetails, fetchCourseCategories } from '../../../../../services/operations/courseDetailsAPI';
 import { HiOutlineCurrencyRupee } from "react-icons/hi"
 import ChildInput from './ChildInput';
 import IconBtn from '../../../../comman/IconBtn';
 import { MdNavigateNext } from "react-icons/md"
 import Uploader from './Uploader';
+import Requirements from './Requirements';
+import { COURSE_STATUS } from "../../../../../utils/constants"
+import { setCourse, setStep } from '../../../../../slices/courseSlice';
 
 const CourseInformationForm = () => {
     const {
@@ -17,9 +20,10 @@ const CourseInformationForm = () => {
         formState: { errors },
     } = useForm();
 
-    // const dispatch = useDispatch();
+    const dispatch = useDispatch();
     const [courseCategories, setCourseCategories] = useState([])
     const { course, editCourse } = useSelector((state) => state.course)
+    const { token } = useSelector((state) => state.auth)
 
     useEffect(() => {
         const getCategory = async () => {
@@ -32,14 +36,14 @@ const CourseInformationForm = () => {
         }
         getCategory();
         if (editCourse) {
-            setValue("courseTitle", course.courseName)
-            setValue("courseShortDesc", course.courseDescription)
-            setValue("coursePrice", course.price)
-            setValue("courseTags", course.tag)
-            setValue("courseBenefits", course.whatYouWillLearn)
-            setValue("courseCategory", course.category)
-            setValue("courseRequirements", course.instructions)
-            setValue("courseImage", course.thumbnail)
+            setValue("courseTitle", course?.courseName)
+            setValue("courseShortDesc", course?.courseDescription)
+            setValue("coursePrice", course?.price)
+            setValue("courseTags", course?.tag)
+            setValue("courseBenefits", course?.whatYouWillLearn)
+            setValue("courseCategory", course?.category)
+            setValue("courseRequirements", course?.instructions)
+            setValue("courseImage", course?.thumbnail)
         }
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
@@ -64,11 +68,61 @@ const CourseInformationForm = () => {
         return false
     }
 
-    const handleOnSubmit = (data, e) => {
-        if (isFormUpdated()) {
-            console.log("");
+    const handleOnSubmit = async (data, e) => {
+        e.preventDefault()
+        if (editCourse) {
+            if (isFormUpdated()) {
+                const currentValues = getValues();
+                const formData = new FormData();
+
+                formData.append("courseId", course._id)
+                if (currentValues.courseTitle !== course?.courseName) {
+                    formData.append("courseName", data.courseTitle)
+                } if (currentValues.courseShortDesc !== course?.courseDescription) {
+                    formData.append("courseDescription", data.courseShortDesc)
+                } if (currentValues.coursePrice !== course.price) {
+                    formData.append("price", data.coursePrice)
+                } if (currentValues.courseTags.toString() !== course.tag.toString()) {
+                    formData.append("tag", JSON.stringify(data.courseTags))
+                }
+                if (currentValues.courseBenefits !== course.whatYouWillLearn) {
+                    formData.append("whatYouWillLearn", data.courseBenefits)
+                } if (currentValues.courseCategory._id !== course.category._id) {
+                    formData.append("category", data.courseCategory)
+                }
+                if (
+                    currentValues.courseRequirements.toString() !==
+                    course.instructions.toString()
+                ) {
+                    formData.append(
+                        "instructions",
+                        JSON.stringify(data.courseRequirements)
+                    )
+                } if (currentValues.courseImage !== course.thumbnail) {
+                    formData.append("thumbnailImage", data.courseImage)
+                }
+
+                const result = await editCourseDetails(formData, token)
+            }
+            return
         }
-        // e.preventDefault()
+
+        const formData = new FormData()
+        formData.append("courseName", data.courseTitle)
+        formData.append("courseDescription", data.courseShortDesc)
+        formData.append("price", data.coursePrice)
+        formData.append("tag", JSON.stringify(data.courseTags))
+        formData.append("whatYouWillLearn", data.courseBenefits)
+        formData.append("category", data.courseCategory)
+        formData.append("status", COURSE_STATUS.DRAFT)
+        formData.append("instructions", JSON.stringify(data.courseRequirements))
+        formData.append("thumbnailImage", data.courseImage)
+
+        const result = await addCourseDetails(formData,token)
+        if(result) {
+            dispatch(setStep(2))
+            dispatch(setCourse(result))
+        }
 
         console.log(`DATA :- ${JSON.stringify(data)}`);
     }
@@ -132,14 +186,24 @@ const CourseInformationForm = () => {
                     }
                 </div>
                 <ChildInput placeholder={"Enter Tags and press Enter"} label={"Tags"} register={register} error={errors} name={"courseTags"} setValue={setValue} getValues={getValues} />
-                <Uploader label={"Course Thumbnail"}  errors={errors} />
+                <Uploader label={"Course Thumbnail"} errors={errors} name={"courseImage"} register={register} setValue={setValue} />
+                <div className='flex flex-col gap-2'>
+                    <label className='label-style'>Benefits of the course <span className='text-red-20'>*</span></label>
+                    <textarea className='form-style min-h-[150px]' placeholder='Enter benefits of the course' name='courseBenefits' id='courseBenefits' {...register("courseBenefits", { required: true })} />
+                    {
+                        errors.courseBenefits && (
+                            <span className="-mt-1 text-[14px] capitalize font-inter text-red-5">
+                                Please enter Benefits of the Course .
+                            </span>
+                        )
+                    }
+                </div>
+                <Requirements placeholder={"Enter course tag"} label={"Requirements/Instructions"} setValue={setValue} name={"courseRequirements"} register={register} errors={errors} />
 
                 <div className='mt-4 flex items-end justify-end'>
                     <IconBtn name={"Next"}> <MdNavigateNext /></IconBtn>
                 </div>
             </div>
-
-
         </form>
     )
 }

@@ -9,6 +9,7 @@ const Dashboard = () => {
 
   useEffect(() => {
     if (!token) return navigate("/login", { replace: true });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   return (
     <div className="relative flex min-h-[calc(100vh-3.5rem)]">
