@@ -119,12 +119,13 @@ const CourseInformationForm = () => {
         formData.append("thumbnailImage", data.courseImage)
 
         const result = await addCourseDetails(formData,token)
-        if(result) {
-            dispatch(setStep(2))
-            dispatch(setCourse(result))
-        }
+        console.log(result);
+        // if(result) {
+        //     //dispatch(setStep(2))
+        //     dispatch(setCourse(result))
+        // }
 
-        console.log(`DATA :- ${JSON.stringify(data)}`);
+        //console.log(`DATA :- ${JSON.stringify(data)}`);
     }
 
     return (

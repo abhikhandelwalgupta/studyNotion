@@ -1,48 +1,52 @@
 const course = require("../models/Courses");
 const Tag = require("../models/Tag");
-const category = require("../models/Category");
+const User = require("../models/User");
+const Category = require("../models/Category");
 const Courses = require("../models/Courses");
 require("dotenv").config();
 
 exports.createCourse = async (req, res) => {
+  console.log(`files :- `,req.files.thumbnailImage);
   try {
     const {
       courseName,
-      coursDescription,
-      instructor,
+      courseDescription,
+      instructions,
       whatYouWillLearn,
       price,
       tag,
-      Category,
+      category,
     } = req.body;
 
+   //console.log(`Request body of create course :- ${req.body}`);
     const thumbnail = req.files.thumbnailImage;
 
     if (
       !courseName ||
-      !coursDescription ||
-      !instructor ||
+      !courseDescription ||
       !whatYouWillLearn ||
       !tag ||
       !price ||
-      !Category
+      !category ||
+      !instructions 
     ) {
       return res.status(401).json({
         success: false,
         message: "Please Fill Requried Feild",
       });
     }
-
+    console.log(`Request body of create course 1 :-`, req.body);
     const userId = req.user.id;
+    console.log(`User id` , userId);
     const instructorDetails = await User.findById(userId);
-
+    console.log(`instructorDetails id` , instructorDetails);
     if (!instructorDetails) {
       return res.status(404).json({
         success: false,
         message: "Instructor Details not found",
       });
     }
-
+    console.log(`Request body of create course :-`, req.body);
     const tagDetails = await Tag.findById(tag);
     if (!tagDetails) {
       return res.status(404).json({
@@ -50,14 +54,16 @@ exports.createCourse = async (req, res) => {
         message: "Tag Details not found",
       });
     }
+    console.log(`Tag  :-`, tagDetails);
 
-    const categoryDetails = await Category.findById(Category);
+    const categoryDetails = await Category.findById(category);
     if (!categoryDetails) {
       return res.status(404).json({
         success: false,
         message: "Tag Details not found",
       });
     }
+    console.log(`categoryDetails  :-`, categoryDetails);
 
     const thumbnailImage = await uploadImageToCloudinary(
       thumbnail,
@@ -65,7 +71,7 @@ exports.createCourse = async (req, res) => {
     );
     const newCourse = await course.create({
       courseName,
-      coursDescription,
+      courseDescription,
       instructor: instructorDetails._id,
       whatYouWillLearn: whatYouWillLearn,
       price,
