@@ -44,7 +44,7 @@ export const login = (email, password, navigate) => {
             localStorage.setItem("user", JSON.stringify(response.data.user))
             navigate("/dashboard/my-profile")
         } catch (error) {
-            (error.response.data.message) ? toast.error(error.response.data.message) :
+           // (error.response.data.message) ? toast.error(error.response?.data?.message) :
             toast.error("Something went wrong , Please try again")
         }
 

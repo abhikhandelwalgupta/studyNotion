@@ -54,7 +54,7 @@ exports.updateSection = async (req,res) => {
         }
 
         //update data
-        const section = await Section.findByIdAndUpdate(sectionId, {sectionName}, {new:true});
+        await Section.findByIdAndUpdate(sectionId, {sectionName}, {new:true});
 
         //return res
         return res.status(200).json({

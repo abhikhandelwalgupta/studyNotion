@@ -96,8 +96,10 @@ exports.signUp = async (req, res) => {
 /* User Login */
 exports.login = async (req, res) => {
   console.log("Inside Login ");
+  console.log(req.body);
   try {
     const { email, password } = req.body;
+    console.log( email, password );
     if (!email || !password) {
       return res.status(403).json({
         success: false,

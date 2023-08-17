@@ -70,6 +70,7 @@ const CourseInformationForm = () => {
 
     const handleOnSubmit = async (data, e) => {
         e.preventDefault()
+
         if (editCourse) {
             if (isFormUpdated()) {
                 const currentValues = getValues();
@@ -103,6 +104,7 @@ const CourseInformationForm = () => {
                 }
 
                 const result = await editCourseDetails(formData, token)
+                console.log(result);
             }
             return
         }
@@ -118,12 +120,12 @@ const CourseInformationForm = () => {
         formData.append("instructions", JSON.stringify(data.courseRequirements))
         formData.append("thumbnailImage", data.courseImage)
 
-        const result = await addCourseDetails(formData,token)
+        const result = await addCourseDetails(formData, token)
         console.log(result);
-        // if(result) {
-        //     //dispatch(setStep(2))
-        //     dispatch(setCourse(result))
-        // }
+        if (result) {
+            dispatch(setStep(2))
+            dispatch(setCourse(result))
+        }
 
         //console.log(`DATA :- ${JSON.stringify(data)}`);
     }
@@ -156,9 +158,9 @@ const CourseInformationForm = () => {
                 </div>
                 <div className='relative flex flex-col gap-2'>
                     <label className='label-style'  >Course Price   <sup className='text-red-5'> * </sup></label>
-                    <input className='form-style  !pl-12' placeholder='Enter Course Price' id='coursePrice' name="coursePrice"  {...register("courseprice", { required: true })} />
+                    <input className='form-style  !pl-12' placeholder='Enter Course Price' id='coursePrice' name="coursePrice"  {...register("coursePrice", { required: true })} />
                     <HiOutlineCurrencyRupee className='absolute top-[3.5rem] inline-block left-3 -translate-y-1/2 text-2xl text-richblack-400' />
-                    {errors.courseprice && (
+                    {errors.coursePrice && (
                         <span className="-mt-1 text-[14px] capitalize font-inter text-red-5">
                             Please enter Course Course Price.
                         </span>

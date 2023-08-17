@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
 
-const { createCourse, getAllCourses, showCourse, getCourseDetails, editCourse} = require("../controllers/Courses")
+const { createCourse, getAllCourses,  getCourseDetails, editCourse, getInstructorCourse} = require("../controllers/Courses")
 
 const {createCategory,showCategory,categoryPageDetails}= require("../controllers/Category")
 
@@ -10,7 +10,7 @@ const {createSection, updateSection ,deleteSection} = require("../controllers/Se
 
 const {createRating,getAverageRating,getAllRating,} = require("../controllers/RatingAndReview")
 
-const { auth ,isStudent , isInstructor ,isAdmin } = require("../middleware/auth");
+const { auth ,isStudent , isInstructor  } = require("../middleware/auth");
 // const { route } = require("./routes");
 const {createSubSection,updateSubSection, deleteSubSection } = require("../controllers/subSection");
 
@@ -25,6 +25,7 @@ router.post("/updateSubSection", auth, isInstructor , updateSubSection);
 router.post("/deleteSubSection" , auth , isInstructor, deleteSubSection);
 router.post("/addSubSection", auth, isInstructor, createSubSection);
 router.post("/getCourseDetails", getCourseDetails);
+router.post("/getInstructorCourse" , auth, isInstructor ,getInstructorCourse )
 
 
 // router.post("/createCategory" , auth, isAdmin , createCategory);
