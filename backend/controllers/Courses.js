@@ -243,9 +243,10 @@ exports.editCourse = async (req, res) => {
 exports.getInstructorCourse = async (req, res) => {
   try {
     const userId = req.user.id;
-   // const user = User;
+    // const user = User;
     const result = await Courses.find({ instructor: userId })
       .populate("category")
+      .populate("courseContent")
       .populate({
         path: "courseContent",
         populate: {
@@ -257,13 +258,48 @@ exports.getInstructorCourse = async (req, res) => {
     console.log(userId);
     console.log(`course result `, result);
     return res.status(200).json({
-      success:true,
-      result
-    })
+      success: true,
+      result,
+    });
   } catch (e) {
     return res.status(401).json({
       success: false,
       message: e.message,
+    });
+  }
+};
+
+exports.deleteCourse = async (req, res) => {
+  console.log(`Request in Delete :- `, req.body);
+  let course = null;
+  try {
+    const { courseId } = req.body;
+    console.log(`Request in Delete :- `, courseId);
+
+    course = await Courses.findById(courseId);
+    
+    if (!course) {
+      return res.status(404).json({
+        success: false,
+        message: "Course Doesn't exist...",
+        course,
+      });
+    }
+
+    await Courses.findByIdAndDelete(courseId);
+
+    course = await Courses.findAll({});
+
+    return res.status(200).json({
+      success: true,
+      message: "Deleted...",
+      course,
+    });
+  } catch (error) {
+    console.log(error);
+    return res.status(401).json({
+      success: false,
+      message: "Error in Delete",
     });
   }
 };

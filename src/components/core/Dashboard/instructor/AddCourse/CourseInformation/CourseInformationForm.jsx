@@ -1,15 +1,15 @@
 import React, { useEffect, useState } from 'react'
 import { useForm } from "react-hook-form"
 import { useDispatch, useSelector } from 'react-redux';
-import { addCourseDetails, editCourseDetails, fetchCourseCategories } from '../../../../../services/operations/courseDetailsAPI';
+import { addCourseDetails, fetchCourseCategories } from '../../../../../../services/operations/courseDetailsAPI';
 import { HiOutlineCurrencyRupee } from "react-icons/hi"
 import ChildInput from './ChildInput';
-import IconBtn from '../../../../comman/IconBtn';
+import IconBtn from '../../../../../comman/IconBtn';
 import { MdNavigateNext } from "react-icons/md"
-import Uploader from './Uploader';
+import Uploader from '../Uploader';
 import Requirements from './Requirements';
-import { COURSE_STATUS } from "../../../../../utils/constants"
-import { setCourse, setStep } from '../../../../../slices/courseSlice';
+import { COURSE_STATUS } from "../../../../../../utils/constants"
+import { setCourse, setStep } from '../../../../../../slices/courseSlice';
 
 const CourseInformationForm = () => {
     const {
@@ -29,12 +29,12 @@ const CourseInformationForm = () => {
         const getCategory = async () => {
             const categories = await fetchCourseCategories();
             if (categories.length > 0) {
-                // console.log("categories", categories)
                 setCourseCategories(categories)
-
             }
         }
         getCategory();
+        console.log(`Edit type : `, editCourse );
+        console.log(`Course :- `,course);
         if (editCourse) {
             setValue("courseTitle", course?.courseName)
             setValue("courseShortDesc", course?.courseDescription)
@@ -103,8 +103,9 @@ const CourseInformationForm = () => {
                     formData.append("thumbnailImage", data.courseImage)
                 }
 
-                const result = await editCourseDetails(formData, token)
-                console.log(result);
+                dispatch(setStep(2))
+                // const result = await editCourseDetails(formData, token)
+                // console.log(result);
             }
             return
         }
@@ -131,7 +132,8 @@ const CourseInformationForm = () => {
     }
 
     return (
-        <form className='bg-richblack-800 text-richblack-5 p-4 border border-richblack-700 rounded-xl shadow' onSubmit={handleSubmit(handleOnSubmit)} >
+        <form 
+        className='bg-richblack-800 text-richblack-5 p-4 border border-richblack-700 rounded-xl shadow' onSubmit={handleSubmit(handleOnSubmit)} >
             <div className='flex flex-col gap-5'>
                 <div className='flex flex-col gap-2'>
                     <label className='label-style' >Course Title  <sup className='text-red-5'> * </sup></label>

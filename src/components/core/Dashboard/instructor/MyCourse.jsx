@@ -16,13 +16,17 @@ const MyCourse = () => {
   const TRUNCATE_LENGTH = 30
   const fetchInstructorCourse = async () => {
     const result = await getInstructorCourse(token)
-
+    console.log(result);
     setInstructorCourse(result)
   }
   useEffect(() => {
     fetchInstructorCourse()
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
+
+  const handleCourseDelete = (courseId)=> {
+    console.log(courseId);
+  }
 
   const navigate = useNavigate();
 
@@ -96,7 +100,7 @@ const MyCourse = () => {
                     >
                       <FiEdit2 size={20} />
                     </button>
-                    <button>
+                    <button onClick={()=> handleCourseDelete(course._id)}>
                       <RiDeleteBin6Line size={20} />
                     </button>
                   </Td>
