@@ -23,9 +23,9 @@ const MyCourse = () => {
     fetchInstructorCourse()
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
+  
+  const handleCourseDelete = (courseId) => {
 
-  const handleCourseDelete = (courseId)=> {
-    console.log(courseId);
   }
 
   const navigate = useNavigate();
@@ -58,7 +58,7 @@ const MyCourse = () => {
           </Thead>
           <Tbody>
             {
-              instructorCourse.map((course, index) => (
+              instructorCourse.map((course) => (
                 <Tr key={course._id}
                   className="flex gap-x-10 border-b border-richblack-800 px-6 py-8">
                   <Td className="flex flex-1 gap-x-4 text-richblack-100" >
@@ -100,7 +100,7 @@ const MyCourse = () => {
                     >
                       <FiEdit2 size={20} />
                     </button>
-                    <button onClick={()=> handleCourseDelete(course._id)}>
+                    <button onClick={() => handleCourseDelete(course._id)}>
                       <RiDeleteBin6Line size={20} />
                     </button>
                   </Td>
@@ -108,7 +108,6 @@ const MyCourse = () => {
               )
               )
             }
-
 
           </Tbody>
         </Table>

@@ -2,7 +2,7 @@ import { categories, courseEndpoints } from "../apis";
 import apiconnector from "../apiconnector";
 import { toast } from "react-hot-toast";
 const { CATEGORIES_API } = categories;
-const { CREATE_COURSE_API, INSTRUCTOR_COURSE_API, COURSE_SECTION_CREATE } =
+const { CREATE_COURSE_API, INSTRUCTOR_COURSE_API, COURSE_SECTION_CREATE, COURSE_SUB_SECTION_ADD } =
   courseEndpoints;
 
 export const fetchCourseCategories = async () => {
@@ -99,8 +99,37 @@ export const courseDelete = async (courseId) => {
   const toastId = toast.loading("loading...");
   try {
     const response = apiconnector("POST")
+    console.log(response);
   } catch (e) {
     toast.error("Something went wrong. Please try again.");
   }
   toast.dismiss(toastId);
 };
+
+export const updateSubSection = async (formData, token) => {
+  const toastId = toast.loading("loading...")
+  try {
+
+  } catch (error) {
+
+  }
+
+  toast.dismiss(toastId)
+}
+
+
+export const createSubSection = async (formData, token) => {
+  const toastId = toast.loading("loading...")
+  //addSubSection
+  try {
+    const response =await apiconnector("POST", COURSE_SUB_SECTION_ADD, formData, {
+      "Content-Type": "multipart/form-data",
+      Authorization: `Bearer ${token}`,
+    })
+    console.log(response);
+
+  } catch (error) {
+
+  }
+  toast.dismiss(toastId)
+}

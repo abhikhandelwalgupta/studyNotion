@@ -62,19 +62,19 @@ exports.createCourse = async (req, res) => {
       thumbnail,
       process.env.FOLDER_NAME
     );
-
-    console.log(`This is course `, {
-      courseName,
-      courseDescription,
-      instructor: instructorDetails._id,
-      whatYouWillLearn: whatYouWillLearn,
-      price,
-      tag,
-      thumbnail: thumbnailImage.secure_url,
-      category: categoryDetails._id,
-      status: "Draft",
-      instructions,
-    });
+console.log(`This is after category details `);
+    // console.log(`This is course `, {
+    //   courseName,
+    //   courseDescription,
+    //   instructor: instructorDetails._id,
+    //   whatYouWillLearn: whatYouWillLearn,
+    //   price,
+    //   tag,
+    //   thumbnail: thumbnailImage.secure_url,
+    //   category: categoryDetails._id,
+    //   status: "Draft",
+    //   instructions,
+    // });
     const newCourse = await course.create({
       courseName,
       courseDescription,
@@ -113,7 +113,7 @@ exports.createCourse = async (req, res) => {
       { new: true }
     );
 
-    console.log(categoryDetails2);
+    console.log(`Category Details :- `,categoryDetails2);
     //return response
     return res.status(200).json({
       success: true,
@@ -121,6 +121,9 @@ exports.createCourse = async (req, res) => {
       data: newCourse,
     });
   } catch (error) {
+    console.log(`Error : -`,error);
+    console.log(`Error Message :- `,error.message);
+ 
     return res.status(400).json({
       success: false,
       message: "Something went wrong in course creation",
@@ -288,7 +291,6 @@ exports.deleteCourse = async (req, res) => {
 
     await Courses.findByIdAndDelete(courseId);
 
-    course = await Courses.findAll({});
 
     return res.status(200).json({
       success: true,
