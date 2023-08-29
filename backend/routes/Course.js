@@ -16,15 +16,15 @@ const {createSubSection,updateSubSection, deleteSubSection } = require("../contr
 
 
 router.post("/createCourse" , auth , isInstructor, createCourse);
-router.post("/editCourse" , auth , isInstructor , editCourse)
+router.put("/editCourse" , auth , isInstructor , editCourse)
 router.get("/getAllCourses" , auth , getAllCourses);
 router.post("/addSection" , auth, isInstructor, createSection);
 router.post("/updateSection" , auth , isInstructor ,updateSection );
 router.post("/deleteSection", auth, isInstructor , deleteSection);
-router.post("/updateSubSection", auth, isInstructor , updateSubSection);
+router.put("/updateSubSection", auth, isInstructor , updateSubSection);
 router.post("/deleteSubSection" , auth , isInstructor, deleteSubSection);
 router.post("/addSubSection", auth, isInstructor, createSubSection);
-router.post("/getCourseDetails", getCourseDetails);
+router.post("/getCourseDetails", auth , isInstructor , getCourseDetails);
 router.post("/getInstructorCourse" , auth, isInstructor ,getInstructorCourse )
 router.post("/deleteCourse" , auth, isInstructor , deleteCourse)
 

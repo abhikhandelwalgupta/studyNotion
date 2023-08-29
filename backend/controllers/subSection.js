@@ -1,20 +1,21 @@
 const SubSection = require("../models/SubSection");
 const Section = require("../models/Section");
-const uploadImageToCloudinary = require("../util/imageUploader");
+const { uploadImageToCloudinay } = require("../util/imageUploader");
 require("dotenv").config();
 
 exports.createSubSection = async (req, res) => {
   try {
-    const { sectionId, title, timeDuration, description } = req.body;
-    const video = req.files.videoFile;
-    if (!sectionId || !title || !timeDuration || !description || !video) {
+    const { sectionId, title, description } = req.body;
+    const video = req.files.video;
+
+    if (!sectionId || !title || !description || !video) {
       return res.status(400).json({
         success: false,
         message: "All fields are required",
       });
     }
 
-    const uploadDetails = await uploadImageToCloudinary(
+    const uploadDetails = await uploadImageToCloudinay(
       video,
       process.env.FOLDER_NAME
     );
@@ -27,7 +28,7 @@ exports.createSubSection = async (req, res) => {
     }
     const subSectionDetails = await SubSection.create({
       title: title,
-      timeDuration: timeDuration,
+      timeDuration: `${uploadDetails.duration}`,
       description: description,
       videoUrl: uploadDetails.secure_url,
     });
@@ -57,11 +58,50 @@ exports.createSubSection = async (req, res) => {
 
 //Update SubSection 
 exports.updateSubSection = async (req, res) => {
-    try{
-        
-    }catch(error) {
+  try {
+    console.log(`Update Section :- `, req.body);
+    const { sectionId, subSectionId } = req.body;
 
+    let getSubSectionDetails = await SubSection.findById(subSectionId);
+
+    if (req.body?.description) {
+      getSubSectionDetails.description = req.body?.description;
+    } else if (req.body?.title) {
+      getSubSectionDetails.title = req.body.title
+    } else if (req?.files?.video) {
+      let video = req.files.video;
+      const uploadDetails = await uploadImageToCloudinay(
+        video,
+        process.env.FOLDER_NAME
+      );
+      getSubSectionDetails.timeDuration = uploadDetails.duration,
+        getSubSectionDetails.videoUrl = uploadDetails.secure_url
     }
+
+    let updateResult = await getSubSectionDetails.save();
+
+    if (updateResult) {
+      return res.status(200).json({
+        success: true,
+        message: "Record has been updated",
+        updateResult
+      })
+    }else {
+      return res.status(401).json({
+        success: false,
+        message: "Sub-Section updation faild ",
+      });
+    }
+   
+
+
+  } catch (error) {
+    console.log(error);
+    return res.status(401).json({
+      success: false,
+      message: "Sub-Section updation faild ",
+    });
+  }
 }
 // Delete SubSection
 exports.deleteSubSection = async (req, res) => {
@@ -75,7 +115,7 @@ exports.deleteSubSection = async (req, res) => {
       });
     }
 
-    const subSectionDelete =await SubSection.findByIdAndDelete({
+    const subSectionDelete = await SubSection.findByIdAndDelete({
       _id: subSectionId,
     });
 
@@ -88,9 +128,9 @@ exports.deleteSubSection = async (req, res) => {
   } catch (error) {
     console.log(`Something went wrong in sub section deletion ${error}`)
     return res.status(401).json({
-        success: false,
-        message:"Unable to delete Section, please try again",
-        error:error.message,
+      success: false,
+      message: "Unable to delete Section, please try again",
+      error: error.message,
     })
   }
 };

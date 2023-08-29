@@ -24,7 +24,7 @@ exports.signUp = async (req, res) => {
 
 
     if (!email || !password || !firstName || !lastName || !otp) {
-      console.log("Inside if ");
+      
       return res.status(403).json({
         success: false,
         message: "All fields are required",
@@ -76,7 +76,7 @@ exports.signUp = async (req, res) => {
       image: `https://api.dicebear.com/5.x/initials/svg?seed=${firstName} ${lastName}`,
     });
 
-    console.log(`User creation :- ${user}`);
+    
     return res.status(200).json({
       success: true,
       message: "User is registered Successfully ",
@@ -99,7 +99,7 @@ exports.login = async (req, res) => {
   console.log(req.body);
   try {
     const { email, password } = req.body;
-    console.log( email, password );
+    
     if (!email || !password) {
       return res.status(403).json({
         success: false,
@@ -160,8 +160,6 @@ exports.login = async (req, res) => {
 exports.sendotp = async (req, res) => {
   try {
     const { email } = req.body;
-
-    console.log(req.body);
 
     // Check if user is already present
     // Find user with provided email

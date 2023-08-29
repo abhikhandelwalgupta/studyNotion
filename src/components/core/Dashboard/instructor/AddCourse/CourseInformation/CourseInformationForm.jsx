@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useForm } from "react-hook-form"
 import { useDispatch, useSelector } from 'react-redux';
-import { addCourseDetails, fetchCourseCategories } from '../../../../../../services/operations/courseDetailsAPI';
+import { addCourseDetails, editCourseDetails, fetchCourseCategories } from '../../../../../../services/operations/courseDetailsAPI';
 import { HiOutlineCurrencyRupee } from "react-icons/hi"
 import ChildInput from './ChildInput';
 import IconBtn from '../../../../../comman/IconBtn';
@@ -33,8 +33,8 @@ const CourseInformationForm = () => {
             }
         }
         getCategory();
-        console.log(`Edit type : `, editCourse );
-        console.log(`Course :- `,course);
+        console.log(`Edit type : `, editCourse);
+        console.log(`Course :- `, course);
         if (editCourse) {
             setValue("courseTitle", course?.courseName)
             setValue("courseShortDesc", course?.courseDescription)
@@ -71,6 +71,7 @@ const CourseInformationForm = () => {
     const handleOnSubmit = async (data, e) => {
         e.preventDefault()
 
+        console.log(`Inside handleOnSubmit `);
         if (editCourse) {
             if (isFormUpdated()) {
                 const currentValues = getValues();
@@ -104,7 +105,7 @@ const CourseInformationForm = () => {
                 }
 
                 dispatch(setStep(2))
-                // const result = await editCourseDetails(formData, token)
+                const result = await editCourseDetails(formData, token)
                 // console.log(result);
             }
             return
@@ -132,8 +133,8 @@ const CourseInformationForm = () => {
     }
 
     return (
-        <form 
-        className='bg-richblack-800 text-richblack-5 p-4 border border-richblack-700 rounded-xl shadow' onSubmit={handleSubmit(handleOnSubmit)} >
+        <form
+            className='bg-richblack-800 text-richblack-5 p-4 border border-richblack-700 rounded-xl shadow' onSubmit={handleSubmit(handleOnSubmit)} >
             <div className='flex flex-col gap-5'>
                 <div className='flex flex-col gap-2'>
                     <label className='label-style' >Course Title  <sup className='text-red-5'> * </sup></label>
@@ -191,7 +192,14 @@ const CourseInformationForm = () => {
                     }
                 </div>
                 <ChildInput placeholder={"Enter Tags and press Enter"} label={"Tags"} register={register} error={errors} name={"courseTags"} setValue={setValue} getValues={getValues} />
-                <Uploader label={"Course Thumbnail"} errors={errors} name={"courseImage"} register={register} setValue={setValue} />
+                <Uploader
+                    label={"Course Thumbnail"}
+                    errors={errors}
+                    name={"courseImage"}
+                    register={register}
+                    setValue={setValue}
+                    editData={editCourse ? course?.thumbnail : null}
+                />
                 <div className='flex flex-col gap-2'>
                     <label className='label-style'>Benefits of the course <span className='text-red-20'>*</span></label>
                     <textarea className='form-style min-h-[150px]' placeholder='Enter benefits of the course' name='courseBenefits' id='courseBenefits' {...register("courseBenefits", { required: true })} />
@@ -205,8 +213,18 @@ const CourseInformationForm = () => {
                 </div>
                 <Requirements placeholder={"Enter course tag"} label={"Requirements/Instructions"} setValue={setValue} name={"courseRequirements"} register={register} errors={errors} />
 
-                <div className='mt-4 flex items-end justify-end'>
-                    <IconBtn name={"Next"}> <MdNavigateNext /></IconBtn>
+                <div className='flex items-end gap-2 justify-end'>
+                    {
+                        editCourse && (
+                            <button className='bg-richblack-300 py-2 px-4 rounded-md flex cursor-pointer items-center gap-x-2  text-richblack-900 font-semibold' type='button' onClick={()=> dispatch(setStep(2))} >
+                                Continue Without Saving
+                            </button>
+                        )
+                    }
+
+                    <div className='mt-4 flex items-end justify-end'>
+                        <IconBtn name={editCourse ? "Save changes" : "Next"}> <MdNavigateNext /></IconBtn>
+                    </div>
                 </div>
             </div>
         </form>

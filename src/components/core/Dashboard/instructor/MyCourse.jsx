@@ -16,7 +16,6 @@ const MyCourse = () => {
   const TRUNCATE_LENGTH = 30
   const fetchInstructorCourse = async () => {
     const result = await getInstructorCourse(token)
-    console.log(result);
     setInstructorCourse(result)
   }
   useEffect(() => {
@@ -25,7 +24,7 @@ const MyCourse = () => {
   }, [])
   
   const handleCourseDelete = (courseId) => {
-
+    console.log(courseId);
   }
 
   const navigate = useNavigate();

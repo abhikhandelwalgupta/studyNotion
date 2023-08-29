@@ -26,10 +26,13 @@ export const settingsEndpoints = {
 
 
 //Course EndPoint 
-export const courseEndpoints ={
-  EDIT_COURSE_API : BASE_URL + "Course/editCourse",
-  CREATE_COURSE_API : BASE_URL + "Course/createCourse",
-  INSTRUCTOR_COURSE_API : BASE_URL+"course/getInstructorCourse",
-  COURSE_SECTION_CREATE : BASE_URL+"course/addSection",
-  COURSE_SUB_SECTION_ADD : BASE_URL+"course/addSubSection"
- }
+export const courseEndpoints = {
+  EDIT_COURSE_API: BASE_URL + "Course/editCourse",
+  CREATE_COURSE_API: BASE_URL + "Course/createCourse",
+  INSTRUCTOR_COURSE_API: BASE_URL + "course/getInstructorCourse",
+  COURSE_SECTION_CREATE: BASE_URL + "course/addSection",
+  COURSE_SUB_SECTION_ADD: BASE_URL + "course/addSubSection",
+  COURSE_GETCOURSEDETAILS: BASE_URL + "course/getCourseDetails",
+  EDIT_COURSE: BASE_URL + "course/editCourse",
+  EDIT_SUBSECTION : BASE_URL+"course/updateSubSection"
+}

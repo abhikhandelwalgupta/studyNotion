@@ -3,12 +3,12 @@ require("dotenv").config();
 
 exports.auth = (req, res, next) => {
   try {
-    console.log(`Token 1:- `,req.headers);
+    
     const token =
       req.cookies.token ||
       req.body.token ||
       req.header("Authorization").replace("Bearer ", "");
-      console.log(`Token :- `,token);
+
     if (!token) {
       return res.status(401).json({
         success: false,
@@ -27,7 +27,7 @@ exports.auth = (req, res, next) => {
     }
     next();
   } catch (e) {
-    console.log("Inside catch block of auth");
+    console.log("Inside catch block of auth" , e.message);
     return res.status(401).json({
       success: false,
       message: "Something went wrong while validating the token",

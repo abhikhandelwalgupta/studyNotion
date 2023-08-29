@@ -18,6 +18,7 @@ import WishList from "./components/core/Dashboard/Student/WishList";
 import EnrolledCourses from "./components/core/Dashboard/Student/EnrolledCourses";
 import Index from "./components/core/Dashboard/Setting/index";
 import AddCourse from "./components/core/Dashboard/instructor/AddCourse/AddCourse";
+import EditCourse from "./components/core/Dashboard/instructor/EditCourse/index"
 
 
 function App() {
@@ -34,23 +35,24 @@ function App() {
             </OpenRoute>
           }
         />
-        <Route  element={<Dashboard/>}>
+        <Route element={<Dashboard />}>
           <Route path="dashboard/my-profile" element={<MyProfile />} />
-          <Route path="dashboard/my-courses" element={<MyCourse/>} />
-          <Route path="dashboard/cart" element={<Cart/>} />
-          <Route path="dashboard/purchase-history" element={<PurchaseHistory/>} />
-          <Route path="dashboard/wishlist" element={<WishList/>} />
-          <Route path="dashboard/enrolled-courses" element={<EnrolledCourses/>} />
-          <Route path="dashboard/settings" element={<Index/>} />
-          <Route path="dashboard/add-Course" element={<AddCourse/>} />
-        </Route> 
-          
+          <Route path="dashboard/my-courses" element={<MyCourse />} />
+          <Route path="dashboard/cart" element={<Cart />} />
+          <Route path="dashboard/purchase-history" element={<PurchaseHistory />} />
+          <Route path="dashboard/wishlist" element={<WishList />} />
+          <Route path="dashboard/enrolled-courses" element={<EnrolledCourses />} />
+          <Route path="dashboard/settings" element={<Index />} />
+          <Route path="dashboard/add-Course" element={<AddCourse />} />
+          <Route path="dashboard/edit-course/:courseId" element={<EditCourse /> } />
+        </Route>
+
         <Route path="/signup" element={<SignUp />} />
         <Route path="/verify-email" element={<VerifyEmail />} />
         <Route path="forgot-password" element={<ForgotPassword />} />
         <Route path={`/update-password/:id`} element={<UpdatePassword />} />
         <Route path={"/about"} element={<About />} />
-        
+
       </Routes>
     </div>
   );

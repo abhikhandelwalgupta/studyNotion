@@ -21,7 +21,7 @@ const NestedView = () => {
                     {
                         course?.courseContent.map((section) => (
 
-                            <details key={course._id} className=' border-richblack-100 mt-4 space-y-2'>
+                            <details key={section._id} className=' border-richblack-100 mt-4 space-y-2' open>
                                 <summary className="flex cursor-pointer items-center justify-between border-b-2 border-b-richblack-600 py-2">
                                     <div className="flex items-center gap-x-3">
                                         <RxDropdownMenu className="text-2xl text-richblack-50" />
@@ -39,18 +39,31 @@ const NestedView = () => {
                                         <AiFillCaretDown className={`text-xl text-richblack-300`} />
                                     </div>
                                 </summary>
-                                <div className='px-6'>
-                                    <div className="flex border-b-2 border-b-richblack-600   py-2 justify-between  items-center gap-x-3">
-                                        <div className='flex items-center gap-x-3'>
-                                            <RxDropdownMenu className="text-2xl text-richblack-50" />
-                                            <p className="font-semibold text-richblack-50">{section._id} dd</p>
-                                        </div>
-                                        <div className='flex gap-3 pr-2'>
-                                            <BsPencil className={`text-lg text-richblack-300`} />
-                                            <AiOutlineDelete className={`text-lg text-richblack-300`} />
-                                        </div>
 
-                                    </div>
+                                <div className='px-6'>
+                                    {
+                                        section.subSection.map((data, index) => {
+                                            console.log(`data `, data);
+                                            return (
+                                                <div className="flex border-b-2 border-b-richblack-600   py-2 justify-between  items-center gap-x-3" key={index}>
+                                                    <div className='flex items-center gap-x-3 cursor-pointer' onClick={() => setViewSubSection(data)}>
+                                                        <RxDropdownMenu className="text-2xl text-richblack-50" />
+                                                        <p className="font-semibold text-richblack-50">{data.title}</p>
+                                                    </div>
+                                                    <div className='flex gap-3 pr-2'>
+                                                        <BsPencil className={`text-lg text-richblack-300 cursor-pointer`} onClick={() => setEditSubSection(data)} />
+                                                        <AiOutlineDelete className={`text-lg text-richblack-300`} />
+                                                    </div>
+
+                                                </div>
+                                            )
+                                        })
+                                    }
+                                    {/* {section.subSection.map((data) => (
+                                        
+                                    ))} */}
+
+
                                     <button
                                         onClick={() => setAddSubsection(section._id)}
                                         className="mt-3 flex items-center gap-x-1 text-yellow-50"

@@ -2,6 +2,8 @@ import React, { useCallback, useRef, useState } from 'react'
 import { useEffect } from 'react'
 import { useDropzone } from 'react-dropzone'
 import { FiUploadCloud } from "react-icons/fi"
+import "video-react/dist/video-react.css"
+
 import { Player } from 'video-react'
 
 
@@ -52,7 +54,7 @@ const Uploader = ({ label, errors, name, video = false, viewData = null, editDat
 
     return (
         <div className='flex flex-col gap-2'>
-            <label className='label-style'>{label} <sub className='text-red-5'>*</sub></label>
+            <label className='label-style'>{label} <sup className='text-red-5'>*</sup></label>
             <div className={`${isDragActive ? "bg-richblack-600" : "bg-richblack-700"
                 } flex min-h-[250px] cursor-pointer items-center justify-center rounded-md border-2 border-dotted border-richblack-500`}> {
                     previewSource ? (
