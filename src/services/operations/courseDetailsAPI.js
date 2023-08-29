@@ -2,8 +2,16 @@ import { categories, courseEndpoints } from "../apis";
 import apiconnector from "../apiconnector";
 import { toast } from "react-hot-toast";
 const { CATEGORIES_API } = categories;
-const { CREATE_COURSE_API, INSTRUCTOR_COURSE_API, COURSE_SECTION_CREATE, COURSE_SUB_SECTION_ADD, COURSE_GETCOURSEDETAILS, EDIT_COURSE, EDIT_SUBSECTION } =
-  courseEndpoints;
+const {
+  CREATE_COURSE_API,
+  INSTRUCTOR_COURSE_API,
+  COURSE_SECTION_CREATE,
+  COURSE_SUB_SECTION_ADD,
+  COURSE_GETCOURSEDETAILS,
+  EDIT_COURSE,
+  EDIT_SUBSECTION,
+  COURSE_DELETE
+} = courseEndpoints;
 
 export const fetchCourseCategories = async () => {
   let result = [];
@@ -21,7 +29,6 @@ export const fetchCourseCategories = async () => {
 
 export const editCourseDetails = async (formData, token) => {
   const toastId = toast.loading("loading...");
-  console.log(`in side edit course details `);
   let result = null;
   try {
     const response = await apiconnector("PUT", EDIT_COURSE, formData, {
@@ -193,4 +200,25 @@ export const getFullDetailsOfCourse = async (courseId, token) => {
   }
   toast.dismiss(toastId)
   return result
+}
+
+
+
+
+export const CourseDelete = async (courseId, token) => {
+  const toastId = toast.loading("loading...")
+  try {
+    let courseIdt = {"courseId" : courseId}
+    const response = await apiconnector("delete", COURSE_DELETE, courseIdt, {
+      "Content-Type": "multipart/form-data",
+      Authorization: `Bearer ${token}`,
+    })
+
+    console.log(response);
+  } catch (error) {
+    toast.error("Something went wrong")
+    console.log(error.message);
+  }
+  toast.dismiss(toastId)
+
 }

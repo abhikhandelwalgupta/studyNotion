@@ -32,9 +32,9 @@ const CourseInformationForm = () => {
                 setCourseCategories(categories)
             }
         }
+
+        console.log(course?.category);
         getCategory();
-        console.log(`Edit type : `, editCourse);
-        console.log(`Course :- `, course);
         if (editCourse) {
             setValue("courseTitle", course?.courseName)
             setValue("courseShortDesc", course?.courseDescription)
@@ -70,8 +70,6 @@ const CourseInformationForm = () => {
 
     const handleOnSubmit = async (data, e) => {
         e.preventDefault()
-
-        console.log(`Inside handleOnSubmit `);
         if (editCourse) {
             if (isFormUpdated()) {
                 const currentValues = getValues();
@@ -170,15 +168,16 @@ const CourseInformationForm = () => {
                     )
                     }
                 </div>
+
                 <div className='flex flex-col gap-2'>
                     <label className='label-style'>Course Category  <sup className='text-red-5'> * </sup></label>
                     <select className='form-style text-richblack-5 space-y-2' name='courseCategory' id='courseCategory' {...register("courseCategory", { required: true })}>
-                        <option value="" disabled selected>
+                        <option value="DEFAULT" disabled selected>
                             Choose a Category
                         </option>
                         {
                             courseCategories?.map((categorie, index) => (
-                                <option key={index} value={categorie?._id} >
+                                <option key={index} value={categorie?._id}  >
                                     {categorie?.Name}
                                 </option>
                             ))

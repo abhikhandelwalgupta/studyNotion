@@ -4,10 +4,14 @@ import { GrFormAdd } from "react-icons/gr"
 import { Table, Tbody, Td, Th, Thead, Tr } from "react-super-responsive-table";
 import "react-super-responsive-table/dist/SuperResponsiveTableStyle.css"
 import { useNavigate } from "react-router-dom";
-import { getInstructorCourse } from "../../../../services/operations/courseDetailsAPI";
+import { CourseDelete, getInstructorCourse } from "../../../../services/operations/courseDetailsAPI";
 import { useSelector } from "react-redux";
 import { FiEdit2 } from "react-icons/fi"
 import { RiDeleteBin6Line } from "react-icons/ri"
+import { formatDate } from "../../../../services/formatDate";
+import { HiClock } from "react-icons/hi";
+import { COURSE_STATUS } from "../../../../utils/constants";
+import { FaCheck } from "react-icons/fa";
 
 const MyCourse = () => {
 
@@ -22,9 +26,10 @@ const MyCourse = () => {
     fetchInstructorCourse()
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
-  
-  const handleCourseDelete = (courseId) => {
-    console.log(courseId);
+
+  const handleCourseDelete = async (courseId) => {
+    let t=  await CourseDelete(courseId, token)
+    fetchInstructorCourse()
   }
 
   const navigate = useNavigate();
@@ -61,14 +66,12 @@ const MyCourse = () => {
                 <Tr key={course._id}
                   className="flex gap-x-10 border-b border-richblack-800 px-6 py-8">
                   <Td className="flex flex-1 gap-x-4 text-richblack-100" >
-
-
                     <img
                       src={course?.thumbnail}
                       alt={course?.courseName}
                       className="h-[148px] w-[220px] rounded-lg object-cover"
                     />
-                    <div>
+                    <div className="flex flex-col gap-3">
                       <p>{course.courseName}</p>
                       <p className="text-xs text-richblack-300">
                         {course.whatYouWillLearn.split(" ").length >
@@ -79,6 +82,20 @@ const MyCourse = () => {
                             .join(" ") + "..."
                           : course.whatYouWillLearn}
                       </p>
+                      <p>created : {formatDate(course.createAt)}</p>
+                      {course.status === COURSE_STATUS.DRAFT ? (
+                        <p className="flex w-fit flex-row items-center gap-2 rounded-full bg-richblack-700 px-2 py-[2px] text-[12px] font-medium text-pink-100">
+                          <HiClock size={14} />
+                          Drafted
+                        </p>
+                      ) : (
+                        <p className="flex w-fit flex-row items-center gap-2 rounded-full bg-richblack-700 px-2 py-[2px] text-[12px] font-medium text-yellow-100">
+                          <div className="flex h-3 w-3 items-center justify-center rounded-full bg-yellow-100 text-richblack-700">
+                            <FaCheck size={8} />
+                          </div>
+                          Published
+                        </p>
+                      )}
                     </div>
 
                   </Td>

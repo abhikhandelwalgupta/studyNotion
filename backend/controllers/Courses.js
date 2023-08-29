@@ -4,6 +4,8 @@ const User = require("../models/User");
 const Category = require("../models/Category");
 const Courses = require("../models/Courses");
 const { uploadImageToCloudinay } = require("../util/imageUploader");
+const Section = require("../models/Section");
+const SubSection = require("../models/SubSection");
 require("dotenv").config();
 
 exports.createCourse = async (req, res) => {
@@ -301,31 +303,45 @@ exports.getInstructorCourse = async (req, res) => {
 };
 
 exports.deleteCourse = async (req, res) => {
-  console.log(`Request in Delete :- `, req.body);
-  let course = null;
   try {
     const { courseId } = req.body;
     console.log(`Request in Delete :- `, courseId);
 
-    course = await course.findById(courseId);
-
-    console.log(course);
-
-    if (!course) {
+    let courseFetch = await course.findById(courseId);
+    if (!courseFetch) {
       return res.status(404).json({
         success: false,
-        message: "Course Doesn't exist...",
-        course,
-      });
+        message: "Course Doesn't found"
+      })
     }
 
+    const studentsEnrolle = courseFetch.studentsEnrolled
+    for (const studentId of studentsEnrolle) {
+      await User.findByIdAndUpdate(studentId, {
+        $pull: { courses: courseId },
+      })
+    }
+
+
+    let courseSections = courseFetch.courseContent
+    for (let sectionId of courseSections) {
+      const section = await Section.findById(sectionId)
+      if (section) {
+        const subSections = section.subSection
+        for (const subSectionId of subSections) {
+          await SubSection.findByIdAndDelete(subSectionId)
+        }
+      }
+      await Section.findByIdAndDelete(sectionId)
+    }
+    await course.findByIdAndDelete(courseId)
     await Courses.findByIdAndDelete(courseId);
+
 
 
     return res.status(200).json({
       success: true,
       message: "Deleted...",
-      course,
     });
   } catch (error) {
     console.log(error);
@@ -334,4 +350,5 @@ exports.deleteCourse = async (req, res) => {
       message: "Error in Delete",
     });
   }
+
 };

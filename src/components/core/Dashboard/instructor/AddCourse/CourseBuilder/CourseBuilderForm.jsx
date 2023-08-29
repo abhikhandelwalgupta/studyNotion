@@ -85,7 +85,7 @@ const CourseBuilderForm = () => {
                     <button className='border bg-richblack-600 py-2 shadow-md px-5 rounded-lg font-bold' onClick={goBack}>
                         Back
                     </button>
-                    <IconBtn name={"Next"}  ><IoIosArrowDropright /></IconBtn>
+                    <IconBtn name={"Next"} onclick={()=> dispatch(setStep(3))} ><IoIosArrowDropright /></IconBtn>
                 </div>
             </div>
         </div>

@@ -26,7 +26,7 @@ router.post("/deleteSubSection" , auth , isInstructor, deleteSubSection);
 router.post("/addSubSection", auth, isInstructor, createSubSection);
 router.post("/getCourseDetails", auth , isInstructor , getCourseDetails);
 router.post("/getInstructorCourse" , auth, isInstructor ,getInstructorCourse )
-router.post("/deleteCourse" , auth, isInstructor , deleteCourse)
+router.delete("/deleteCourse" , auth, isInstructor , deleteCourse)
 
 
 // router.post("/createCategory" , auth, isAdmin , createCategory);
