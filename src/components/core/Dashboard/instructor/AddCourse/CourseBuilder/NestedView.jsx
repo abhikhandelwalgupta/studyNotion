@@ -7,7 +7,7 @@ import { BsPencil } from "react-icons/bs"
 import SubSectionModal from './SubSectionModal';
 
 
-const NestedView = () => {
+const NestedView = ({ handleChangeEditSectionName }) => {
     const { course } = useSelector((state) => state.course)
     const [addSubSection, setAddSubsection] = useState(null)
     const [viewSubSection, setViewSubSection] = useState(null)
@@ -32,7 +32,10 @@ const NestedView = () => {
                                     <div className="flex items-center gap-x-3">
                                         <div className='border-r  border-richblack-100'>
                                             <div className='flex gap-3 pr-2'>
-                                                <BsPencil className={`text-lg text-richblack-300`} />
+                                                <button onClick={ ()=> handleChangeEditSectionName(section._id,section.sectionName )}>
+                                                    <BsPencil className={`text-lg text-richblack-300`} />
+                                                </button>
+
                                                 <AiOutlineDelete className={`text-lg text-richblack-300`} />
                                             </div>
                                         </div>
@@ -51,19 +54,19 @@ const NestedView = () => {
                                                         <p className="font-semibold text-richblack-50">{data.title}</p>
                                                     </div>
                                                     <div className='flex gap-3 pr-2'>
-                                                        <BsPencil className={`text-lg text-richblack-300 cursor-pointer`} onClick={() => setEditSubSection(data)} />
-                                                        <AiOutlineDelete className={`text-lg text-richblack-300`} />
+                                                        <div>
+                                                            <BsPencil className={`text-lg text-richblack-300 cursor-pointer`} onClick={() => setEditSubSection(data)} />
+                                                        </div>
+                                                        <div>
+                                                            <AiOutlineDelete className={`text-lg text-richblack-300`} />
+                                                        </div>
+
                                                     </div>
 
                                                 </div>
                                             )
                                         })
                                     }
-                                    {/* {section.subSection.map((data) => (
-                                        
-                                    ))} */}
-
-
                                     <button
                                         onClick={() => setAddSubsection(section._id)}
                                         className="mt-3 flex items-center gap-x-1 text-yellow-50"

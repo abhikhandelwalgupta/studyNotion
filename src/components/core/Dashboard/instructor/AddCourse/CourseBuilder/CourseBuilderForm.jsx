@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { IoIosArrowDropright, IoMdAddCircleOutline } from "react-icons/io";
 import { useDispatch, useSelector } from 'react-redux';
-import { createSection } from '../../../../../../services/operations/courseDetailsAPI';
+import { createSection, updateMainSection } from '../../../../../../services/operations/courseDetailsAPI';
 import { setCourse, setEditCourse, setStep } from '../../../../../../slices/courseSlice';
 import IconBtn from '../../../../../comman/IconBtn';
 import NestedView from './NestedView';
@@ -38,11 +38,22 @@ const CourseBuilderForm = () => {
             sectionName: data?.sectionName,
             courseId: course?._id
         }
+        if(editSectionName){
+            alert(JSON.stringify(formData))
+            const result = await updateMainSection(formData,token);
+            return
+        }
         const result = await createSection(formData, token)
         dispatch(setCourse(result))
+    }
 
-
-
+    const handleChangeEditSectionName = (sectionId, sectionName) => {
+        if (editSectionName === sectionId) {
+            cancelEdit()
+            return
+        }
+        setEditSectionName(sectionId)
+        setValue("sectionName", sectionName)
     }
 
     return (
@@ -78,14 +89,14 @@ const CourseBuilderForm = () => {
                 </form>
                 {
                     course?.courseContent?.length > 0 && (
-                        <NestedView />
+                        <NestedView handleChangeEditSectionName={handleChangeEditSectionName} />
                     )
                 }
                 <div className='flex items-end justify-end gap-4'>
                     <button className='border bg-richblack-600 py-2 shadow-md px-5 rounded-lg font-bold' onClick={goBack}>
                         Back
                     </button>
-                    <IconBtn name={"Next"} onclick={()=> dispatch(setStep(3))} ><IoIosArrowDropright /></IconBtn>
+                    <IconBtn name={"Next"} onclick={() => dispatch(setStep(3))} ><IoIosArrowDropright /></IconBtn>
                 </div>
             </div>
         </div>

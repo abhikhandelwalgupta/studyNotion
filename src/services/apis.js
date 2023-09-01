@@ -35,5 +35,6 @@ export const courseEndpoints = {
   COURSE_GETCOURSEDETAILS: BASE_URL + "course/getCourseDetails",
   EDIT_COURSE: BASE_URL + "course/editCourse",
   EDIT_SUBSECTION: BASE_URL + "course/updateSubSection",
-  COURSE_DELETE: BASE_URL + "course/deleteCourse"
+  COURSE_DELETE: BASE_URL + "course/deleteCourse",
+  COURSE_SECTION_UPDATE: BASE_URL + "course/updateMainSection"
 }

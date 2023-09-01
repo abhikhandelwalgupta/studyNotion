@@ -352,3 +352,16 @@ exports.deleteCourse = async (req, res) => {
   }
 
 };
+
+exports.updateMainSection = (req, res) => {
+  try {
+    console.log(req.body);
+  } catch (error) {
+    console.log(error.message);
+    return res.status(500).json({
+      success: false,
+      message: "Internal Server Error..."
+    })
+
+  }
+}

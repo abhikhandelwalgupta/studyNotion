@@ -10,7 +10,8 @@ const {
   COURSE_GETCOURSEDETAILS,
   EDIT_COURSE,
   EDIT_SUBSECTION,
-  COURSE_DELETE
+  COURSE_DELETE,
+  COURSE_SECTION_UPDATE
 } = courseEndpoints;
 
 export const fetchCourseCategories = async () => {
@@ -112,6 +113,21 @@ export const createSection = async (FormData, token) => {
   return result;
 };
 
+
+export const updateMainSection = async (formData, token) => {
+  try {
+    const response = await apiconnector("put",COURSE_SECTION_UPDATE, formData, {
+      "Content-Type": "multipart/form-data",
+      Authorization: `Bearer ${token}`,
+    })
+
+    console.log(response);
+    return "hello"
+
+  } catch (e) {
+    console.log(e);
+  }
+}
 export const courseDelete = async (courseId) => {
   const toastId = toast.loading("loading...");
   try {
@@ -208,7 +224,7 @@ export const getFullDetailsOfCourse = async (courseId, token) => {
 export const CourseDelete = async (courseId, token) => {
   const toastId = toast.loading("loading...")
   try {
-    let courseIdt = {"courseId" : courseId}
+    let courseIdt = { "courseId": courseId }
     const response = await apiconnector("delete", COURSE_DELETE, courseIdt, {
       "Content-Type": "multipart/form-data",
       Authorization: `Bearer ${token}`,
