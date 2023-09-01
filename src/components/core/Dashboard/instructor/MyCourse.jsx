@@ -15,14 +15,19 @@ import { FaCheck } from "react-icons/fa";
 
 const MyCourse = () => {
 
+  console.log(`In side mycourse of useeffect`);
+
   const { token } = useSelector((state) => state.auth)
   const [instructorCourse, setInstructorCourse] = useState([]);
   const TRUNCATE_LENGTH = 30
   const fetchInstructorCourse = async () => {
+    console.log(`in side myCourse :- `,result);
     const result = await getInstructorCourse(token)
+    
     setInstructorCourse(result)
   }
   useEffect(() => {
+    console.log(`In side mycourse of useeffect`);
     fetchInstructorCourse()
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
