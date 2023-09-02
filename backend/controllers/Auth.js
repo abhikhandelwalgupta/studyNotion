@@ -72,7 +72,7 @@ exports.signUp = async (req, res) => {
       password: hashedPassword,
       accountType,
       phoneNO,
-      Profile: profileDetails._id,
+      profile: profileDetails._id,
       image: `https://api.dicebear.com/5.x/initials/svg?seed=${firstName} ${lastName}`,
     });
 
@@ -114,7 +114,6 @@ exports.login = async (req, res) => {
         message: "User doen't exist ",
       });
     }
-
     if (await bcrypt.compare(password, user.password)) {
       const payload = {
         id: user._id,

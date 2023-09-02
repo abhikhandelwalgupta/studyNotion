@@ -7,6 +7,7 @@ exports.updateProfile = async (req, res) => {
   try {
     const { about, dateOfBirth, mobileNumber, gender } = req.body;
 
+    console.log(req.body);
     if (!about || !dateOfBirth || !mobileNumber || !gender) {
       return res.status(401).json({
         success: false,
@@ -24,7 +25,7 @@ exports.updateProfile = async (req, res) => {
     }
     const profileId = userDetils.profile;
     const profileDetails = await Profiles.findById(profileId);
-
+console.log(profileDetails);
     userDetils.gender = gender;
     userDetils.phoneNO = mobileNumber
     await userDetils.save();

@@ -19,6 +19,7 @@ import EnrolledCourses from "./components/core/Dashboard/Student/EnrolledCourses
 import Index from "./components/core/Dashboard/Setting/index";
 import AddCourse from "./components/core/Dashboard/instructor/AddCourse/AddCourse";
 import EditCourse from "./components/core/Dashboard/instructor/EditCourse/index"
+import Instructor from "./components/core/Dashboard/InstructorDashboard/Instructor";
 
 
 function App() {
@@ -45,6 +46,7 @@ function App() {
           <Route path="dashboard/settings" element={<Index />} />
           <Route path="dashboard/add-Course" element={<AddCourse />} />
           <Route path="dashboard/edit-course/:courseId" element={<EditCourse /> } />
+          <Route path="dashboard/instructor" element={<Instructor />} />
         </Route>
 
         <Route path="/signup" element={<SignUp />} />

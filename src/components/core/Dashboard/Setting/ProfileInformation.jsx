@@ -27,7 +27,7 @@ const ProfileInformation = ({ userDetails }) => {
       console.log("ERROR MESSAGE - ", error.message)
     }
   }
-
+console.log(userDetails?.profile);
 
   return (
     <form onSubmit={handleSubmit(submitProfileForm)}>
@@ -65,7 +65,7 @@ const ProfileInformation = ({ userDetails }) => {
                 Date of Birth
               </label>
               <input className="form-style"
-                defaultValue={userDetails?.profile?.dob.substring(0, 10)}
+                defaultValue={userDetails?.profile?.dob?.substring(0, 10)}
                 name='dateOfBirth' id="dateOfBirth" {...register("dateOfBirth", { required: true })} type='date' />
               {errors.dateOfBirth && (
                 <span className="-mt-1 text-[14px] capitalize font-inter text-red-5">

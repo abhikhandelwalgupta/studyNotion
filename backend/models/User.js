@@ -39,8 +39,7 @@ const userSchema = new mongoose.Schema({
   },
   profile: {
     type:mongoose.Schema.Types.ObjectId,
-    required:true,
-    ref:"Profiles",
+    ref:"Profile",
 },
   accountType: {
     type: String,
