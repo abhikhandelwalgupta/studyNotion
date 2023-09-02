@@ -10,10 +10,8 @@ const Requirements = ({ placeholder, label, setValue, name, register, errors }) 
 
 
     useEffect(() => {
-        console.log(`Requirement ` , name);
         if (editCourse) {
             setRequirementsList(course?.instructions)
-            console.log(course?.instructions);
         }
         register(name, { required: true, validate: (value) => value.length > 0 })
         // eslint-disable-next-line react-hooks/exhaustive-deps

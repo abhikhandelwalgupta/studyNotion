@@ -1,25 +1,51 @@
 import React from 'react'
 import { useForm } from 'react-hook-form'
 import IconBtn from '../../../../../comman/IconBtn';
-import { setStep } from '../../../../../../slices/courseSlice';
+import { resetCourseState, setStep } from '../../../../../../slices/courseSlice';
 import { useDispatch, useSelector } from 'react-redux';
+import { toast } from 'react-hot-toast';
+import { COURSE_STATUS } from '../../../../../../utils/constants';
+import {  useNavigate } from 'react-router-dom';
+import { editCourseDetails } from '../../../../../../services/operations/courseDetailsAPI';
 
 
 const PublishCourse = () => {
 
     const dispatch = useDispatch()
     const { token } = useSelector((state) => state.auth)
+    const {course } = useSelector((state)=> state.course)
+    const navigate = useNavigate()
     const {
         register,
         handleSubmit,
-        formState: { errors }
+        formState: { errors },
+        getValues
     } = useForm();
 
-
-    const handleOnSubmit = (data, e) => {
+    const goToCourses = () => {
+        dispatch(resetCourseState())
+        navigate("/dashboard/my-courses")
+      }
+    const handleOnSubmit = async (data, e) => {
         e.preventDefault()
-        console.log(data);
+        ;
+        if((course.status === COURSE_STATUS.PUBLISHED && getValues("public") === true) || (course?.status === COURSE_STATUS.DRAFT && getValues("public") === false))   {
+            goToCourses()
+            return
+        }
+        
+        const formData = new FormData()
+        formData.append("courseId", course._id)
+        const courseStatus = getValues("public") ? COURSE_STATUS.PUBLISHED : COURSE_STATUS.DRAFT
+        formData.append("status", courseStatus)
+        const result = await editCourseDetails(formData, token)
+        if (result) {
+            toast.success("Course has been publish")
+          goToCourses()
+        }
+
     }
+
     return (
         <>
             <div className='text-richblack-5 bg-richblack-800 w-full p-6 rounded-lg border-[1px] border-richblack-600 shadow'>
@@ -30,6 +56,11 @@ const PublishCourse = () => {
                     <div className='my-6 mb-8'>
                         <label htmlFor="public" className='label-style text-richblack-300'>
                             <input type="checkbox" id="public"  {...register("public")} className="border-gray-300 h-4 w-4 rounded bg-richblack-500 text-richblack-400 focus:ring-2 focus:ring-richblack-5" />
+                            {errors.public && (
+                                <span className='text-red-5 text-lg'>
+                                    
+                                </span>
+                            )}
                             <span className="ml-2 text-richblack-400">
                                 Make this course as public
                             </span>

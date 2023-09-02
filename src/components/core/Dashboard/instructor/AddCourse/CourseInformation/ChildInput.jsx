@@ -36,10 +36,8 @@ const ChildInput = ({ placeholder, label, register, error, name, setValue, getVa
     }
 
     const chipDelete = (chipIndex) => {
-
         let afterDeleteChip = chips.filter((_, index) => index !== chipIndex)
         setChips(afterDeleteChip)
-        console.log(`After Delete Data :- `, afterDeleteChip);
     }
     return (
         <div className='flex flex-col gap-2 w-full'>

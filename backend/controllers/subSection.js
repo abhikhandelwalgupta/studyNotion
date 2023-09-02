@@ -62,6 +62,7 @@ exports.updateSubSection = async (req, res) => {
     console.log(`Update Section :- `, req.body);
     const { sectionId, subSectionId } = req.body;
 
+
     let getSubSectionDetails = await SubSection.findById(subSectionId);
 
     if (req.body?.description) {

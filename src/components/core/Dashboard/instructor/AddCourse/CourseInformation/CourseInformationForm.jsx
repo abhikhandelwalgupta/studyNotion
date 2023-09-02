@@ -1,14 +1,14 @@
-import React, { useEffect, useState } from 'react'
-import { useForm } from "react-hook-form"
+import React, { useEffect, useState } from 'react';
+import { useForm } from "react-hook-form";
 import { useDispatch, useSelector } from 'react-redux';
-import { addCourseDetails, editCourseDetails, fetchCourseCategories } from '../../../../../../services/operations/courseDetailsAPI';
-import { HiOutlineCurrencyRupee } from "react-icons/hi"
+import { addCourseDetails, fetchCourseCategories } from '../../../../../../services/operations/courseDetailsAPI';
+import { HiOutlineCurrencyRupee } from "react-icons/hi";
 import ChildInput from './ChildInput';
 import IconBtn from '../../../../../comman/IconBtn';
-import { MdNavigateNext } from "react-icons/md"
+import { MdNavigateNext } from "react-icons/md";
 import Uploader from '../Uploader';
 import Requirements from './Requirements';
-import { COURSE_STATUS } from "../../../../../../utils/constants"
+import { COURSE_STATUS } from "../../../../../../utils/constants";
 import { setCourse, setStep } from '../../../../../../slices/courseSlice';
 
 const CourseInformationForm = () => {
@@ -33,7 +33,6 @@ const CourseInformationForm = () => {
             }
         }
 
-        console.log(course?.category);
         getCategory();
         if (editCourse) {
             setValue("courseTitle", course?.courseName)
@@ -48,7 +47,7 @@ const CourseInformationForm = () => {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
-    const isFormUpdated = (e) => {
+    const isFormUpdated = () => {
 
         const currentValues = getValues()
         // console.log("changes after editing form values:", currentValues)
@@ -103,7 +102,6 @@ const CourseInformationForm = () => {
                 }
 
                 dispatch(setStep(2))
-                const result = await editCourseDetails(formData, token)
                 // console.log(result);
             }
             return
@@ -121,7 +119,6 @@ const CourseInformationForm = () => {
         formData.append("thumbnailImage", data.courseImage)
 
         const result = await addCourseDetails(formData, token)
-        console.log(result);
         if (result) {
             dispatch(setStep(2))
             dispatch(setCourse(result))

@@ -175,8 +175,6 @@ exports.showCourse = async (req, res) => {
 exports.getCourseDetails = async (req, res) => {
   try {
     const { courseId } = req.body;
-
-    console.log(`Course Id :- `, req.body.courseId);
     const courseDetails = await course.findById(courseId)
       .populate("instructor")
       .populate("category")
@@ -249,6 +247,8 @@ exports.editCourse = async (req, res) => {
       let category = req.body?.category
       const categoryDetails = await Category.findById(category);
       fetchCourseDetails.category = categoryDetails._id
+    }else if(req.body?.status) {
+      fetchCourseDetails.status = req.body?.status
     }
 
     const CourseUpdate = await fetchCourseDetails.save()
@@ -352,16 +352,3 @@ exports.deleteCourse = async (req, res) => {
   }
 
 };
-
-exports.updateMainSection = (req, res) => {
-  try {
-    console.log(req.body);
-  } catch (error) {
-    console.log(error.message);
-    return res.status(500).json({
-      success: false,
-      message: "Internal Server Error..."
-    })
-
-  }
-}

@@ -2,16 +2,13 @@ import { categories, courseEndpoints } from "../apis";
 import apiconnector from "../apiconnector";
 import { toast } from "react-hot-toast";
 const { CATEGORIES_API } = categories;
+
 const {
   CREATE_COURSE_API,
   INSTRUCTOR_COURSE_API,
-  COURSE_SECTION_CREATE,
-  COURSE_SUB_SECTION_ADD,
   COURSE_GETCOURSEDETAILS,
   EDIT_COURSE,
-  EDIT_SUBSECTION,
   COURSE_DELETE,
-  COURSE_SECTION_UPDATE
 } = courseEndpoints;
 
 export const fetchCourseCategories = async () => {
@@ -37,7 +34,11 @@ export const editCourseDetails = async (formData, token) => {
       Authorization: `Bearer ${token}`,
     })
 
-    console.log(response.data);
+    if(!response.data?.CourseUpdate) {
+      throw new Error("Course not updated");
+    }
+
+    result = response.data?.CourseUpdate
   } catch (error) {
     console.log(error);
     toast.error(error);
@@ -87,47 +88,7 @@ export const getInstructorCourse = async (token) => {
   return result;
 };
 
-export const createSection = async (FormData, token) => {
-  const toastId = toast.loading("loading...");
-  let result = null;
-  try {
-    const response = await apiconnector(
-      "POST",
-      COURSE_SECTION_CREATE,
-      FormData,
-      {
-        "Content-Type": "multipart/form-data",
-        Authorization: `Bearer ${token}`,
-      }
-    );
 
-    if (!response.data.updatedCourseDetails) {
-      throw new Error("Please Try again");
-    }
-    toast.success("Section created...");
-    result = response?.data?.updatedCourseDetails;
-  } catch (e) {
-    toast.error("Something went wrong...");
-  }
-  toast.dismiss(toastId);
-  return result;
-};
-
-
-export const updateMainSection = async (formData, token) => {
-  try {
-    const response = await apiconnector("put",COURSE_SECTION_UPDATE, formData, {
-      "Content-Type": "multipart/form-data",
-      Authorization: `Bearer ${token}`,
-    })
-
-    console.log(response);
-    return "hello"
-
-  } catch (e) {
-    console.log(e);
-  }
-}
 export const courseDelete = async (courseId) => {
   const toastId = toast.loading("loading...");
   try {
@@ -139,67 +100,16 @@ export const courseDelete = async (courseId) => {
   toast.dismiss(toastId);
 };
 
-export const updateSubSection = async (formData, token) => {
-  const toastId = toast.loading("loading...")
-  let result = null;
-  try {
-    const response = await apiconnector("put", EDIT_SUBSECTION, formData, {
-      "Content-Type": "multipart/form-data",
-      Authorization: `Bearer ${token}`,
-    })
-
-    if (!response.data?.updateResult) {
-      toast.error("Something went wrong while updating...")
-    }
-
-    result = response.data?.updateResult
-
-    console.log(`In side updateSubsection :- `, response);
-  } catch (error) {
-    toast.error("Something went wrong while updating...")
-  }
-
-  toast.dismiss(toastId)
-  return result
-}
 
 
-
-export const createSubSection = async (formData, token) => {
-  const toastId = toast.loading("loading...")
-  //addSubSection
-  let result
-  try {
-    const response = await apiconnector("POST", COURSE_SUB_SECTION_ADD, formData, {
-      "Content-Type": "multipart/form-data",
-      Authorization: `Bearer ${token}`,
-    })
-    if (!response?.data?.success) {
-      throw new Error("Could Not Add Lecture")
-    }
-    toast.success("Lecture Added")
-    result = response?.data?.updatesection
-    //.log(`Respnse sub section creation :- `, JSON.stringify(response?.data?.updatesection));
-
-  } catch (error) {
-    console.log("CREATE SUB-SECTION API ERROR............", error)
-    // toast.error(error.message)
-  }
-  toast.dismiss(toastId)
-  return result
-}
 
 
 export const getFullDetailsOfCourse = async (courseId, token) => {
   const toastId = toast.loading("loading...")
   let result = null
 
-  console.log(`In side get full details`);
   try {
-    //console.log(courseId, token);
 
-
-    //COURSE_GETCOURSEDETAILS
     const response = await apiconnector("POST", COURSE_GETCOURSEDETAILS, { courseId }, {
       "Content-Type": "multipart/form-data",
       Authorization: `Bearer ${token}`,
@@ -209,7 +119,6 @@ export const getFullDetailsOfCourse = async (courseId, token) => {
       throw new Error("Course details not getting ")
     }
     result = response?.data?.data
-    console.log('res', JSON.parse(JSON.stringify(response)));
   } catch (error) {
     console.log(error);
     toast.error("Course Details are not getting")

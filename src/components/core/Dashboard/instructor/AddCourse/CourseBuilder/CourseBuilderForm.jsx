@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
-import { IoIosArrowDropright, IoMdAddCircleOutline } from "react-icons/io";
+import { IoIosArrowDropright } from "react-icons/io";
 import { useDispatch, useSelector } from 'react-redux';
-import { createSection, updateMainSection } from '../../../../../../services/operations/courseDetailsAPI';
+import { createSection, updateMainSection } from '../../../../../../services/operations/SectionsAPI';
 import { setCourse, setEditCourse, setStep } from '../../../../../../slices/courseSlice';
 import IconBtn from '../../../../../comman/IconBtn';
 import NestedView from './NestedView';
@@ -34,17 +34,26 @@ const CourseBuilderForm = () => {
 
 
     const onSubmit = async (data) => {
-        const formData = {
+
+        let formData = {
             sectionName: data?.sectionName,
             courseId: course?._id
         }
-        if(editSectionName){
-            alert(JSON.stringify(formData))
-            const result = await updateMainSection(formData,token);
-            return
+        let result;
+        if (editSectionName) {
+            formData = { ...formData, sectionId: editSectionName }
+            result = await updateMainSection(formData, token);
+        } else {
+            result = await createSection(formData, token)
+            dispatch(setCourse(result))
         }
-        const result = await createSection(formData, token)
-        dispatch(setCourse(result))
+        console.log(result);
+        if (result) {
+            dispatch(setCourse(result))
+            setEditSectionName(null)
+            setValue("sectionName", "")
+        }
+
     }
 
     const handleChangeEditSectionName = (sectionId, sectionName) => {
@@ -52,8 +61,10 @@ const CourseBuilderForm = () => {
             cancelEdit()
             return
         }
+        console.log(`inside handeChangeEditSection `, sectionId);
         setEditSectionName(sectionId)
         setValue("sectionName", sectionName)
+        setValue("sectionId", sectionId)
     }
 
     return (
