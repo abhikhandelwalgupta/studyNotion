@@ -10,7 +10,7 @@ const categorySchema = mongoose.Schema({
     courses: [
 		{
 			type: mongoose.Schema.Types.ObjectId,
-			ref: "Course",
+			ref: "course",
 		},
 	],
     categoryStatus: {

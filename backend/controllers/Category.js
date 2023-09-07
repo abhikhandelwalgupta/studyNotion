@@ -38,15 +38,27 @@ exports.createCategory = async (req, res) => {
 
 exports.showCategory = async (req, res) => {
   try {
-    const categoryDetails = await Category.find({ categoryStatus: "Active" });
-   
+    const categoryDetails = await Category.find({ categoryStatus: "Active" })
+
+
+    const allCategories = await Category.find({ categoryStatus: "Active" }).populate({
+      path: "courses",
+      match: { status: "Published" },
+      populate: {
+        path: "instructor",
+    },
+    }).exec()
+        
+    const allCourses = allCategories.flatMap((category) => category.courses)
+        console.log(JSON.stringify(allCourses));
     return res.status(200).json({
       success: true,
       message: "",
       categoryDetails,
+      
     });
   } catch (error) {
-    console.log("Something went wrong in show Category controller ");
+    console.log("Something went wrong in show Category controller " , error.message);
     return res.status(401).json({
       success: false,
       message: "Something went wrong while show category",
