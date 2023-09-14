@@ -1,4 +1,5 @@
 import "./App.css";
+import React from "react";
 import { Route, Routes } from "react-router-dom";
 import { Home } from "./Pages/Home";
 import NavBar from "./components/comman/NavBar";
@@ -20,6 +21,7 @@ import Index from "./components/core/Dashboard/Setting/index";
 import AddCourse from "./components/core/Dashboard/instructor/AddCourse/AddCourse";
 import EditCourse from "./components/core/Dashboard/instructor/EditCourse/index"
 import Instructor from "./components/core/Dashboard/InstructorDashboard/Instructor";
+import Catalog from "./Pages/Catalog";
 
 
 function App() {
@@ -36,6 +38,10 @@ function App() {
             </OpenRoute>
           }
         />
+
+        <Route path="catalog/:catalogName" element={<Catalog />} />
+
+
         <Route element={<Dashboard />}>
           <Route path="dashboard/my-profile" element={<MyProfile />} />
           <Route path="dashboard/my-courses" element={<MyCourse />} />
@@ -45,7 +51,7 @@ function App() {
           <Route path="dashboard/enrolled-courses" element={<EnrolledCourses />} />
           <Route path="dashboard/settings" element={<Index />} />
           <Route path="dashboard/add-Course" element={<AddCourse />} />
-          <Route path="dashboard/edit-course/:courseId" element={<EditCourse /> } />
+          <Route path="dashboard/edit-course/:courseId" element={<EditCourse />} />
           <Route path="dashboard/instructor" element={<Instructor />} />
         </Route>
 
@@ -56,7 +62,7 @@ function App() {
         <Route path={"/about"} element={<About />} />
 
       </Routes>
-    </div>
+    </div >
   );
 }
 

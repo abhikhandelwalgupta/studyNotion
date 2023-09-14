@@ -1,7 +1,9 @@
-const { default: mongoose } = require("mongoose");
-const Category = require("../models/Category");
-const Course = require("../models/Courses");
 
+const Category = require("../models/Category");
+
+function getRandomInt(max) {
+  return Math.floor(Math.random() * max)
+}
 
 exports.createCategory = async (req, res) => {
   try {
@@ -41,24 +43,15 @@ exports.showCategory = async (req, res) => {
     const categoryDetails = await Category.find({ categoryStatus: "Active" })
 
 
-    const allCategories = await Category.find({ categoryStatus: "Active" }).populate({
-      path: "courses",
-      match: { status: "Published" },
-      populate: {
-        path: "instructor",
-    },
-    }).exec()
-        
-    const allCourses = allCategories.flatMap((category) => category.courses)
-        console.log(JSON.stringify(allCourses));
+
     return res.status(200).json({
       success: true,
       message: "",
       categoryDetails,
-      
+
     });
   } catch (error) {
-    console.log("Something went wrong in show Category controller " , error.message);
+    console.log("Something went wrong in show Category controller ", error.message);
     return res.status(401).json({
       success: false,
       message: "Something went wrong while show category",
@@ -69,11 +62,17 @@ exports.showCategory = async (req, res) => {
 exports.categoryPageDetails = async (req, res) => {
   try {
     const { categoryId } = req.body;
-
+    console.log(req.body);
     const selectCategory = await Category.findById(categoryId)
-      .populate("courses")
+      .populate({
+        path: "courses",
+        match: { status: "Published" },
+        populate: {
+          path: "instructor",
+        },
+      })
       .exec();
-
+    console.log(selectCategory);
     if (!selectCategory) {
       return res.status(404).json({
         success: false,
@@ -81,27 +80,47 @@ exports.categoryPageDetails = async (req, res) => {
       });
     }
 
-    //get coursesfor different categories
-    const differentCategories = await Category.find({
+    if (selectCategory.courses.length === 0) {
+      console.log("No courses found for the selected category.")
+      return res.status(404).json({
+        success: false,
+        message: "No courses found for the selected category.",
+        selectCategory
+      })
+    }
+
+    //get coursesfor different categories 
+    const categoriesExceptSelected = await Category.find({
       _id: { $ne: categoryId },
     })
       .populate("courses")
       .exec();
 
+    const differentCategories = await Category.findOne(
+      categoriesExceptSelected[getRandomInt(categoriesExceptSelected.length)]._id
+    )
+      .populate({
+        path: "courses",
+        match: { status: "Published" },
+      })
+      .exec()
+    console.log(differentCategories);
     //get top 10 selling courses
-    const topSelling = await Course.aggregate([
-      {
-        $match: {
-          category: new mongoose.Types.ObjectId(categoryId),
-        },
+    const allCategories = await Category.find({ categoryStatus: "Active" }).populate({
+      path: "courses",
+      match: { status: "Published" },
+      populate: {
+        path: "instructor",
       },
-      {
-        $group: {
-          _id: null,
-          topCourse: { $avg: "$courses" },
-        },
-      },
-    ]);
+    }).exec()
+
+    const allCourses = allCategories.flatMap((category) => category.courses)
+    console.log(JSON.stringify(allCourses));
+
+    const topSelling = allCourses
+      .sort((a, b) => b.sold - a.sold)
+      .slice(0, 10)
+    console.log("mostSellingCourses COURSE", topSelling)
     return res.status(200).json({
       success: true,
       data: {

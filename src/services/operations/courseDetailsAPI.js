@@ -9,6 +9,7 @@ const {
   COURSE_GETCOURSEDETAILS,
   EDIT_COURSE,
   COURSE_DELETE,
+  COURSE_CATEGORY_DETAILS
 } = courseEndpoints;
 
 export const fetchCourseCategories = async () => {
@@ -34,7 +35,7 @@ export const editCourseDetails = async (formData, token) => {
       Authorization: `Bearer ${token}`,
     })
 
-    if(!response.data?.CourseUpdate) {
+    if (!response.data?.CourseUpdate) {
       throw new Error("Course not updated");
     }
 
@@ -146,4 +147,16 @@ export const CourseDelete = async (courseId, token) => {
   }
   toast.dismiss(toastId)
 
+}
+
+export const getCategoryDetails = async () => {
+  const toastId = toast.loading("loading...")
+  try {
+    console.log(COURSE_CATEGORY_DETAILS);
+  } catch (error) {
+    console.log(error.message);
+    toast.error(error?.message)
+  }
+
+  toast.dismiss(toastId)
 }

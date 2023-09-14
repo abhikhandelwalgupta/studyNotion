@@ -7,6 +7,7 @@
     "axios": "^1.4.0",
     "concurrently": "^8.0.1",
     "crypto": "^1.0.1",
+    "eslint-plugin-react": "^7.33.2",
     "react": "^18.2.0",
     "react-countup": "^6.4.2",
     "react-dom": "^18.2.0",
@@ -14,14 +15,16 @@
     "react-hook-form": "^7.45.2",
     "react-hot-toast": "^2.4.1",
     "react-icons": "^4.9.0",
+    "react-is-deprecated": "^0.1.2",
     "react-otp-input": "^3.0.2",
     "react-redux": "^8.1.1",
     "react-router-dom": "^6.11.2",
-    "react-scripts": "5.0.1",
+    "react-scripts": "^5.0.1",
     "react-select": "^5.7.4",
     "react-super-responsive-table": "^5.2.1",
     "react-type-animation": "^3.1.0",
     "redux-toolkit": "^1.1.2",
+    "swiper": "^10.2.0",
     "video-react": "^0.16.0",
     "web-vitals": "^2.1.4"
   },
@@ -59,6 +62,7 @@
     ]
   },
   "devDependencies": {
+    "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
     "tailwindcss": "^3.2.7"
   }
 }

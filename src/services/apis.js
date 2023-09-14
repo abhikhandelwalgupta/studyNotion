@@ -2,6 +2,7 @@ const BASE_URL = process.env.REACT_APP_BASE_URL;
 
 export const categories = {
   CATEGORIES_API: BASE_URL + "course/showAllCategories",
+  
 };
 
 export const endpoints = {
@@ -35,6 +36,7 @@ export const courseEndpoints = {
   EDIT_COURSE: BASE_URL + "course/editCourse",
   EDIT_SUBSECTION: BASE_URL + "course/updateSubSection",
   COURSE_DELETE: BASE_URL + "course/deleteCourse",
+  COURSE_CATEGORY_DETAILS: BASE_URL + "course/details"
 }
 
 //Section End-Point 
@@ -48,4 +50,9 @@ export const sectionEndPoints = {
 export const subSectionsEndPoints = {
   COURSE_SUB_SECTION_ADD: BASE_URL + "course/addSubSection",
   EDIT_SUBSECTION: BASE_URL + "course/updateSubSection",
+}
+
+
+export const catalogData = {
+  CATALOGPAGEDATA_API: BASE_URL + "course/getCategoryPageDetails",
 }

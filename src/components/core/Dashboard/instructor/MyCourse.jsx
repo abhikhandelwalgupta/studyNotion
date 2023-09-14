@@ -29,7 +29,7 @@ const MyCourse = () => {
   }, [])
 
   const handleCourseDelete = async (courseId) => {
-    let t=  await CourseDelete(courseId, token)
+     await CourseDelete(courseId, token)
     fetchInstructorCourse()
   }
 
