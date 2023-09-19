@@ -29,7 +29,7 @@ const Catalog = () => {
         const getCategoryDetails = async () => {
             try {
                 const res = await getCatalogaPageData(categoryId)
-                console.log(catalogPageData);
+                console.log(res);
                 setCatalogPageData(res)
 
             } catch (error) {
@@ -69,18 +69,18 @@ const Catalog = () => {
                     <p className={`cursor-pointer px-4 py-2  ${active === 2 ? `text-yellow-25 border-b-yellow-100 border-b ` : ` text-richblack-50`}`} onClick={() => setActive(2)}>New</p>
                 </div>
                 <div>
-                    <CourseSlider Courses={catalogPageData?.selectCategory?.courses} />
+                    <CourseSlider Courses={catalogPageData?.selectCategory?.courses} btnClass="selectCategory" />
                 </div>
             </div>
             {/* Section 2 */}
             <div className=' w-11/12 mx-auto mt-11 flex max-w-maxContentTab flex-col justify-center gap-4 lg:max-w-maxContent text-richblack-25 py-12'>
-                <p className='lg:text-4xl font-bold text-richblack-5 text-2xl'>Top courses in {catalogPageData?.selectCategory?.Name}</p>
-                <div className=' text-sm flex box-border border-b border-b-richblack-600'>
+                <p className='lg:text-4xl font-bold text-richblack-5 text-2xl'>Top courses in {catalogPageData?.differentCategories?.Name}</p>
+                {/* <div className=' text-sm flex box-border border-b border-b-richblack-600'>
                     <p className={`cursor-pointer px-4 py-2 ${active === 1 ? `text-yellow-25 border-b-yellow-100 border-b ` : ` text-richblack-50`}`} onClick={() => setActive(1)}>Most Popular</p>
                     <p className={`cursor-pointer px-4 py-2  ${active === 2 ? `text-yellow-25 border-b-yellow-100 border-b ` : ` text-richblack-50`}`} onClick={() => setActive(2)}>New</p>
-                </div>
+                </div> */}
                 <div>
-                    <CourseSlider Courses={catalogPageData?.topSelling} />
+                    <CourseSlider Courses={catalogPageData?.differentCategories?.courses} btnClass="differentCategories" />
                 </div>
             </div>
 

@@ -8,23 +8,24 @@ import 'swiper/css/pagination';
 import 'swiper/css/scrollbar';
 import {  Navigation, Pagination, Scrollbar } from 'swiper/modules';
 
-const CourseSlider = ({ Courses }) => {
+const CourseSlider = ({ Courses ,btnClass }) => {
+  console.log((Courses?.length ));
     return (
         <>
 
 
             {
-                Courses?.length ? (
+                Courses?.length >0 ? (
                     <>
                         <div className='flex justify-between relative'>
-                            <button className="arrow-left arrow  absolute -left-20 top-24 text-2xl"> <IoIosArrowBack /> </button>
-                            <button className="arrow-right arrow -right-20 absolute  top-24 text-2xl"><IoIosArrowForward /></button>
+                            <button className= {`${btnClass}-arrow-left arrow  absolute -left-20 top-24 text-2xl`}> <IoIosArrowBack /> </button>
+                            <button className={`${btnClass}-arrow-right arrow -right-20 absolute  top-24 text-2xl`}><IoIosArrowForward /></button>
                         </div>
                         <Swiper
                             modules={[Navigation, Pagination, Scrollbar]}
                             spaceBetween={25}
                             loop={true}
-                            navigation={{ nextEl: ".arrow-left", prevEl: ".arrow-right" }}
+                            navigation={{ nextEl: "."+btnClass+"-arrow-left", prevEl:  "."+btnClass+"-arrow-right" }}
                             pagination={{ clickable: true, dynamicBullets: true }}
                             Navigation={true}
                             scrollbar={{ draggable: true }}
