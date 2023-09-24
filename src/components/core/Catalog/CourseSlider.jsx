@@ -6,7 +6,7 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import 'swiper/css/scrollbar';
-import {  Navigation, Pagination, Scrollbar } from 'swiper/modules';
+import {  Navigation, Pagination } from 'swiper/modules';
 
 const CourseSlider = ({ Courses ,btnClass }) => {
   console.log((Courses?.length ));
@@ -22,13 +22,12 @@ const CourseSlider = ({ Courses ,btnClass }) => {
                             <button className={`${btnClass}-arrow-right arrow -right-20 absolute  top-24 text-2xl`}><IoIosArrowForward /></button>
                         </div>
                         <Swiper
-                            modules={[Navigation, Pagination, Scrollbar]}
+                            modules={[Navigation, Pagination]}
                             spaceBetween={25}
                             loop={true}
                             navigation={{ nextEl: "."+btnClass+"-arrow-left", prevEl:  "."+btnClass+"-arrow-right" }}
                             pagination={{ clickable: true, dynamicBullets: true }}
                             Navigation={true}
-                            scrollbar={{ draggable: true }}
                             breakpoints={{
                                 1024: {
                                     slidesPerView: 3,

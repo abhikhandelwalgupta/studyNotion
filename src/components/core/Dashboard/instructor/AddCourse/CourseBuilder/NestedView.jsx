@@ -24,7 +24,6 @@ const NestedView = ({ handleChangeEditSectionName }) => {
         }
         let result = await deleteSection(formData, token)
 
-        console.log(result);
         dispatch(setCourse(result))
     }
 

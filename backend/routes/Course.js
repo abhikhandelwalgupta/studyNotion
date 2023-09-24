@@ -24,7 +24,7 @@ router.delete("/deleteSection", auth, isInstructor , deleteSection);
 router.put("/updateSubSection", auth, isInstructor , updateSubSection);
 router.post("/deleteSubSection" , auth , isInstructor, deleteSubSection);
 router.post("/addSubSection", auth, isInstructor, createSubSection);
-router.post("/getCourseDetails", auth , isInstructor , getCourseDetails);
+//router.post("/getCourseDetails", auth , isInstructor , getCourseDetails);
 router.post("/getInstructorCourse" , auth, isInstructor ,getInstructorCourse )
 router.delete("/deleteCourse" , auth, isInstructor , deleteCourse)
 router.put("/updateMainSection" , auth , isInstructor ,updateMainSection )
@@ -34,6 +34,7 @@ router.put("/updateMainSection" , auth , isInstructor ,updateMainSection )
 router.post("/createCategory"  , createCategory);
 router.get("/showAllCategories" , showCategory);
 router.post("/getCategoryPageDetails", categoryPageDetails)
+router.post("/getCourseDetails",  getCourseDetails);
 
 router.post("/createRating", auth, isStudent, createRating)
 router.get("/getAverageRating", getAverageRating)

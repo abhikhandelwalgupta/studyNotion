@@ -105,21 +105,18 @@ export const courseDelete = async (courseId) => {
 
 
 
-export const getFullDetailsOfCourse = async (courseId, token) => {
+export const getFullDetailsOfCourse = async (courseId) => {
   const toastId = toast.loading("loading...")
   let result = null
-
   try {
-
     const response = await apiconnector("POST", COURSE_GETCOURSEDETAILS, { courseId }, {
       "Content-Type": "multipart/form-data",
-      Authorization: `Bearer ${token}`,
     })
 
     if (!response?.data?.data) {
       throw new Error("Course details not getting ")
     }
-    result = response?.data?.data
+    result = response?.data
   } catch (error) {
     console.log(error);
     toast.error("Course Details are not getting")

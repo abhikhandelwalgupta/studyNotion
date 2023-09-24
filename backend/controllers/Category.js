@@ -72,7 +72,6 @@ exports.categoryPageDetails = async (req, res) => {
         },
       })
       .exec();
-    console.log(selectCategory);
     if (!selectCategory) {
       return res.status(404).json({
         success: false,
@@ -115,12 +114,12 @@ exports.categoryPageDetails = async (req, res) => {
     }).exec()
 
     const allCourses = allCategories.flatMap((category) => category.courses)
-    console.log(JSON.stringify(allCourses));
+    
 
     const topSelling = allCourses
       .sort((a, b) => b.sold - a.sold)
       .slice(0, 10)
-    console.log("mostSellingCourses COURSE", topSelling)
+    
     return res.status(200).json({
       success: true,
       data: {
