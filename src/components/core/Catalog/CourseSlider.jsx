@@ -9,7 +9,7 @@ import 'swiper/css/scrollbar';
 import {  Navigation, Pagination } from 'swiper/modules';
 
 const CourseSlider = ({ Courses ,btnClass }) => {
-  console.log((Courses?.length ));
+ 
     return (
         <>
 

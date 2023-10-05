@@ -1,6 +1,6 @@
 import React from 'react'
 
-const CourseCardDetails = ({course}) => {
+const CourseCardDetails = ({course , handleBuyCourse}) => {
     console.log(course?.data);
     const {
         price,
@@ -23,7 +23,7 @@ const CourseCardDetails = ({course}) => {
 
                             <button
                                 className="yellowButton"
-
+                                onClick={handleBuyCourse}
                             >
                                 Buy Now
 
