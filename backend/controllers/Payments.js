@@ -5,8 +5,9 @@ const mailSender = require("../util/mailSender");
 const { courseEnrollmentEmail } = require("../mail/templates/courseEnrollmentEmail")
 const { default: mongoose } = require("mongoose");
 const { paymentSuccessEmail } = require("../mail/templates/paymentSuccessEmail");
+const crypto = require("crypto");
 
-/*
+
 exports.capturePayment = async (req, res) => {
     const { courses } = req.body;
     const userId = req.user.id;
@@ -60,8 +61,8 @@ exports.capturePayment = async (req, res) => {
         return res.status(500).json({ success: false, mesage: "Could not Initiate Order" });
     }
 }
-*/
-exports.verifySignature = async (req, res) => {
+
+exports.verifyPayment = async (req, res) => {
     const razorpay_order_id = req.body?.razorpay_order_id;
     const razorpay_payment_id = req.body?.razorpay_payment_id;
     const razorpay_signature = req.body?.razorpay_signature;
@@ -117,14 +118,16 @@ const enrollStudents = async (courses, userId, res) => {
                         courses: courseId,
                     }
                 }, { new: true })
-
+            console.log(enrolledStudent.email,
+                `Successfully Enrolled into ${enrolledCourse.courseName}`,
+                courseEnrollmentEmail(enrolledCourse.courseName, `${enrolledStudent.firstName}`));
             ///bachhe ko mail send kardo
-            await mailSender(
-                enrollStudents.email,
+            const emailResponse = await mailSender(
+                enrolledStudent.email,
                 `Successfully Enrolled into ${enrolledCourse.courseName}`,
                 courseEnrollmentEmail(enrolledCourse.courseName, `${enrolledStudent.firstName}`)
             )
-            //console.log("Email Sent Successfully", emailResponse.response);
+            console.log("Email Sent Successfully", emailResponse);
         }
         catch (error) {
             console.log(error);
@@ -133,9 +136,9 @@ const enrollStudents = async (courses, userId, res) => {
     }
 
 }
-exports.sendPaymentSuccessEmai = async (req, res) => {
+exports.sendPaymentSuccessEmail = async (req, res) => {
     const { orderId, paymentId, amount } = req.body;
-
+    console.log(`inside sendPaymentSuccessEmai :- `, req.body);
     const userId = req.user.id;
 
     if (!orderId || !paymentId || !amount) {
@@ -145,7 +148,8 @@ exports.sendPaymentSuccessEmai = async (req, res) => {
     try {
         const enrolledStudent = await User.findById(userId)
 
-        await mailSender(enrolledStudent.email, `Payment Recieved`, paymentSuccessEmail(`${enrolledStudent.firstName}`, amount / 100, orderId, paymentId))
+        const sendMail = await mailSender(enrolledStudent.email, `Payment Recieved`, paymentSuccessEmail(`${enrolledStudent.firstName}`, amount / 100, orderId, paymentId))
+        console.log(`after send mail :- `, sendMail);
     } catch (error) {
         console.log("error in sending mail", error)
         return res.status(500).json({ success: false, message: "Could not send email" })
@@ -157,76 +161,71 @@ exports.sendPaymentSuccessEmai = async (req, res) => {
 
 
 
-exports.capturePayment = async (req, res) => {
-    const { courses } = req.body;
-    const userId = req.user.id;
-    console.log(`inside capturePayment `, req.body);
-    if (!courses) {
-        return res.status(401).json({
-            success: false,
-            message: "Please provide valid course ID",
-        });
-    }
+// exports.capturePayment = async (req, res) => {
+//     const { courses } = req.body;
+//     const userId = req.user.id;
+//     console.log(`inside capturePayment `, req.body);
+//     if (!courses) {
+//         return res.status(401).json({
+//             success: false,
+//             message: "Please provide valid course ID",
+//         });
+//     }
 
-    let course;
-    try {
-        course = await Courses.findById(courses);
-        if (!course) {
-            return res.json({
-                success: false,
-                message: "couldn't find the course.",
-            });
-        }
+//     let course;
+//     try {
+//         course = await Courses.findById(courses);
+//         if (!course) {
+//             return res.json({
+//                 success: false,
+//                 message: "couldn't find the course.",
+//             });
+//         }
 
-        const uid = new mongoose.Types.ObjectId(userId);
-        console.log(uid);
-        if (course.studentsEnrolled.includes(uid)) {
-            return res.status(200).json({
-                success: false,
-                message: "Student is already enrolled",
-            });
-        }
-    } catch (error) {
-        console.error(error);
-        return res.status(500).json({
-            success: false,
-            message: error.message,
-        });
-    }
+//         const uid = new mongoose.Types.ObjectId(userId);
+//         console.log(uid);
+//         if (course.studentsEnrolled.includes(uid)) {
+//             return res.status(200).json({
+//                 success: false,
+//                 message: "Student is already enrolled",
+//             });
+//         }
+//     } catch (error) {
+//         console.error(error);
+//         return res.status(500).json({
+//             success: false,
+//             message: error.message,
+//         });
+//     }
 
-    const amount = course.price;
-    const currency = "INR";
+//     const amount = course.price;
+//     const currency = "INR";
 
-    const option = {
-        amount: amount * 100,
-        currency,
-        receipt: Math.random(Date.now()).toString(),
-        notes: {
-            courseID: Object.values(courses)[0],
-            userId,
-        },
-    };
-    console.log(option);
-    try {
-        const paymentResponse = await instance.orders.create(option);
-        console.log(`payment response :- `, paymentResponse);
-        return res.status(200).json({
-            success: true,
-            courseName: course.courseName,
-            courseDescription: course.coursDescription,
-            thumbnail: course.thumbnail,
-            orderId: paymentResponse.id,
-            currency: paymentResponse.currency,
-            amount: paymentResponse.amount / 100,
-        });
-    } catch (error) {
-        console.log(error);
-        return res.status(500).json({
-            success: false,
-            message: "Could not initiate order",
-        });
-    }
-};
+//     const option = {
+//         amount: amount * 100,
+//         currency,
+//         receipt: Math.random(Date.now()).toString(),
+//         notes: {
+//             courseID: Object.values(courses)[0],
+//             userId,
+//         },
+//     };
+//     console.log(option);
+//     try {
+//         const paymentResponse = await instance.orders.create(option);
+//         console.log(`payment response :- `, paymentResponse);
+//         return res.status(200).json({
+//             success: true,
+//             message:paymentResponse,
+//         });
+//     } catch (error) {
+//         console.log(error);
+//         return res.status(500).json({
+//             success: false,
+//             message: "Could not initiate order",
+//         });
+//     }
+// };
 
 /*
 exports.verifySignature = async (req, res) => {
