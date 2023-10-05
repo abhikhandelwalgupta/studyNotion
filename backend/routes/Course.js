@@ -30,6 +30,7 @@ router.delete("/deleteCourse" , auth, isInstructor , deleteCourse)
 router.put("/updateMainSection" , auth , isInstructor ,updateMainSection )
 
 
+
 // router.post("/createCategory" , auth, isAdmin , createCategory);
 router.post("/createCategory"  , createCategory);
 router.get("/showAllCategories" , showCategory);

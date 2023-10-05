@@ -113,7 +113,7 @@ exports.createCourse = async (req, res) => {
       data: newCourse,
     });
   } catch (error) {
-    console.log(`Error : -`, error);
+
     console.log(`Error Message :- `, error.message);
 
     return res.status(400).json({
@@ -178,9 +178,9 @@ exports.getCourseDetails = async (req, res) => {
     const { courseId } = req.body;
     const courseDetails = await course.findById(courseId)
       .populate({
-        path : "instructor",
-        populate : {
-          path : "profile"
+        path: "instructor",
+        populate: {
+          path: "profile"
         }
       })
       .populate("category")
@@ -253,7 +253,7 @@ exports.editCourse = async (req, res) => {
       let category = req.body?.category
       const categoryDetails = await Category.findById(category);
       fetchCourseDetails.category = categoryDetails._id
-    }else if(req.body?.status) {
+    } else if (req.body?.status) {
       fetchCourseDetails.status = req.body?.status
     }
 
@@ -358,3 +358,4 @@ exports.deleteCourse = async (req, res) => {
   }
 
 };
+

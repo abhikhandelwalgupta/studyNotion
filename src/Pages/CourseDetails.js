@@ -32,7 +32,6 @@ const CourseDetails = () => {
     useEffect(() => {
         (async () => {
             const res = await getFullDetailsOfCourse(courseId);
-            console.log(res);
             setResponse(res);
         })();
     }, [courseId]);
@@ -71,10 +70,8 @@ const CourseDetails = () => {
             return
         }
 
-        console.log(`Hello inside handle buy course`);
+       
     }
-
-
 
     const {
         courseName = "",
@@ -88,18 +85,18 @@ const CourseDetails = () => {
 
 
 
-    console.log(response?.data);
+   
     return (
         <>
             <div className="relative w-full  bg-richblack-800">
                 {/* Hero Section */}
                 <div className="w-full box-content mx-auto  min-h-[450px]">
-                    <div className=" flex mx-auto justify-between my-auto py-24 w-10/12">
+                    <div className=" flex w-11/12 max-w-maxContent my-auto mx-auto items-center py-20 justify-between">
                         <div className="flex flex-col justify-center gap-4 py-5  text-white">
                             <h1 className="text-4xl font-bold text-richblack-5 sm:text-[42px]">
                                 {courseName}
                             </h1>
-                            <p className="text-richblack-200"> {courseDescription}</p>
+                            <p className="text-richblack-200 w-[50%] text-start leading-relaxed"> {courseDescription}</p>
                             <p className="text-richblack-5 capitalize">
                                 {" "}
                                 Created By {instructor?.firstName} {instructor?.lastName}

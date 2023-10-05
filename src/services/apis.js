@@ -1,5 +1,5 @@
 const BASE_URL = process.env.REACT_APP_BASE_URL;
-console.log(BASE_URL);
+
 export const categories = {
   CATEGORIES_API: BASE_URL + "course/showAllCategories",
   
@@ -18,6 +18,7 @@ export const profileEndPoint = {
   DELETEPROFILE_API: BASE_URL + "profile/deleteProfile",
   GETUSERDETAIL_API: BASE_URL + "profile/getUserDetails",
   GETENROLLEDCOURSE_API: BASE_URL + "profile/getEnrolledCourses",
+  GET_STUDENT_COURSES : BASE_URL + "profile/getStudentEnrolledCourse"
 };
 
 export const settingsEndpoints = {
@@ -36,7 +37,8 @@ export const courseEndpoints = {
   EDIT_COURSE: BASE_URL + "course/editCourse",
   EDIT_SUBSECTION: BASE_URL + "course/updateSubSection",
   COURSE_DELETE: BASE_URL + "course/deleteCourse",
-  COURSE_CATEGORY_DETAILS: BASE_URL + "course/details"
+  COURSE_CATEGORY_DETAILS: BASE_URL + "course/details",
+ 
 }
 
 //Section End-Point 

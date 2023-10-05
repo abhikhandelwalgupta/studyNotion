@@ -1,14 +1,25 @@
 import React from 'react'
+import { useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 
-const CourseCardDetails = ({course , handleBuyCourse}) => {
-    console.log(course?.data);
+const CourseCardDetails = ({ course, handleBuyCourse }) => {
+
+    const { user } = useSelector((state) => state.profile)
+    const navigate = useNavigate()
+
+    console.log(user)
     const {
         price,
         thumbnail,
-        instructions
+        studentsEnrolled
     } = course?.data
+    console.log(studentsEnrolled.includes(user._id));
 
-    console.log(instructions);
+    const handlecourseEntrolled = () => {
+        navigate("/dashboard/enrolled-courses")
+    }
+
+
     return (
         <>
 
@@ -20,17 +31,29 @@ const CourseCardDetails = ({course , handleBuyCourse}) => {
                             Rs. {price}
                         </div>
                         <div className='flex flex-col gap-4'>
+                            {
+                                studentsEnrolled.includes(user._id) ? (
+                                    <>
+                                        <button className="yellowButton" onClick={handlecourseEntrolled}>
+                                            Go to Course
+                                        </button>
+                                    </>
+                                ) : (
+                                    <>
+                                        <button
+                                            className="yellowButton"
+                                            onClick={handleBuyCourse}
+                                        >
+                                            Buy Now
 
-                            <button
-                                className="yellowButton"
-                                onClick={handleBuyCourse}
-                            >
-                                Buy Now
+                                        </button>
+                                        <button className="blackButton">
+                                            Add to Cart
+                                        </button>
+                                    </>
+                                )
+                            }
 
-                            </button>
-                            <button className="blackButton">
-                                Add to Cart
-                            </button>
 
                         </div>
                         <p className="pb-3 pt-6 text-center text-sm text-richblack-25">
@@ -42,7 +65,7 @@ const CourseCardDetails = ({course , handleBuyCourse}) => {
                         <p></p>
                     </div>
                 </div>
-            </div>
+            </div >
         </>
     )
 }
