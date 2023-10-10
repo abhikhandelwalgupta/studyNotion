@@ -45,6 +45,7 @@ body {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
+
 .background-gradient {
   width: 372.95px;
   height: 257.05px;
@@ -163,19 +164,114 @@ input[type=number] {
 .form-style {
   @apply rounded-lg bg-richblack-700 p-3 text-[16px] leading-[24px] text-richblack-5 shadow-[0_1px_0_0] shadow-white/50 placeholder:text-richblack-400 focus:outline-none;
 }
+
 .lable-style {
   @apply text-[14px] text-richblack-5;
 }
 
-.swiper-button-next { color: red; }
+.swiper-button-next {
+  color: red;
+}
 
 .yellowButton {
   @apply cursor-pointer rounded-md bg-yellow-50 px-[20px] py-[8px] font-semibold text-richblack-900;
 }
+
 .blackButton {
   @apply cursor-pointer rounded-md bg-richblack-800 px-[20px] py-[8px] font-semibold text-richblack-5;
 }
+
 .swiper-slide {
   width: 100%;
   height: 100%;
+}
+
+
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+/* Zebra striping */
+tr:nth-of-type(odd) {
+  background: #000;
+
+}
+
+tr {
+  border-bottom: 1px solid #ccc;
+}
+
+th {
+  background: #333;
+  color: white;
+  font-weight: bold;
+  padding-left: 2rem;
+}
+
+td,
+th {
+  padding: 20px;
+  /* border: 1px solid #ccc;  */
+  text-align: left;
+  padding-top: 12px;
+  padding-bottom: 12px;
+}
+
+
+@media only screen and (max-width: 760px)
+/* ,
+ (min-device-width: 768px) and (max-device-width: 1024px) */
+  {
+
+  /* Force table to not be like tables anymore */
+  table,
+  thead,
+  tbody,
+  th,
+  td,
+  tr {
+    display: block;
+  }
+
+  /* Hide table headers (but not display: none;, for accessibility) */
+  thead tr {
+    position: absolute;
+    top: -9999px;
+    left: -9999px;
+  }
+
+  tr {
+    border: 1px solid #ccc;
+  }
+
+  td {
+    /* Behave  like a "row" */
+    border: none;
+    /* border-bottom: 1px solid #eee;  */
+    position: relative;
+    padding-left: 50%;
+    padding-top: 1rem;
+
+  }
+
+  td:before {
+    /* Now like a table header */
+    position: absolute;
+    /* Top/left values mimic padding */
+    top: 6px;
+    left: 6px;
+    width: 45%;
+    padding-right: 10px;
+    white-space: nowrap;
+  }
+
+  /*
+	Label the data
+	*/
+  td::before {
+    content: attr(data-label);
+  }
+
 }

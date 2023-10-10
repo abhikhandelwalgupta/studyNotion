@@ -13,7 +13,7 @@ const CourseCardDetails = ({ course, handleBuyCourse }) => {
         thumbnail,
         studentsEnrolled
     } = course?.data
-    console.log(studentsEnrolled.includes(user._id));
+    
 
     const handlecourseEntrolled = () => {
         navigate("/dashboard/enrolled-courses")
@@ -32,7 +32,7 @@ const CourseCardDetails = ({ course, handleBuyCourse }) => {
                         </div>
                         <div className='flex flex-col gap-4'>
                             {
-                                studentsEnrolled.includes(user._id) ? (
+                                studentsEnrolled.includes(user?._id) ? (
                                     <>
                                         <button className="yellowButton" onClick={handlecourseEntrolled}>
                                             Go to Course

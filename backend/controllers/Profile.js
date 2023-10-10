@@ -17,15 +17,14 @@ exports.updateProfile = async (req, res) => {
 
     const user_id = req.user.id;
     const userDetils = await User.findById(user_id);
-    if(!userDetils) {
-        return res.status(401).json({
-            success: false,
-            message: "User not found ",
-          });
+    if (!userDetils) {
+      return res.status(401).json({
+        success: false,
+        message: "User not found ",
+      });
     }
     const profileId = userDetils.profile;
     const profileDetails = await Profiles.findById(profileId);
-console.log(profileDetails);
     userDetils.gender = gender;
     userDetils.phoneNO = mobileNumber
     await userDetils.save();
@@ -45,98 +44,110 @@ console.log(profileDetails);
       success: false,
       message: error.message,
     })
-  
+
   }
 };
 
 exports.deleteAccount = async (req, res) => {
-    try{
-        //get id 
-        const id = req.user.id;
-        //validation
-        const userDetails = await User.findById(id);
-        if(!userDetails) {
-            return res.status(404).json({
-                success:false,
-                message:'User not found',
-            });
-        } 
-        //delete profile
-        await Profiles.findByIdAndDelete({_id:userDetails.additionalDetails});
-        //TOOD: HW unenroll user form all enrolled courses
-        //delete user
-        await User.findByIdAndDelete({_id:id});
-       
-        //return response
-        return res.status(200).json({
-            success:true,
-            message:'User Deleted Successfully',
-        })
+  try {
+    //get id 
+    const id = req.user.id;
+    //validation
+    const userDetails = await User.findById(id);
+    if (!userDetails) {
+      return res.status(404).json({
+        success: false,
+        message: 'User not found',
+      });
+    }
+    //delete profile
+    await Profiles.findByIdAndDelete({ _id: userDetails.additionalDetails });
+    //TOOD: HW unenroll user form all enrolled courses
+    //delete user
+    await User.findByIdAndDelete({ _id: id });
 
-    }
-    catch(error) {
-        return res.status(500).json({
-            success:false,
-            message:'User cannot be deleted successfully',
-        });
-    }
+    //return response
+    return res.status(200).json({
+      success: true,
+      message: 'User Deleted Successfully',
+    })
+
+  }
+  catch (error) {
+    return res.status(500).json({
+      success: false,
+      message: 'User cannot be deleted successfully',
+    });
+  }
 };
 
 exports.getAllUserDetails = async (req, res) => {
 
-    try {
-        //get id
-        const id = req.user.id;
+  try {
+    //get id
+    const id = req.user.id;
 
-        //validation and get user details
-        const userDetails = await User.findById(id).populate("additionalDetails").exec();
-        //return response
-        return res.status(200).json({
-            success:true,
-            message:'User Data Fetched Successfully',
-            userDetails
-        });
-       
-    }
-    catch(error) {
-        return res.status(500).json({
-            success:false,
-            message:error.message,
-        });
-    }
+    //validation and get user details
+    const userDetails = await User.findById(id).populate("additionalDetails").exec();
+    //return response
+    return res.status(200).json({
+      success: true,
+      message: 'User Data Fetched Successfully',
+      userDetails
+    });
+
+  }
+  catch (error) {
+    return res.status(500).json({
+      success: false,
+      message: error.message,
+    });
+  }
 }
 
 
-exports.getStudentEnrolledCourse = async (req,res)=> {
-    try {
-         const user_id = req.user.id;
+exports.getStudentEnrolledCourse = async (req, res) => {
+  try {
+    const user_id = req.user.id;
 
 
-         const userDetails = await User.findOne({_id:user_id}).populate("courses").exec();
-         if (!userDetails) {
-            return res.status(400).json({
-              success: false,
-              message: `Could not find user with id: ${userDetails}`,
-            })
+    const userDetails = await User
+      .findOne({ _id: user_id })
+      .populate({
+        path: "courses",
+        populate: {
+          path: "courseContent",
+          populate: {
+            path: "subSection",
           }
-          console.log(userDetails);
-          return res.status(200).json({
-            success: true,
-            data: userDetails.courses,
-          })
-    }catch (error) {
-      console.log(error);
-        return res.status(500).json({
-          success: false,
-          message: error.message,
-        })
-      }
+        }
+      })
+      .exec();
+    console.log(userDetails.courses);
+    if (!userDetails) {
+      return res.status(400).json({
+        success: false,
+        message: `Could not find user with id: ${userDetails}`,
+      })
+    }
+    console.log(userDetails);
+    return res.status(200).json({
+      success: true,
+      data: userDetails.courses,
+    })
+  } catch (error) {
+    console.log(error);
+    return res.status(500).json({
+      success: false,
+      message: error.message,
+    })
+  }
 }
 
 
 
 exports.updateDisplayPicture = async (req, res) => {
-  console.log("In side "+JSON.stringify(req.files.image));
+  console.log("In side " + JSON.stringify(req.files.image));
   try {
     const displayPicture = req.files.image
     const userId = req.user.id
@@ -146,7 +157,7 @@ exports.updateDisplayPicture = async (req, res) => {
       1000,
       1000
     )
-    
+
     const updatedProfile = await User.findByIdAndUpdate(
       { _id: userId },
       { image: image.secure_url },

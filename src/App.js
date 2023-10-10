@@ -23,6 +23,8 @@ import EditCourse from "./components/core/Dashboard/instructor/EditCourse/index"
 import Instructor from "./components/core/Dashboard/InstructorDashboard/Instructor";
 import Catalog from "./Pages/Catalog";
 import CourseDetails from "./Pages/CourseDetails";
+import ViewCourse from "./Pages/ViewCourse";
+import ViewCourseVideoDetails from "./components/core/ViewCourse/ViewCourseVideoDetails";
 
 
 function App() {
@@ -55,6 +57,14 @@ function App() {
           <Route path="dashboard/add-Course" element={<AddCourse />} />
           <Route path="dashboard/edit-course/:courseId" element={<EditCourse />} />
           <Route path="dashboard/instructor" element={<Instructor />} />
+
+        </Route>
+
+        {/* <ViewCourseSideBar /> */}
+        <Route element={<ViewCourse />} >
+
+          <Route path="view-course/:courseId/section/:sectionId/sub-section/:subSectionId" element={<ViewCourseVideoDetails />} />
+
         </Route>
 
         <Route path="/signup" element={<SignUp />} />
