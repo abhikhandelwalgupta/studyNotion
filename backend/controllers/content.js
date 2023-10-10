@@ -2,7 +2,7 @@ const mailSender = require("../util/mailSender");
 
 exports.contentSave = async (req, res) => {
   try {
-    const userId = req.user.id;
+   
     const { firstName, lastName, email, phoneNo, message } = req.body;
     const supportEmail = "abhishekkhandelwl1212@gmail.com";
 

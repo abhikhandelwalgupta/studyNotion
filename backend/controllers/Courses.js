@@ -6,6 +6,9 @@ const Courses = require("../models/Courses");
 const { uploadImageToCloudinay } = require("../util/imageUploader");
 const Section = require("../models/Section");
 const SubSection = require("../models/SubSection");
+const { default: mongoose } = require("mongoose");
+const { convertSecondsToDuration } = require("../util/secToDuration");
+const CourseProgress = require("../models/CourseProgress");
 require("dotenv").config();
 
 exports.createCourse = async (req, res) => {
@@ -359,3 +362,81 @@ exports.deleteCourse = async (req, res) => {
 
 };
 
+
+
+exports.getEnrolledCourseDetails = async (req, res) => {
+  try {
+    const { courseId } = req.body;
+
+    const userId = req.user.id
+
+    const uid = new mongoose.Types.ObjectId(userId);
+
+    if (!courseId) {
+      return res.status(404).json({
+        success: false,
+        message: "Course id  feild are mandatory"
+      })
+    }
+
+
+    const courseDetails = await Courses.findById(courseId)
+      .populate({
+        path: "instructor",
+        populate: {
+          path: "profile",
+        },
+      })
+      .populate("ratingAndReview")
+      .populate("category")
+      .populate({
+        path: "courseContent",
+        populate: {
+          path: "subSection"
+        }
+      }).exec();
+
+
+    if (!courseDetails.studentsEnrolled.includes(uid)) {
+      return res.status(401).json({
+        success: false,
+        message: "Please Enrolled this is course"
+      })
+    }
+
+    let courseProgressCount = await CourseProgress.findOne({
+      courseID: courseId,
+      userId: userId,
+    })
+
+    let totalDurationInSeconds = 0;
+    courseDetails.courseContent.forEach((content) => {
+      content.subSection.forEach((subSection) => {
+        const timeDurationInSeconds = parseInt(subSection.timeDuration)
+        totalDurationInSeconds += timeDurationInSeconds
+      })
+    })
+
+    const totalDuration = convertSecondsToDuration(totalDurationInSeconds)
+
+    return res.status(200).json({
+      success: true,
+      data: {
+        courseDetails,
+        totalDuration,
+        completedVideos: courseProgressCount?.completedVideos
+          ? courseProgressCount?.completedVideos
+          : [],
+      }
+    })
+
+
+
+  } catch (error) {
+    console.log(error);
+    return res.status(500).json({
+      success: false,
+      message: "Something went wrong"
+    })
+  }
+}

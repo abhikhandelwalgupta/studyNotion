@@ -9,6 +9,7 @@ const {
   COURSE_GETCOURSEDETAILS,
   EDIT_COURSE,
   COURSE_DELETE,
+  GET_ENROLLED_COURSEDETAILS,
   COURSE_CATEGORY_DETAILS
 } = courseEndpoints;
 
@@ -156,4 +157,26 @@ export const getCategoryDetails = async () => {
   }
 
   toast.dismiss(toastId)
+}
+
+export const getEnrolledCourseDetails = async (courseId, token) => {
+  const toastId = toast.loading("loading...")
+  let result
+  try {
+
+    const response = await apiconnector("POST", GET_ENROLLED_COURSEDETAILS, { courseId }, {
+      "Content-Type": "multipart/form-data",
+      Authorization: `Bearer ${token}`,
+    })
+
+    if (!response.data.success) {
+      throw new Error(response.data.message)
+    }
+    result = response?.data?.data
+  } catch (error) {
+    console.log(error);
+    toast.error(error?.message)
+  }
+  toast.dismiss(toastId)
+  return result
 }

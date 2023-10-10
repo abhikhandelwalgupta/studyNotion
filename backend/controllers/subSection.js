@@ -1,7 +1,7 @@
 const SubSection = require("../models/SubSection");
 const Section = require("../models/Section");
 const { uploadImageToCloudinay } = require("../util/imageUploader");
-const User = require("../models/User");
+
 require("dotenv").config();
 
 exports.createSubSection = async (req, res) => {
@@ -136,50 +136,3 @@ exports.deleteSubSection = async (req, res) => {
     })
   }
 };
-
-exports.getSubSectionDetails = async (req, res) => {
-  try {
-    const { subSectionId, sectionId, courseId } = req.body;
-    const userId = req.user.id
-
-    if (!subSectionId && !sectionId && !courseId) {
-      return res.status(404).json({
-        success: false,
-        message: "Course id , section id and subSection id feild are mandatory"
-      })
-    }
-
-    const userDetails = User.findById(userId);
-
-    if (!userDetails.courses.include(courseId)) {
-      return res.status(401).json({
-        success: false,
-        message: "Please Enrolled this is course"
-      })
-    }
-
-    const subSubSectionDetails = SubSection.findById(subSectionId)
-
-    if (!subSubSectionDetails) {
-      return res.status(404).json({
-        success: false,
-        message: "Sub Section not found"
-      })
-    }
-    return res.status(200).json({
-      success: true,
-      subSubSection: subSubSectionDetails
-    })
-
-
-
-  } catch (error) {
-    console.log(error);
-    return res.status(500).json({
-      success: false,
-      message: "Something went wrong"
-    })
-  }
-}
-
-
