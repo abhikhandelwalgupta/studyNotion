@@ -13,6 +13,7 @@ const { createRating, getAverageRating, getAllRating, } = require("../controller
 const { auth, isStudent, isInstructor } = require("../middleware/auth");
 // const { route } = require("./routes");
 const { createSubSection, updateSubSection, deleteSubSection } = require("../controllers/subSection");
+const { updateCourseProgress } = require("../controllers/courseProgress");
 
 
 router.post("/createCourse", auth, isInstructor, createCourse);
@@ -29,6 +30,7 @@ router.post("/getInstructorCourse", auth, isInstructor, getInstructorCourse)
 router.delete("/deleteCourse", auth, isInstructor, deleteCourse)
 router.put("/updateMainSection", auth, isInstructor, updateMainSection)
 router.post("/getEnrolledCourseDetails", auth, isStudent, getEnrolledCourseDetails)
+router.post("/markLectureAsComplete", auth, isStudent, updateCourseProgress)
 
 
 

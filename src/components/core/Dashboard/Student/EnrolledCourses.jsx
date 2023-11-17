@@ -49,7 +49,6 @@ const EnrolledCourses = () => {
 
               (enrolledCourses) ?
                 enrolledCourses?.map((course, i) => {
-                  console.log(course)
                   return (
                     <tr className=" border-richblack-700 border" key={i}>
                       <td data-label="Course Name" className="py-4 px-4 h-3">

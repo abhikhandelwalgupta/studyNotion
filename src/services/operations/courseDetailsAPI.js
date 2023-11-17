@@ -10,7 +10,8 @@ const {
   EDIT_COURSE,
   COURSE_DELETE,
   GET_ENROLLED_COURSEDETAILS,
-  COURSE_CATEGORY_DETAILS
+  COURSE_CATEGORY_DETAILS,
+  COURSE_MARKASCOMPLETE
 } = courseEndpoints;
 
 export const fetchCourseCategories = async () => {
@@ -179,4 +180,22 @@ export const getEnrolledCourseDetails = async (courseId, token) => {
   }
   toast.dismiss(toastId)
   return result
+}
+
+export const markLectureAsComplete = async (data, token) => {
+  const toastId = toast.loading("loading...")
+  try {
+    const { courseId, subSectionId } = data;
+
+    const res = await apiconnector("POST", COURSE_MARKASCOMPLETE, { courseId, subSectionId }, {
+      "Content-Type": "multipart/form-data",
+      Authorization: `Bearer ${token}`,
+    })
+
+    console.log(res);
+
+  } catch (error) {
+
+  }
+  toast.dismiss(toastId)
 }

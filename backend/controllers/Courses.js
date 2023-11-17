@@ -1,4 +1,5 @@
 const course = require("../models/Courses");
+
 // const Tag = require("../models/Tag");
 const User = require("../models/User");
 const Category = require("../models/Category");
@@ -12,7 +13,7 @@ const CourseProgress = require("../models/CourseProgress");
 require("dotenv").config();
 
 exports.createCourse = async (req, res) => {
-  console.log(`files :- `, req.files.thumbnailImage);
+
   try {
     let {
       courseName,
@@ -439,4 +440,9 @@ exports.getEnrolledCourseDetails = async (req, res) => {
       message: "Something went wrong"
     })
   }
+}
+
+
+exports.markLectureAsComplete = async (req, res) => {
+  
 }
