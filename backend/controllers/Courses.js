@@ -288,6 +288,7 @@ exports.editCourse = async (req, res) => {
 exports.getInstructorCourse = async (req, res) => {
   try {
     const userId = req.user.id;
+
     // const user = User;
     const result = await Courses.find({ instructor: userId })
       .populate("category")
@@ -444,5 +445,5 @@ exports.getEnrolledCourseDetails = async (req, res) => {
 
 
 exports.markLectureAsComplete = async (req, res) => {
-  
+
 }

@@ -114,7 +114,7 @@ const NavBar = () => {
         <div className="flex gap-4 items-center text-richblack-100">
           {user && user?.accountType === "Student" && (
             <Link to="/dashboard/cart" className="relative">
-              <AiOutlineShoppingCart />
+              <span className="flex"><AiOutlineShoppingCart className={`${totalItem> 0 ? "text-3xl" : "text-xl"} `} /></span>
               {totalItem > 0 && <span className="absolute -bottom-2 -right-2 grid h-5 w-5 place-items-center overflow-hidden rounded-full bg-richblack-600 text-center text-xs font-bold text-yellow-100">
                 {totalItem}
               </span>}

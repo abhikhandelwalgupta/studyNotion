@@ -18,7 +18,9 @@ export const profileEndPoint = {
   DELETEPROFILE_API: BASE_URL + "profile/deleteProfile",
   GETUSERDETAIL_API: BASE_URL + "profile/getUserDetails",
   GETENROLLEDCOURSE_API: BASE_URL + "profile/getEnrolledCourses",
-  GET_STUDENT_COURSES: BASE_URL + "profile/getStudentEnrolledCourse"
+  GET_STUDENT_COURSES: BASE_URL + "profile/getStudentEnrolledCourse",
+  GET_INSTRUCTOR_DATA_API: BASE_URL + "profile/instructorDashboard",
+  
 };
 
 export const settingsEndpoints = {

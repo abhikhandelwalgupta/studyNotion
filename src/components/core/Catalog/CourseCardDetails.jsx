@@ -7,13 +7,12 @@ const CourseCardDetails = ({ course, handleBuyCourse }) => {
     const { user } = useSelector((state) => state.profile)
     const navigate = useNavigate()
 
-    console.log(user)
     const {
         price,
         thumbnail,
         studentsEnrolled
     } = course?.data
-    
+
 
     const handlecourseEntrolled = () => {
         navigate("/dashboard/enrolled-courses")

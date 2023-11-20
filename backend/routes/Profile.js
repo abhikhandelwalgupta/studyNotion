@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const { auth, isStudent } = require("../middleware/auth")
+const { auth, isStudent, isInstructor } = require("../middleware/auth")
 const {
   deleteAccount,
   updateProfile,
@@ -8,6 +8,7 @@ const {
   updateDisplayPicture,
   //getEntrolledCourse,
   getStudentEnrolledCourse,
+  instructorDashboard,
 } = require("../controllers/Profile");
 
 
@@ -19,5 +20,6 @@ router.get("/getUserDetails", auth, getAllUserDetails)
 // router.get("/getEnrolledCourses", auth, getEntrolledCourse)
 router.put("/updateDisplayPicture", auth, updateDisplayPicture)
 router.get("/getStudentEnrolledCourse", auth, isStudent, getStudentEnrolledCourse)
+router.get("/instructorDashboard" ,auth, isInstructor, instructorDashboard)
 
 module.exports = router

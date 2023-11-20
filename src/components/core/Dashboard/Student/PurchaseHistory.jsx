@@ -32,47 +32,34 @@ const PurchaseHistory = () => {
           Purchase History
         </h1>
       </div>
-      <div className="py-20">
-        <table className="md:border border-collapse rounded-md border-richblack-700 py-8 w-full table-auto">
-          <thead className="text-richblack-5   rounded-md text-left !ml-4 py-4 !px-12">
-            <tr className="border border-collapse rounded-md border-richblack-700 !py-20">
-              <th  >Course </th>
-              <th>Purchase Date</th>
-              <th>Amount</th>
-            </tr>
-          </thead>
-          <tbody >
-            {
-              (enrolledCourses) ?
-                enrolledCourses?.map((course, i) => {
-                  return (
-                    <tr key={i}>
-                      <td data-label="Course :">
-                        <div className="flex items-center gap-8">
-                          <img alt="" src={course?.thumbnail} width={"100px"} height={"100px"} className="md:block hidden rounded" />
-                          <h2 className="text-richblack-25  font-bold">{course.courseName}</h2>
-                        </div>
-                      </td>
-                      <td data-label="Purchase Date :">{course.createAt.split("T")[0]}</td>
-                      <td data-label="Amount :">{course.price}.00</td>
-                    </tr>
-                  )
-                }) :
-                (
-                  <tr>
-                    <td colSpan={3}>
-                      <div className="text-white w-full text-center py-4">
-                        <h2>There is no course Purchased </h2>
-                      </div>
-                    </td>
-                  </tr>
-                )
-            }
+      <div className="py-20 text-richblack-5">
+        <div className="flex gap-3 w-full bg-richblack-500 py-3 px-2">
+          <p className="w-[45%]">Course</p>
+          <p className="w-[30%]">Purchase</p>
+          <p className="w-[25%]">Amount</p>
+        </div>
+        {
+          (!enrolledCourses) ?
+            <div className="grid min-h-[calc(100vh-3.5rem)] place-items-center">
+              <div className="spinner"></div>
+            </div> :
+            !enrolledCourses.length ?
+              <p className="grid h-[10vh] w-full place-content-center text-richblack-5">
+                You have not Purchase in any course yet.
+              </p> :
+              enrolledCourses.map((course, i) => (
+                <div className=" flex  items-center border border-richblack-700 p-2 " key={i}>
+                  <div className="flex items-center gap-8 w-[45%]">
+                    <img alt="" src={course?.thumbnail} width={"100px"} height={"100px"} className="md:block hidden rounded  object-cover" />
+                    <h2 className="text-richblack-25  font-bold">{course.courseName}</h2>
+                  </div>
+                  <p className="w-[30%]">{course.createAt.split("T")[0]}</p>
+                  <p className="w-[25%]">{course.price}.00</p>
+                </div>
+              ))
 
+        }
 
-          </tbody>
-
-        </table>
       </div>
     </div>
   );

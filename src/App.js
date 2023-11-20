@@ -13,7 +13,7 @@ import MyProfile from "./components/core/Dashboard/MyProfile";
 import OpenRoute from "./components/core/Auth/OpenRoute"
 import Dashboard from "./Pages/Dashboard";
 import MyCourse from "./components/core/Dashboard/instructor/MyCourse";
-import Cart from "./components/core/Dashboard/Student/Cart";
+// import Cart from "./components/core/Dashboard/Student/Cart";
 import PurchaseHistory from "./components/core/Dashboard/Student/PurchaseHistory";
 import WishList from "./components/core/Dashboard/Student/WishList";
 import EnrolledCourses from "./components/core/Dashboard/Student/EnrolledCourses";
@@ -25,6 +25,7 @@ import Catalog from "./Pages/Catalog";
 import CourseDetails from "./Pages/CourseDetails";
 import ViewCourse from "./Pages/ViewCourse";
 import ViewCourseVideoDetails from "./components/core/ViewCourse/ViewCourseVideoDetails";
+import Cart from "./components/core/Dashboard/Cart/index"
 
 
 function App() {
