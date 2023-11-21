@@ -1,5 +1,6 @@
 const RatingAndReview = require("../models/RatingAndReview");
 const Course = require("../models/Courses");
+const { default: mongoose } = require("mongoose");
 
 exports.createRating = async (req, res) => {
   try {
@@ -125,7 +126,7 @@ exports.getAllRating = async (req, res) => {
     return res.status(200).json({
       success: true,
       message: "All reviews fetched successfully",
-      data: allReviews,
+      data: allRating,
     });
   } catch (error) {
     console.log(error);

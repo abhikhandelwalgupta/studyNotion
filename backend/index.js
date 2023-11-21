@@ -15,6 +15,7 @@ const userRouter = require("./routes/User");
 const paymentRoutes = require("./routes/Payments");
 const courseRoutes = require("./routes/Course");
 const profileRoutes = require("./routes/Profile");
+const wishListRoutes = require("./routes/WishList");
 
 const logger = (req, res, next) => {
   console.log(`${req.method}  ${req.url}`);
@@ -44,6 +45,7 @@ app.use("/api/v1/auth", userRouter);
 app.use("/api/v1/profile", profileRoutes);
 app.use("/api/v1/course", courseRoutes);
 app.use("/api/v1/payment", paymentRoutes);
+app.use("/api/v1/wishlist", wishListRoutes);
 
 app.get("/", (req, res) => {
   res.send("Server is running.. ");

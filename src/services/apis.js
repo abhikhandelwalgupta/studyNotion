@@ -20,7 +20,7 @@ export const profileEndPoint = {
   GETENROLLEDCOURSE_API: BASE_URL + "profile/getEnrolledCourses",
   GET_STUDENT_COURSES: BASE_URL + "profile/getStudentEnrolledCourse",
   GET_INSTRUCTOR_DATA_API: BASE_URL + "profile/instructorDashboard",
-  
+
 };
 
 export const settingsEndpoints = {
@@ -68,4 +68,12 @@ export const studentEndpoints = {
   COURSE_PAYMENT_API: BASE_URL + "payment/capturePayment",
   COURSE_VERIFY_API: BASE_URL + "payment/verifyPayment",
   SEND_PAYMENT_SUCCESS_EMAIL_API: BASE_URL + "payment/sendPaymentSuccessEmail",
+}
+
+
+//WISHLIST
+
+export const wishListEndPoints = {
+  GET_USER_WISH_LIST_API: BASE_URL + "wishlist/getUserWishList",
+  ADD_WISHLIST_API: BASE_URL + "wishlist/addWishList"
 }
