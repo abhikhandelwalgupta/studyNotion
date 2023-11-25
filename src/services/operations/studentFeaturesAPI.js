@@ -36,6 +36,11 @@ export async function buyCourse(token, courses, useDetails, navigate, dispatch) 
             Authorization: `Bearer ${token}`,
         })
         if (!orderResponse?.data.success) {
+            if (orderResponse?.status === 201) {
+                toast.error(orderResponse.data.message)
+                toast.dismiss(toastId)
+                return
+            }
             throw new Error(orderResponse.data.message);
         }
 

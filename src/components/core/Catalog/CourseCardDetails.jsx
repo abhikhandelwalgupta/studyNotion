@@ -1,10 +1,15 @@
 import React from 'react'
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
+import { ACCOUNT_TYPE } from '../../../utils/constants';
+import toast from 'react-hot-toast';
+import { addToCart } from '../../../slices/cartSlice';
 
-const CourseCardDetails = ({ course, handleBuyCourse }) => {
+const CourseCardDetails = ({ course, handleBuyCourse, setConfirmationModal }) => {
 
     const { user } = useSelector((state) => state.profile)
+    const { token } = useSelector((state) => state.auth)
+    const dispatch = useDispatch()
     const navigate = useNavigate()
 
     const {
@@ -16,6 +21,25 @@ const CourseCardDetails = ({ course, handleBuyCourse }) => {
 
     const handlecourseEntrolled = () => {
         navigate("/dashboard/enrolled-courses")
+    }
+
+    const handleAddToCart = () => {
+        if (user && user?.accountType === ACCOUNT_TYPE.INSTRUCTOR) {
+            toast.error("You are an Instructor. You can't buy a course.")
+            return
+        }
+        if (token) {
+            dispatch(addToCart(course))
+            return
+        }
+        setConfirmationModal({
+            text1: "You are not logged in!",
+            text2: "Please login to add To Cart",
+            btn1Text: "Login",
+            btn2Text: "Cancel",
+            btn1Handler: () => navigate("/login"),
+            btn2Handler: () => setConfirmationModal(null),
+        })
     }
 
 
@@ -46,7 +70,7 @@ const CourseCardDetails = ({ course, handleBuyCourse }) => {
                                             Buy Now
 
                                         </button>
-                                        <button className="blackButton">
+                                        <button className="blackButton" onClick={handleAddToCart}>
                                             Add to Cart
                                         </button>
                                     </>

@@ -9,12 +9,14 @@ import CourseAccordionBar from "../components/core/Course/CourseAccordionBar";
 import Error from "./Error";
 import { useDispatch, useSelector } from "react-redux";
 import { buyCourse } from "../services/operations/studentFeaturesAPI";
+import ConfirmationModal from "../components/comman/ConfirmationModal"
 
 const CourseDetails = () => {
     const { courseId } = useParams();
     const { token } = useSelector((state) => state.auth)
     const { user } = useSelector((state) => state.profile)
     const [response, setResponse] = useState(null);
+    const [confirmationModal, setConfirmationModal] = useState(null)
     const navigate = useNavigate()
     const dispatch = useDispatch()
     // Total number of lectures
@@ -69,8 +71,14 @@ const CourseDetails = () => {
             buyCourse(token, [courseId], user, navigate, dispatch)
             return
         }
-
-       
+        setConfirmationModal({
+            text1: "You are not logged in!",
+            text2: "Please login to Purchase Course.",
+            btn1Text: "Login",
+            btn2Text: "Cancel",
+            btn1Handler: () => navigate("/login"),
+            btn2Handler: () => setConfirmationModal(null),
+        })
     }
 
     const {
@@ -85,7 +93,7 @@ const CourseDetails = () => {
 
 
 
-   
+
     return (
         <>
             <div className="relative w-full  bg-richblack-800">
@@ -104,7 +112,7 @@ const CourseDetails = () => {
                             <p>Created at {formatDate(createAt)} English</p>
                         </div>
                         <div className="right-[8rem] top-[60px] mx-auto hidden min-h-[600px] w-1/3 max-w-[410px] translate-y-24 md:translate-y-0 lg:absolute  lg:block">
-                            <CourseCardDetails course={response} handleBuyCourse={handleBuyCourse} />
+                            <CourseCardDetails course={response} handleBuyCourse={handleBuyCourse} setConfirmationModal={setConfirmationModal} />
                         </div>
                     </div>
                 </div>
@@ -175,6 +183,7 @@ const CourseDetails = () => {
 
             {/* Footer */}
             <Footer />
+            {confirmationModal && <ConfirmationModal modalData={confirmationModal} />}
         </>
     );
 };

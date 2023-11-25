@@ -6,7 +6,10 @@ import ReactStars from "react-rating-stars-component"
 import { removeFromCart } from '../../../../slices/cartSlice'
 
 export default function RenderCartCourses() {
-    const { cart } = useSelector((state) => state.cart)
+    console.log("Inside cart course ")
+    const { totalItem, cart } = useSelector((state) => state.cart)
+    console.log(cart);
+    console.log(totalItem);
     const dispatch = useDispatch()
     return (
         <div className="flex flex-1 flex-col">
