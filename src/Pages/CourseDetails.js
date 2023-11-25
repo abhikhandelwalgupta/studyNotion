@@ -78,7 +78,7 @@ const CourseDetails = () => {
             btn2Text: "Cancel",
             btn1Handler: () => navigate("/login"),
             btn2Handler: () => setConfirmationModal(null),
-        })
+        })g
     }
 
     const {
