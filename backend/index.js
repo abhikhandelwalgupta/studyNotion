@@ -26,7 +26,7 @@ const logger = (req, res, next) => {
 app.use(logger)
 app.use(
 	cors({
-		origin:["http://localhost:3000" , "http://192.168.29.118:3000" ,"http://192.168.29.118:3006","http://localhost:3006"],
+		origin:["http://localhost:3000" , "http://192.168.29.118:3000" ,"http://192.168.29.118:3006","http://localhost:3006" ,"https://study-notion-peach.vercel.app"],
 		credentials:true,
 	})
 )
