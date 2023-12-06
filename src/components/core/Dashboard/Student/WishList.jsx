@@ -37,12 +37,12 @@ const WishList = () => {
           </h1>
         </div>
 
-        <p className="text-richblack-300 ">{wishlist.length} Courses in Wishlist</p>
+        <p className="text-richblack-300 ">{wishlist?.length} Courses in Wishlist</p>
       </div>
       <div className="flex w-full gap-6">
         <div className="flex w-full flex-col gap-4">
           {
-            wishlist.map((course, i) => (
+            wishlist?.map((course, i) => (
               <div key={i}>
                 <WishListCard image={wishlistImage} course={course} removeFromWish={removeFromWish} />
 
