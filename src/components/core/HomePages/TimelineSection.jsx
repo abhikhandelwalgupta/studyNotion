@@ -31,8 +31,8 @@ const timeLine = [
 export const TimelineSection = () => {
   return (
 
-    <div className="flex flex-row items-center justify-center  gap-20  w-full">
-      <div className="w-[40%]">
+    <div className="flex flex-row items-center justify-center  gap-20 xs:flex-col w-full">
+      <div className="w-[40%] xs:w-[100%]">
         {timeLine.map((element, index) => {
           return (
             <div
@@ -56,7 +56,7 @@ export const TimelineSection = () => {
           );
         })}
       </div>
-      <div className="relative  shadow-blue-200 w-[50%]">
+      <div className="relative  shadow-blue-200 w-[50%] xs:w-[100%]">
         <input
           type="image"
 
@@ -67,18 +67,18 @@ export const TimelineSection = () => {
           width={"100%"}
         />
         <div
-          className="absolute bg-caribbeangreen-700 flex flex-row  text-white uppercase py-7
+          className="absolute bg-caribbeangreen-700 flex flex-row  text-white uppercase py-7 
                             left-[50%] translate-x-[-50%] translate-y-[-50%]"
         >
-          <div className="flex flex-row gap-5 items-center border-r border-caribbeangreen-300 px-7">
-            <p className="text-3xl font-bold">10</p>
+          <div className="flex flex-row gap-5 items-center border-r border-caribbeangreen-300 px-7 xs:px-4">
+            <p className="text-3xl font-bold xs:text-xl">10</p>
             <p className="text-caribbeangreen-300 text-sm">
               Years of Experience
             </p>
           </div>
 
-          <div className="flex gap-5 items-center px-7">
-            <p className="text-3xl font-bold">250</p>
+          <div className="flex gap-5 items-center px-7 xs:px-4">
+            <p className="text-3xl font-bold xs:text-xl">250</p>
             <p className="text-caribbeangreen-300 text-sm">TYpe of Courses</p>
           </div>
         </div>

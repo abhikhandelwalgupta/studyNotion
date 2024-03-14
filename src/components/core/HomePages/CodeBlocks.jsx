@@ -5,14 +5,14 @@ import { TypeAnimation } from 'react-type-animation';
 
 export const CodeBlocks = ({position , heading , subheading ,ctabtn1 , ctabtn2 , codeblock , bgGradient , codeblockStyle }) => {
   return (
-    <div className={`flex ${position} w-full my-20 justify-between gap-20 `}>
+    <div className={`flex ${position} w-full my-20 justify-between gap-20 xs:flex-col xs:item-center `}>
         {/* Section 1 */}
-        <div className='w-[50%] flex flex-col gap-4'>
+        <div className='w-[50%] flex flex-col gap-4 xs:w-[100%]  '>
             {heading}
-            <div className='text-richblack-200 font-bold '>
+            <div className='text-richblack-200 font-bold  '>
                 {subheading}
             </div>
-            <div className='flex font-bold gap-7 mt-8 '>
+            <div className='flex font-bold gap-7 mt-8   xs:items-center xs:justify-center xs:mx-auto xs:text-sm'>
                 <CTABUTTON active={ctabtn1.active} linkto={ctabtn1.linkto } >
                     <div className='flex font-bold gap-2 items-center'>
                         {ctabtn1.btnText}
@@ -27,7 +27,7 @@ export const CodeBlocks = ({position , heading , subheading ,ctabtn1 , ctabtn2 ,
         </div>
 
         {/* Section 2 */}
-        <div className={`flex h-fit text-[16px]   shadow-2xl  l w-[40%] border-[0.5px]  border-richblue-100 codeBlock-border p-4`}>
+        <div className={`flex h-fit text-[16px]   shadow-2xl  xs:w-[90%] w-[40%] border-[0.5px]  border-richblue-100 codeBlock-border p-4`}>
             <div className={`${codeblockStyle} absolute`}></div>
         <div className='text-center flex flex-col w-[10%] text-richblack-400 font-inter font-bold'>
             <p>1</p>
@@ -43,7 +43,7 @@ export const CodeBlocks = ({position , heading , subheading ,ctabtn1 , ctabtn2 ,
             <p>11</p>
         </div>
         <div className='grid grid-cols-3  divide-x'></div>
-        <div className={`w-[90%] flex flex-col text-pink-100 font-bold font-mono ${codeblock} `}>
+        <div className={`w-[90%] xs:w-[80%] xs:text-xs flex flex-col text-pink-100 font-bold font-mono ${codeblock} `}>
             <TypeAnimation 
             sequence={[codeblock , 10000 ,""]} 
             repeat={Infinity} style={{

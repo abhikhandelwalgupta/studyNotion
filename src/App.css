@@ -11,14 +11,6 @@ body {
 }
 
 
-.box-shadow-3d {
-  box-shadow: 21px 21px 0px #fff,
-    0px 0px 10px rgb(10 90 114 / 0.5),
-    0px 0px 10px rgb(10 90 114 / 0.5),
-    0px 0px 10px rgb(10 90 114 / 0.5),
-    0px 0px 100px rgb(10 90 114 / 0.5),
-    0px 0px 0px rgb(10 90 114 / 0.5);
-}
 
 .gradient-text {
   background: -webkit-linear-gradient(118.19deg, #1FA2FF -3.62%, #12D8FA 50.44%, #A6FFCB 104.51%);
@@ -114,20 +106,7 @@ body {
   transform: matrix(1, 0, -0.03, 1, 0, 0);
 }
 
-.codeblock1 {
-  width: 372.95px;
-  height: 257.05px;
-  border-radius: 100%;
-  left: calc(80% - 372.95px / 2 - 76.53px);
-  top: calc(60% - 257.05px / 2 - 47.47px);
-  background: linear-gradient(123.77deg,
-      #8a2be2 -6.46%,
-      #ffa500 59.04%,
-      #f8f8ff 124.53%);
-  opacity: 0.2;
-  filter: blur(34px);
-  transform: matrix(1, 0, -0.03, 1, 0, 0);
-}
+
 
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
@@ -140,12 +119,74 @@ input[type=number] {
   -moz-appearance: textfield;
 }
 
+
+@media (min-width: 360px) and (max-width: 479px) {
+  .codeblock1 {
+    width: 372.95px;
+    height: 257.05px;
+    border-radius: 100%;
+    left: calc(70% - 372.95px / 2 - 76.53px);
+    top: calc(50% - 257.05px / 2 - 47.47px);
+    background: linear-gradient(123.77deg,
+        #8a2be2 -6.46%,
+        #ffa500 59.04%,
+        #f8f8ff 124.53%);
+    opacity: 0.2;
+    filter: blur(34px);
+    transform: matrix(1, 0, -0.03, 1, 0, 0);
+  }
+
+  
+.codeblock2 {
+  position: absolute;
+  width: 372.95px;
+  height: 257.05px;
+  left: calc(60% - 372.95px / 2 - 76.53px);
+  top: calc(85% - 257.05px / 2 - 47.47px);
+  border-radius: 100%;
+  background: linear-gradient(118.19deg,
+      #1fa2ff -3.62%,
+      #12d8fa 50.44%,
+      #a6ffcb 104.51%);
+  opacity: 0.2;
+  filter: blur(34px);
+  transform: matrix(1, 0, -0.03, 1, 0, 0);
+}
+}
+@media (min-width: 768px ) {
+   .box-drop-shadow {
+  box-shadow: -20px -20px 0px 0px #FFFFFF;
+}
+.box-shadow-3d {
+  box-shadow: 21px 21px 0px #fff,
+    0px 0px 10px rgb(10 90 114 / 0.5),
+    0px 0px 10px rgb(10 90 114 / 0.5),
+    0px 0px 10px rgb(10 90 114 / 0.5),
+    0px 0px 100px rgb(10 90 114 / 0.5),
+    0px 0px 0px rgb(10 90 114 / 0.5);
+}
+
+.codeblock1 {
+  width: 372.95px;
+  height: 257.05px;
+  border-radius: 100%;
+  left: calc(90% - 372.95px / 2 - 76.53px);
+  top: calc(65% - 257.05px / 2 - 47.47px);
+  background: linear-gradient(123.77deg,
+      #8a2be2 -6.46%,
+      #ffa500 59.04%,
+      #f8f8ff 124.53%);
+  opacity: 0.2;
+  filter: blur(34px);
+  transform: matrix(1, 0, -0.03, 1, 0, 0);
+}
+
 .codeblock2 {
   position: absolute;
   width: 372.95px;
   height: 257.05px;
   left: calc(30% - 372.95px / 2 - 76.53px);
-  top: calc(80% - 257.05px / 2 - 47.47px);
+  top: calc(85% - 257.05px / 2 - 47.47px);
   border-radius: 100%;
   background: linear-gradient(118.19deg,
       #1fa2ff -3.62%,
@@ -156,9 +197,7 @@ input[type=number] {
   transform: matrix(1, 0, -0.03, 1, 0, 0);
 }
 
-.box-drop-shadow {
-  box-shadow: -20px -20px 0px 0px #FFFFFF;
-}
+ }
 
 
 .form-style {

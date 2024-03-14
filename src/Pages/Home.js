@@ -26,10 +26,10 @@ export const Home = () => {
           </div>
         </Link>
 
-        <div className="text-center text-4xl font-semibold mt-12">
+        <div className="text-center text-4xl font-semibold mt-12 xs:text-2xl">
           Empower Your Future with <HightlightText text={"Coding Skills"} />
         </div>
-        <div className="text-center w-[90%] text-xl font-bold text-richblack-200 mt-4 ">
+        <div className="text-center w-[90%] text-[16px] font-bold text-richblack-200 mt-4 xs:text-[12px] xs:w-[100%] ">
           With our online coding courses, you can learn at your own pace, from
           anywhere in the world, and get access to a wealth of resources,
           including hands-on projects, quizzes, and personalized feedback from
@@ -45,7 +45,7 @@ export const Home = () => {
           </CTABUTTON>
         </div>
 
-        <div className="box-shadow-3d   shadow-blue-500/50   border-solid mx-8 my-[6rem]">
+        <div className="box-shadow-3d   shadow-blue-500/50   border-solid mx-8 my-[6rem] xs:my-[3rem]">
           <video muted loop autoPlay>
             <source src={Banner} />
           </video>
@@ -57,14 +57,14 @@ export const Home = () => {
             position={"lg:flex-row sm:flex-col"}
             codeblockStyle = {"codeblock1"}
             heading={
-              <div className="text-4xl font-semibold">
+              <div className="text-4xl font-semibold xs:text-2xl">
                 {" "}
                 Unlock your {<HightlightText text={"coding potential"} />} with
                 our online courses
               </div>
             }
             subheading={
-              <div className="text-justify w-[90%] text-xl font-bold text-richblack-200 mt-1 ">
+              <div className="text-justify w-[90%] text-[16px] xs:text-[12px] font-bold text-richblack-200 mt-1  xs:w-[100%] ">
                 Our courses are designed and taught by industry experts who have
                 years of experience in coding and are passionate about sharing
                 their knowledge with you.
@@ -91,16 +91,16 @@ export const Home = () => {
 
         <div>
           <CodeBlocks
-            position={"lg:flex-row-reverse"}
+            position={"xl:flex-row-reverse"}
             codeblockStyle = {"codeblock2"}
             heading={
-              <div className="text-4xl font-semibold">
+              <div className="text-4xl sm:text-2xl font-semibold">
                 {" "}
                 Start {<HightlightText text={"Coding in seconds"} />}{" "}
               </div>
             }
             subheading={
-              <div className="text-justify w-[90%] text-xl font-bold text-richblack-200 mt-1 ">
+              <div className="text-justify w-[90%] text-xl xs:text-sm  font-bold text-richblack-200 mt-1 ">
                 Go ahead, give it a try. Our hands-on learning environment means
                 you'll be writing real code from your very first lesson..
               </div>
@@ -148,20 +148,22 @@ export const Home = () => {
         </div>
 
         <div className="mx-auto w-11/12 max-w-maxContent  flex flex-col  items-center justify-between gap-6">
-          <div className="mt-[110px]  flex flex-row mb-10 items-center justify-center gap-12">
-            <div className="font-[600] w-[45%] text-4xl">
+          <div className="mt-[110px]  flex flex-row xs:flex-col  mb-10 items-center justify-center gap-12 xs:gap-4">
+            <div className="font-[600] w-[45%] xs:w-[100%] text-4xl xs:text-2xl">
               Get the skills you need for a{" "}
               <HightlightText text={"job that is in demand"} />.
             </div>
-            <div className="flex gap-8 flex-col w-[50%] items-start">
-              <div className="font-inter text-[16px] font-[500]">
+            <div className="flex gap-8 flex-col w-[50%] xs:w-[100%] items-start">
+              <div className="font-inter text-[16px] font-[500] xs:text-[12px]">
                 The modern StudyNotion is the dictates its own terms. Today, to
                 be a competitive specialist requires more than professional
                 skills.
               </div>
+              <div className="xs:w-[50%] xs:mx-auto">
               <CTABUTTON active={true} linkto={"signup"}>
                 <div className="font-bold">Learn More</div>
               </CTABUTTON>
+              </div>
             </div>
           </div>
           <TimelineSection/>
