@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom'
  
 export const SectionOne = () => {
   return (
-    <div className='flex lg:flex-col flex-wrap flex-col lg:w-[25%] gap-6'>
+    <div className='flex xl:flex-col flex-wrap flex-col xl:w-[30%] xs:w-[50%] sm:w-[30%] gap-6'>
           <div><img src={Logo} alt='Logo' className='object-contain' /></div>
           <div className='flex flex-col gap-4'>
             <h1 className='text-richblack-100 font-inter font-semibold -mt-2 flex flex-row text-[16px]'>Company</h1>

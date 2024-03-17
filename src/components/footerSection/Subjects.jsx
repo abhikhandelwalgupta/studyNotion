@@ -3,8 +3,8 @@ import {FooterLink2} from "../../data/footer-links"
 import { Link } from 'react-router-dom'
 const Subjects = () => {
   return (
-    <div className='flex lg:-ml-6 w-[30%
-    ] flex-col font-inter gap-4 lg:pl-8 lg:border-l-2 lg:mt-0 mt-12 '>
+    <div className='flex xl:-ml-16 xl:w-[30%
+    ] flex-col font-inter gap-4 xl:pl-16 xl:border-l-2  xl:mt-12 '>
     <h1 className='font-semibold text-richblack-100'>{FooterLink2[0].title}</h1>
     {
       FooterLink2[0].links.map((ele, index)=>{

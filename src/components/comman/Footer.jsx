@@ -11,28 +11,28 @@ const BottomFooter = ["Privacy Policy", "Cookie Policy", "Terms"];
 
 const Footer = () => {
   return (
-    <div className="bg-richblack-600  text-richblack-400">
+    <div className="bg-richblack-800  text-richblack-400">
       <div className=" w-11/12 max-w-maxContent flex text-richblack-400 leading-4  py-14 items-center gap-3 mt-4 mx-auto justify-between font-inter">
-        <div className="border-b w-[100%] flex flex-col lg:flex-row   pb-5 border-richblack-700 ">
+        <div className="border-b w-[100%] flex flex-col xl:flex-row pb-8 gap-12 xl:gap-0  xl:pb-12 xl:border-richblack-500 ">
           {/* Section 1 */}
-          <div className="lg:w-[50%] flex flex-wrap flex-row justify-between  items-start   pl-3 lg:pr-5 gap-3  ">
+          < div className="xl:w-[50%] w-full flex flex-wrap flex-row justify-between  items-start   pl-3 xl:pr-5 gap-3  ">
             <SectionOne />
             <Resource />
             <PlanandCommunity />
           </div>
 
           {/* section 2 */}
-          <div className="flex flex-row w-[50%] flex-wrap lg:items-start items-center  justify-around gap-4 ">
+          <div className="  xl:w-[50%] w-full flex flex-wrap flex-row items-start   pl-3  justify-between xl:gap-4 ">
             <Subjects />
             <Language />
             <CareerBuilding />
           </div>
         </div>
       </div>
-      <div className="flex flex-row items-center justify-between w-11/12 lg:-mt-8 max-w-maxContent text-richblack-400 mx-auto  pb-14 text-sm">
+      <div className="flex flex-row items-center justify-between w-11/12 -mt-8 max-w-maxContent text-richblack-400 mx-auto  pb-14 text-sm">
         {/* Section 1 */}
-        <div className="flex justify-between lg:items-start items-center flex-col lg:flex-row gap-3 w-full">
-          <div className="flex flex-row">
+        <div className="flex justify-between  xl:items-start w-full xl:flex-row xs:flex-col  gap-3">
+          <div className="flex flex-row flex-wrap xs:flex-nowrap xs:items-center xs:justify-center">
             {BottomFooter.map((ele, i) => {
               return (
                 <div
@@ -41,7 +41,7 @@ const Footer = () => {
                     BottomFooter.length - 1 === i
                       ? ""
                       : "border-r border-richblack-700 cursor-pointer hover:text-richblack-50 transition-all duration-200"
-                  } px-3 `}
+                  } px-3 xs:px-2`}
                 >
                   <Link to={ele.split(" ").join("-").toLocaleLowerCase()}>
                     {ele}
@@ -52,7 +52,7 @@ const Footer = () => {
           </div>
 
           <div className="text-center">
-            Made with ?? Abhishek © 2023 Studynotion
+            Made with <span className="text-red-5"> ❤️</span> Abhishek © 2023 Studynotion
           </div>
         </div>
       </div>

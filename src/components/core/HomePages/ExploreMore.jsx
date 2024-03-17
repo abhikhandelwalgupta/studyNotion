@@ -24,7 +24,7 @@ export const ExploreMore = () => {
     
   return (
     <div className='flex flex-col items-center justify-center gap-6 font-inter'>
-        <h2 className='text-4xl font-semibold'>Unlock the  <HightlightText text={"Power of Code"} /></h2>
+        <h2 className='text-4xl font-semibold xs:text-2xl'>Unlock the  <HightlightText text={"Power of Code"} /></h2>
         <p className='text-richblack-300 -mt-5 font-[500] text-[16px]'>Learn to build Anything You Can imagine</p>
 
         <div className="hidden lg:flex gap-5  mx-auto w-max bg-richblack-800 text-richblack-200 p-1 rounded-full font-medium drop-shadow-[0_1.5px_rgba(255,255,255,0.25)]">

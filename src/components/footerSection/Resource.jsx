@@ -12,7 +12,7 @@ const Resources = [
 ];
 const Resource = () => {
   return (
-    <div className='wi-[30%] lg:-ml-10 flex flex-col gap-4 font-inter justify-between lg:mt-0 mt-12'>
+    <div className='w-[30%] xl:-ml-10 flex flex-col gap-4 font-inter justify-between mt-12'>
       <h1 className='text-richblack-100 font-inter font-semibold   text-[16px]'>Resource</h1>
       {
         Resources.map((ele , i)=>{ 

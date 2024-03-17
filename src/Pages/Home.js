@@ -16,7 +16,7 @@ export const Home = () => {
   return (
     <div>
       {/* section 1 */}
-      <div className="relative flex flex-col items-center justify-center mx-auto w-11/12 max-w-maxContent text-white">
+      <div className="relative flex flex-col items-center justify-center mx-auto w-11/12 max-w-maxContent text-white ">
         <Link to={"/signup"}>
           <div className="mt-16 pl-1 group bg-richblack-800 rounded-full mx-auto font-bold text-richblack-200 transition-all duration-200 hover:scale-95 w-fit ">
             <div className="flex gap-2 items-center px-10 py-[5px] transition-all duration-200 group-hover:bg-richblack-900 text-lg font-w">
@@ -81,7 +81,7 @@ export const Home = () => {
               linkto: "/login",
               active: false,
             }}
-            codeblock={`<!DOCTYPE html > \n <html> \n <head><title>Example</title><link rel="stylesheet"href="styles.css"> \n </head>\n <body> \n <h1><a href="/">Header</a> \n </h1> \n <nav><a href="one/">One</a><ahref="two/">Two</a><ahref="three/">Three</a>
+            codeblock={`<!DOCTYPE html > \n <html> \n <head><title>Example</title><link rel="stylesheet"href="styles.css"> \n </head>\n <body> \n <h1><a href="/">Header</a> \n </h1> \n <nav><a href="one/">One</a><a href="two/">Two</a><a href="three/">Three</a>
         </nav>`}
             codeColor={"text-yellow-25"}
           />
@@ -94,7 +94,7 @@ export const Home = () => {
             position={"xl:flex-row-reverse"}
             codeblockStyle = {"codeblock2"}
             heading={
-              <div className="text-4xl sm:text-2xl font-semibold">
+              <div className="text-4xl sm:text-2xl font-semibold  xs:text-2xl">
                 {" "}
                 Start {<HightlightText text={"Coding in seconds"} />}{" "}
               </div>
@@ -115,7 +115,7 @@ export const Home = () => {
               linkto: "/login",
               active: false,
             }}
-            codeblock={`<!DOCTYPE html > \n <html> \n <head><title>Example</title><link rel="stylesheet"href="styles.css"> \n </head>\n <body> \n <h1><a href="/">Header</a> \n </h1> \n <nav><a href="one/">One</a><ahref="two/">Two</a><ahref="three/">Three</a>
+            codeblock={`<!DOCTYPE html > \n <html> \n <head><title>Example</title><link rel="stylesheet"href="styles.css"> \n </head>\n <body> \n <h1><a href="/">Header</a> \n </h1> \n <nav><a href="one/">One</a><a href="two/">Two</a><a href="three/">Three</a>
         </nav>`}
             bgGradient={"shadow-blue-700/95"}
             codeColor={"text-yellow-25"}
