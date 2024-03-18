@@ -6,19 +6,19 @@ import Section1 from "../components/core/AboutPage/Section1";
 import { StoryVision } from "../components/core/AboutPage/StoryVision";
 import Counter from "../components/core/AboutPage/Counter";
 import { LearningGrid } from "../components/core/AboutPage/LearningGrid";
-import Contact from "../components/comman/Contact";
+
 
 const About = () => {
   return (
     <div>
         {/* section-1 */}
       <Section1/>
-      <div className="h-[100px] lg:h-[150px]"></div>
+      <div className="h-[100px] xl:h-[150px]"></div>
       {/* section 2 */}
       <section className="border-b border-richblack-700">
-        <div className="relative w-11/12 max-w-maxContent lg:mt-8 py-5 md:mt-6 mt-6 mx-auto flex items-center ">
+        <div className="relative w-11/12 max-w-maxContent xl:mt-8 py-5 md:mt-6 mt-6 mx-auto flex items-center ">
           <div className="h-[100px"></div>
-          <p className="text-richblack-100 lg:text-4xl text-xl lg:leading-[2.75rem] lg:pb-20 md:pb-18 pb-16 text-center font-semibold">
+          <p className="text-richblack-100 xl:text-4xl text-xl xl:leading-[2.75rem] xl:pb-20 md:pb-18 pb-16 text-center font-semibold">
             <sup className="text-richblack-600 text-4xl">&#8220;</sup> We are
             passionate about revolutionizing the way we learn. Our innovative
             platform <HightlightText text={"combines technology"} />,{" "}
@@ -36,7 +36,7 @@ const About = () => {
         </div>
       </section>
       {/* section 3*/}
-      <section className="lg:py-6">
+      <section className="xl:py-6">
        <StoryVision/>
       </section>
       {/* section 4 */}
@@ -49,11 +49,8 @@ const About = () => {
       </section>
 
       {/* Contact Us */}
-      <section className="mt-24">
-        <Contact/>
-      </section>
-
-      <div className="h-[100px] lg:h-[150px]"></div>
+      
+      <div className="h-[100px] xl:h-[150px]"></div>
       <Footer />
     </div>
   );

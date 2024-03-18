@@ -26,6 +26,7 @@ import CourseDetails from "./Pages/CourseDetails";
 import ViewCourse from "./Pages/ViewCourse";
 import ViewCourseVideoDetails from "./components/core/ViewCourse/ViewCourseVideoDetails";
 import Cart from "./components/core/Dashboard/Cart/index"
+import Contact from "./Pages/Contact";
 
 
 function App() {
@@ -74,6 +75,7 @@ function App() {
         <Route path="forgot-password" element={<ForgotPassword />} />
         <Route path={`/update-password/:id`} element={<UpdatePassword />} />
         <Route path={"/about"} element={<About />} />
+        <Route path={"/contact"} element={<Contact />} />
 
       </Routes>
     </div >

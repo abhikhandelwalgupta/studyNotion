@@ -6,15 +6,15 @@ export const StoryVision = () => {
   return (
     <div className="max-w-maxContent w-11/12 mx-auto mt-20">
     <div className="flex gap-y-28 flex-col  justify-between items-center">
-      <div className=" flex justify-between items-center lg:flex-nowrap flex-wrap px-6  gap-6 flex-row  ">
+      <div className=" flex justify-between items-center xl:flex-nowrap flex-wrap px-6  gap-6 flex-row  ">
         <div className="flex flex-col text-white gap-8">
-          <h2 className="lg:text-4xl text-2xl md:text-start text-center">
+          <h2 className="xl:text-4xl text-2xl md:text-start text-center">
             <HightlightText
               text={"Our Founding Story"}
               color={"gradient-text-red"}
             />
           </h2>
-          <div className="lg:w-[75%] flex text-justify gap-4 flex-col items-center justify-center font-inter font-medium text-richblack-300 font-xl">
+          <div className="xl:w-[75%] flex text-justify gap-4 flex-col items-center justify-center font-inter font-medium text-richblack-300 font-xl">
             <p>
               {" "}
               Our e-learning platform was born out of a shared vision and
@@ -41,9 +41,9 @@ export const StoryVision = () => {
           className="rounded-md  shadow-md leading-6" alt=''
         />
       </div>
-      <div className="w-[100%] flex text-richblack-300 text-base leading-6 text-justify gap-8 justify-between items-start mt-20 lg:flex-row flex-col px-6 ">
-        <div className="flex flex-col gap-6 lg:w-[40%]">
-          <p className="lg:text-start text-center text-4xl ">
+      <div className="w-[100%] flex text-richblack-300 text-base leading-6 text-justify gap-8 justify-between items-start mt-20 xl:flex-row flex-col px-6 ">
+        <div className="flex flex-col gap-6 xl:w-[40%]">
+          <p className="xl:text-start text-center text-4xl ">
             <HightlightText
               text={"Our Vision"}
               color={"gradient-text-yellow"}
@@ -58,8 +58,8 @@ export const StoryVision = () => {
             dynamic and interactive learning experience.
           </p>
         </div>
-        <div className="flex  flex-col  gap-6 lg:w-[40%]">
-          <p className="lg:text-start text-center text-4xl">
+        <div className="flex  flex-col  gap-6 xl:w-[40%]">
+          <p className="xl:text-start text-center text-4xl">
             <HightlightText text={"Our Mission"} />
           </p>
           <p>

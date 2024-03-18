@@ -46,23 +46,23 @@ const LearningGridArray = [
 
 export const LearningGrid = () => {
   return (
-    <div className="max-w-maxContent w-11/12 mx-auto text-white">
-      <div className="grid mx-auto w-[350px] lg:w-fit grid-cols-1 lg:grid-cols-4 mb-12">
+    <div className="max-w-maxContent w-11/12 xl:mx-auto  text-white">
+      <div className="grid mx-auto w-[350px] xs:w-full  xl:w-fit grid-cols-1 xl:grid-cols-4 mb-12">
         {LearningGridArray.map((card, i) => {
           return (
             <div
               key={i}
-              className={`${i === 0 && "lg:col-span-2 lg:h-[294px]"}  ${
+              className={`${i === 0 && "xl:col-span-2 xl:h-[294px]"}  ${
                 card.order % 2 === 1
                   ? "bg-richblack-700 h-[294px]"
                   : card.order % 2 === 0
                   ? "bg-richblack-800 h-[294px]"
                   : "bg-transparent"
-              } ${card.order === 3 && "lg:col-start-2"}  `}
+              } ${card.order === 3 && "xl:col-start-2"}  `}
             >
               {card.order < 0 ? (
-                <div className="lg:w-[90%] flex flex-col gap-3 pb-10 lg:pb-0">
-                  <div className="text-4xl font-semibold ">
+                <div className="xl:w-[90%] flex flex-col gap-3 pb-10 xl:pb-0">
+                  <div className="text-4xl xs:text-2xl font-semibold ">
                     {card.heading}
                     <HightlightText text={card.HightlightText} />
                   </div>
@@ -70,7 +70,7 @@ export const LearningGrid = () => {
                     {card.description}
                   </p>
 
-                  <div className="w-fit mt-2">
+                  <div className="w-fit xs:w-full mt-2">
                     <CTABUTTON active={true} linkto={card.BtnLink}>
                       {card.BtnText}
                     </CTABUTTON>

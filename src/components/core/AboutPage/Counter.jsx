@@ -22,7 +22,7 @@ const data = [
 const Counter = () => {
   return (
     <div className="max-w-maxContent w-11/12 mx-auto">
-      <div className="grid grid-cols-[repeat(auto-fill,_minmax(300px,_1fr))] md:gap-0 gap-10 place-items-center flex-wrap items-center py-8 md:h-[200px] h-[450px]">
+      <div className="grid grid-cols-[repeat(auto-fill,_minmax(250px,_1fr))] md:gap-0 gap-10 place-items-center flex-wrap items-center py-8 md:h-[200px] h-[450px] xl:h-[200px]">
         {
             data.map((data , index)=>{
                 return (
